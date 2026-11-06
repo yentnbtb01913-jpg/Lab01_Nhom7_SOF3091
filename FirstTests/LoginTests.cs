@@ -21,7 +21,7 @@ public class LoginTests
         );
     }
 
-    // Hàm đăng nhập dùng chung
+    // Hàm đăng nhập dùng chung cho web
     private void Login(string username, string password)
     {
         driver.FindElement(
