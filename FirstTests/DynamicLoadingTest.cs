@@ -1,76 +1,49 @@
-﻿
-using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-
-namespace FirstTests;
-
-[TestFixture]
-public class DynamicLoadingTests
+namespace FirstTests
 {
-    private IWebDriver driver = null!;
-
-    [SetUp]
-    public void Setup()
+    public class DynamicLoadingTests : BaseTest
     {
-        driver = new ChromeDriver();
-        driver.Manage().Window.Maximize();
-    }
+        private const string Url = "https://the-internet.herokuapp.com/dynamic_loading/2";
 
-    // PHAN A - BUOC 1: TEST KHONG CO WAIT
-    [Test]
-    public void TestWithoutWait()
-    {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/dynamic_loading/2");
-
-        driver.FindElement(By.TagName("button")).Click();
-
-        // Tim phan tu ngay lap tuc
-        IWebElement finish = driver.FindElement(By.Id("finish"));
-
-        Assert.That(finish.Text, Is.EqualTo("Hello World!"));
-    }
-
-    // PHAN A - BUOC 2: TEST CO EXPLICIT WAIT
-    [Test]
-    public void TestWithExplicitWait()
-    {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/dynamic_loading/2");
-
-        driver.FindElement(By.TagName("button")).Click();
-
-        // Cho toi da 10 giay
-        WebDriverWait wait = new WebDriverWait(
-            driver, TimeSpan.FromSeconds(10));
-
-        IWebElement finish = wait.Until(d =>
+        // BƯỚC 1: KHÔNG chờ -> cố ý RỚT với NoSuchElementException
+        [Test, Explicit("Bước 1: cố ý rớt để chụp ảnh minh chứng Phần A")]
+        public void A1_KhongWait_RotNoSuchElement()
         {
-            var elements = d.FindElements(By.Id("finish"));
+            driver.Navigate().GoToUrl(Url);
+            driver.FindElement(By.CssSelector("#start button")).Click();
 
-            if (elements.Count > 0 && elements[0].Displayed)
+            // Tìm NGAY sau khi bấm Start -> #finish chưa được JS tạo ra
+            IWebElement finish = driver.FindElement(By.Id("finish"));
+            Assert.That(finish.Text, Is.EqualTo("Hello World!"));
+        }
+
+        // BƯỚC 2: Có Explicit Wait -> PASS
+        [Test]
+        public void A2_CoExplicitWait_Pass()
+        {
+            driver.Navigate().GoToUrl(Url);
+
+            // Nhấn nút Start
+            driver.FindElement(By.CssSelector("#start button")).Click();
+
+            // Chờ phần tử xuất hiện, hiển thị và có nội dung chính xác
+            IWebElement finish = wait.Until(d =>
             {
-                return elements[0];
-            }
+                var element = d.FindElement(By.Id("finish"));
 
-            return null;
-        })!;
+                return element.Displayed &&
+                       element.Text == "Hello World!"
+                    ? element
+                    : null;
+            });
 
-        // Kiem tra noi dung
-        Assert.That(finish.Text, Is.EqualTo("Hello World!"));
-    }
+            // Kiểm tra nội dung
+            Assert.That(finish.Text, Is.EqualTo("Hello World!"));
 
-    // DONG TRINH DUYET SAU MOI TEST
-    [TearDown]
-    public void Cleanup()
-    {
-        if (driver != null)
-        {
-            driver.Quit();
-            driver.Dispose();
+            TestContext.WriteLine("Nội dung: " + finish.Text);
+            TestContext.WriteLine("Explicit Wait hoạt động thành công!");
         }
     }
 }
