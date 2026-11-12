@@ -1,475 +1,207 @@
-# Lab 1 – Nhập môn kiểm thử tự động \& Thiết lập môi trường
+# SOF3091 – Kiểm thử nâng cao cùng AI (.NET) | Lab 1–4
 
-**Sinh viên:** Trần Nguyễn Bình Yên – Lớp SD2003 – FPT Polytechnic Đồng Nai
+**Sinh viên:** Trần Nguyễn Bình Yên — **MSSV:** TB01913 — **Nhóm:** 07  
+**Project:** `FirstTests` — C#, NUnit, Selenium WebDriver  
+**Repository nhóm:** [Lab01_Nhom7_SOF3091](https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091)
 
-## Công nghệ
+README này được đối chiếu với cấu trúc mã nguồn và tài liệu có trong repository. Các Lab sử dụng chung một project; **Lab 4 được tách riêng bằng hai thư mục `Pages_Lab04` và `Tests_Lab04`**, không di chuyển hoặc ghi đè test gốc của Lab 1–3.
 
-.NET SDK (11.0.100-rc.2), C#, NUnit, Selenium.WebDriver 4.52.0, Google Chrome, Visual Studio 2026
+## 1. Môi trường và chạy kiểm thử
 
-## Cách chạy project
+Theo [`FirstTests.csproj`](FirstTests/FirstTests.csproj), project nhắm tới **.NET 10.0** và dùng các package: NUnit **4.3.2**, NUnit3TestAdapter **5.0.0**, Microsoft.NET.Test.Sdk **17.14.0**, Selenium.WebDriver và Selenium.Support **4.52.0**, cùng coverlet.collector **6.0.4**. Cần .NET SDK tương thích, Visual Studio có hỗ trợ .NET và Google Chrome.
 
-1. Cài .NET SDK, Visual Studio (workload ".NET desktop development") và Google Chrome
-2. Clone repo về máy:
+1. Mở solution **[`FirstTests/FirstTests.slnx`](FirstTests/FirstTests.slnx)** trong Visual Studio (đây là `.slnx`, không phải `.sln`).
+2. Vào **Build → Build Solution**; sau đó mở **Test → Test Explorer**.
+3. Chọn **đúng lớp/nhóm test muốn chạy** rồi nhấn **Run**. Không dùng nút chạy project ▶ trên thanh công cụ như cách khởi động ứng dụng thông thường.
+4. Có thể chạy lệnh tại thư mục `FirstTests/`:
 
-```
-   git clone https://github.com/yentnbtb01913-jpg/Lab01\_Nhom7\_SOF3091.git
+   ```powershell
+   dotnet restore
+   dotnet build
+   dotnet test
    ```
 
-3. Mở file `.sln` bằng Visual Studio
-4. Menu **Test** → **Test Explorer** → **Run All Tests**
-5. Chrome tự bật lên, vào trang example.com rồi tự đóng; test hiển thị **Passed**
+**Chú ý khi đối chiếu Lab 4:** Project có test cũ và test `_Lab04` cùng tồn tại. Nếu nhấn **Run All**, kết quả sẽ trộn cả hai bộ. Hai ca `A1_RotKhongWait` và `D1_CoYRot` được gắn `[Explicit]` để chạy riêng khi cần minh chứng test thất bại. Không tính chúng như lỗi phát sinh ngoài ý muốn.
 
-> Lưu ý: không chạy bằng nút ▶ trên thanh công cụ (nút này chạy project như chương trình thường, không chạy test).
+## 2. Vị trí tài liệu và ảnh minh chứng
 
-## Nội dung test
+Các tệp Word minh chứng được lưu theo **phần A–D**, không phân chia thành thư mục Lab 1, Lab 2... Mỗi thư mục phần có đủ bốn file Word tương ứng Lab 1–4. **Phần E** của từng Lab (nếu có) được ghi trong báo cáo Lab hoặc README; không có thư mục `Phần E`.
 
-`FirstSeleniumTest.OpenPage\_ShouldHaveExpectedTitle`:
-mở Chrome → vào https://example.com → đọc và in tiêu đề trang → `Assert` tiêu đề là "Example Domain" → đóng trình duyệt bằng `Quit()`.
+### Báo cáo Lab chính
 
-## Ảnh minh chứng
+| Bài | File Word |
+|---|---|
+| Lab 1 | [SOF3091_TB01913_LAB01.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB01.docx) |
+| Lab 2 | [SOF3091_TB01913_LAB02.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB02.docx) |
+| Lab 3 | [SOF3091_TB01913_LAB03.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) |
+| Lab 4 | [SOF3091_TB01913_LAB04.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB04.docx) |
 
-Xem thư mục [`screenshots/`](screenshots/):
+### Word ảnh minh chứng theo thư mục thực tế
 
-* File `.csproj` có gói Selenium.WebDriver
-* Kết quả test **Passed**
-* Lịch sử commit
+| Thư mục | Lab 1 | Lab 2 | Lab 3 | Lab 4 |
+|---|---|---|---|---|
+| Phần A | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx) |
+| Phần B | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx) |
+| Phần C | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx) |
+| Phần D | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx) |
 
-\---
+Ví dụ: ảnh **Phần C của Lab 4** được cất trong [AnhPhanC_SOF3091_Lab4.docx](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx), **không phải** `screenshots/Lab04/C01.png`. Khi xem mã nguồn hay kiểm tra ảnh, mở đúng file Word nêu trong bảng.
 
-## Phần D – Trải nghiệm dùng AI
+Ngoài các Word trên, project có hai ảnh PNG **được tạo riêng cho test Lab 4 cố ý thất bại**: [A1_RotKhongWait_Lab04.png](FirstTests/screenshots/Lab04/A1_RotKhongWait_Lab04.png) và [D1_CoYRot_Lab04.png](FirstTests/screenshots/Lab04/D1_CoYRot_Lab04.png). **Hai ảnh này không thay thế ảnh so sánh trước/sau refactor của Phần C.**
 
-### Tình huống: nhờ AI giải thích code đang viết
-
-**Tình huống:** Test đã Passed nhưng mình chưa hiểu vì sao code chạy được, nên nhờ AI giải thích 3 điểm.
-
-**Prompt đã dùng** (mình dán toàn bộ code `FirstSeleniumTest.cs` kèm 3 câu hỏi):
-
-> "Mình là sinh viên đang làm Lab 1 (NUnit + Selenium bằng C# trong Visual Studio). \[...code FirstSeleniumTest.cs...] Mình chưa hiểu mấy điểm sau, giải thích ngắn gọn bằng tiếng Việt, dễ hiểu:
->
-> 1. \[SetUp], \[Test], \[TearDown] chạy theo thứ tự nào, và tại sao đóng Chrome để trong TearDown mà không để cuối hàm test?
-> 2. Mình không hề tải ChromeDriver mà Chrome vẫn mở được, vì sao?
-> 3. driver.Quit() khác driver.Close() ở điểm nào, và tại sao code vẫn gọi thêm Dispose()?"
-
-**Câu trả lời nhận được:**
-
-1. Với mỗi test, NUnit chạy `\[SetUp]` → `\[Test]` → `\[TearDown]`. Đóng Chrome ở `\[TearDown]` vì khi `Assert` sai, hàm test dừng ngay và các dòng phía sau không chạy; còn `\[TearDown]` luôn được chạy nên Chrome luôn được đóng.
-2. Do Selenium bản mới (từ 4.6) có **Selenium Manager** tự tìm Chrome trên máy và tự tải ChromeDriver khớp phiên bản. AI nói thẳng điểm này dựa trên kiến thức của nó, chưa tra nguồn.
-3. `Close()` chỉ đóng cửa sổ đang focus, còn `Quit()` đóng tất cả cửa sổ và kết thúc phiên WebDriver. Trong bản C#, `Quit()` gọi `Dispose()`, nên gọi thêm `Dispose()` sau `Quit()` là dư nhưng không gây hại (AI nói đây là suy luận từ các nguồn nó tra được). AI cũng cho biết khi tra web thì nguồn mâu thuẫn: một câu trả lời cũ nói `Dispose()` đã bị bỏ, người khác phản bác là vẫn còn.
-
-### Nhận xét
-
-AI giải thích khá dễ hiểu, nhất là vì sao phải đóng Chrome trong \[TearDown]: assert sai thì test dừng luôn, để Quit() ở cuối là Chrome bị bỏ lại. Chỗ chưa chắc là Quit() và Dispose(), vì các nguồn AI tra được nói ngược nhau, còn phần Selenium Manager thì AI chỉ nói theo kiến thức chứ chưa có nguồn.
+> **Tình trạng minh chứng:** ZIP có đầy đủ các file Word nêu trên và ảnh đã nhúng trong các tài liệu. Tuy nhiên, một số báo cáo còn nhãn “VỊ TRÍ ẢNH”; cần kiểm tra trực tiếp nội dung Word trước khi nộp. README không tự xác nhận mọi ảnh hoặc mọi ca test đã Passed.
 
 ---
 
-# Lab 2 – Selenium WebDriver cơ bản: Tương tác với trình duyệt và phần tử web
+## 3. Lab 1 — Thiết lập môi trường và test Selenium đầu tiên
 
-**Môn học:** SOF3091  
-**Website kiểm thử:** [SauceDemo – Swag Labs](https://www.saucedemo.com/)  
-**Dự án:** Tiếp tục sử dụng project `FirstTests` và repository của Lab 1.  
-**Mã nguồn Lab 2:** `FirstTests/LoginTests.cs` (kiểm tra đường dẫn thực tế trong repository).  
+**Code:** [FirstSeleniumTest.cs](FirstTests/FirstSeleniumTest.cs).  
+**Báo cáo:** [Word Lab 1](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB01.docx).
 
-> **Tình trạng minh chứng:** Ảnh minh chứng (Chrome DevTools, Visual Studio, GitHub) nằm trong file Word nộp kèm. Các ô kết quả bên dưới ghi theo kết quả chạy thực tế; không mặc định rằng test đã Passed hay locator đã khớp `1 of 1` trước khi có ảnh thực tế.
+| Phần | Nội dung thực hiện | Minh chứng |
+|---|---|---|
+| A (30%) | Cài đặt/kiểm tra .NET SDK, Visual Studio và môi trường. | [Word A1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) |
+| B (40%) | Dùng Selenium mở `https://example.com`, lấy tiêu đề, Assert `Example Domain`, đóng Chrome trong `TearDown`. | [Word B1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) |
+| C (20%) | Quản lý mã nguồn bằng Git và GitHub. | [Word C1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) |
+| D (10%) | Dùng AI giải thích `[SetUp]`, `[TearDown]`, ChromeDriver, `Quit()` và `Dispose()`; có nhận xét về câu trả lời. | [Word D1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) |
 
-## Phần A – Bảng locator (20%)
+**Test chính:** `FirstSeleniumTest.OpenPage_ShouldHaveExpectedTitle`. Trạng thái Passed/Failed cần đối chiếu Test Explorer hoặc báo cáo Word tại thời điểm chạy, không suy ra chỉ từ mã nguồn.
 
-Đã lựa chọn 5 phần tử trên SauceDemo. Mỗi phần tử có ít nhất 2 cách định vị; locator sử dụng trong bài cần được kiểm tra trên DOM thực tế bằng DevTools `Ctrl + F`.
+---
 
-| STT | Phần tử | Locator cách 1 | Locator cách 2 | Locator chọn dùng | Lý do lựa chọn |
-|:--:|---|---|---|---|---|
-| 1 | Ô Username | `By.Id("user-name")` | `By.Name("user-name")` | `By.Id("user-name")` | ID mô tả trực tiếp ô Username, ngắn gọn và dễ đọc. |
-| 2 | Ô Password | `By.Id("password")` | `By.Name("password")` | `By.Id("password")` | ID chỉ rõ ô Password, không dựa trên thứ tự hiển thị. |
-| 3 | Nút Login | `By.Id("login-button")` | `By.Name("login-button")` | `By.Id("login-button")` | ID định vị trực tiếp nút Login, thuận tiện cho thao tác Click. |
-| 4 | Tên sản phẩm Sauce Labs Backpack | `By.CssSelector("#item_4_title_link .inventory_item_name")` | `By.XPath("//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']")` | CSS Selector theo ID sản phẩm | Giới hạn vào tên của một sản phẩm cụ thể thay vì khớp toàn bộ tên sản phẩm. |
-| 5 | Giá sản phẩm Sauce Labs Backpack | `By.CssSelector("div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']")` | `By.XPath("//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']")` | CSS Selector theo vùng sản phẩm | Chỉ tìm giá thuộc sản phẩm Sauce Labs Backpack, tránh nhầm với giá khác. |
+## 4. Lab 2 — Tương tác với trình duyệt và phần tử web
 
-**Ghi nhận kiểm chứng:** Các locator trên là nội dung đề xuất để kiểm tra. Chỉ ghi “`1 of 1`” sau khi DevTools thực sự cho kết quả duy nhất và tô sáng đúng phần tử. Nếu DOM hiện tại khác ví dụ, cập nhật bảng theo HTML thực tế trước khi nộp. Không dùng XPath tuyệt đối bắt đầu bằng `/html/body/...`.
+**Website:** [SauceDemo](https://www.saucedemo.com/).  
+**Code:** [LoginTests.cs](FirstTests/LoginTests.cs); còn có [LoginTests2.cs](FirstTests/LoginTests2.cs) và [LoginTest_TB01915.cs](FirstTests/LoginTest_TB01915.cs).  
+**Báo cáo:** [Word Lab 2](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB02.docx).
 
-### A.1. Locator kiểm tra – Username
+### Phần A — Bảng locator (20%)
 
-**Cách 1 – ID:** `#user-name`
+Mỗi phần tử có ít nhất hai locator được đề xuất. Các locator dưới đây xuất phát từ bài Lab 2; kết quả `1 of 1` phải đối chiếu bằng DevTools và Word minh chứng, không mặc định tất cả selector luôn khớp duy nhất.
 
-**Cách 2 – Name:** `[name='user-name']`
+| Phần tử | Locator 1 | Locator 2 | Lựa chọn / lý do |
+|---|---|---|---|
+| Username | `By.Id("user-name")` | `By.Name("user-name")` | ID ngắn gọn, xác định rõ trường đăng nhập. |
+| Password | `By.Id("password")` | `By.Name("password")` | ID chỉ rõ ô mật khẩu. |
+| Login | `By.Id("login-button")` | `By.Name("login-button")` | ID dễ đọc, không phụ thuộc thứ tự phần tử. |
+| Tên Sauce Labs Backpack | `By.CssSelector("#item_4_title_link .inventory_item_name")` | `By.XPath("//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']")` | Giới hạn tìm đúng sản phẩm. |
+| Giá Sauce Labs Backpack | `By.CssSelector("div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']")` | `By.XPath("//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']")` | Tìm giá trong cùng vùng sản phẩm. |
 
-### A.2. Locator kiểm tra – Password
+Minh chứng DevTools: [Word A2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx).
 
-**Cách 1 – ID:** `#password`
+### Phần B — Đăng nhập thuận và nghịch (30%)
 
-**Cách 2 – Name:** `[name='password']`
+- `Login_Success`: dùng `standard_user` / `secret_sauce`, kiểm tra URL chứa `inventory.html`.
+- `Login_LockedOutUser`: dùng `locked_out_user` / `secret_sauce`, kiểm tra thông báo bị khóa và không chuyển sang trang sản phẩm.
 
-### A.3. Locator kiểm tra – Login
+Minh chứng test: [Word B2](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx).
 
-**Cách 1 – ID:** `#login-button`
+### Phần C — Thu thập sản phẩm (25%)
 
-**Cách 2 – Name:** `[name='login-button']`
+`GetProductInformation`: tìm danh sách **6 sản phẩm**, lấy tên và giá trong từng item, kiểm tra tên không rỗng, giá bắt đầu bằng `$` và danh sách có `Sauce Labs Backpack`. Minh chứng: [Word C2](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx).
 
-### A.4. Locator kiểm tra – tên sản phẩm
+### Phần D — AI hỗ trợ lựa chọn locator (10%)
 
-**Cách 1 – CSS Selector:** `#item_4_title_link .inventory_item_name`
+Dùng `outerHTML` của ô Username để AI đề xuất và giải thích locator; người thực hiện kiểm tra lại bằng DevTools. Prompt, phản hồi và nhận xét: [Word D2](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab2.docx).
 
-**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']`
+### Phần E — GitHub (15%)
 
-### A.5. Locator kiểm tra – giá sản phẩm
+Lưu các thay đổi trên **repository nhóm hiện tại**, quản lý commit theo Conventional Commits. Lịch sử và minh chứng xem trong [báo cáo Lab 2](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB02.docx) và repository; không tự xác nhận số commit nếu chưa đối chiếu Git.
 
-**Cách 1 – CSS Selector:** `div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']`
+---
 
-**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']`
+## 5. Lab 3 — Đồng bộ, sắp xếp, Alert/iFrame và ảnh khi test thất bại
 
-> **Ảnh phần A:** Ảnh DevTools của từng locator (thể hiện locator đang tìm, dòng HTML được chọn và chỉ số kết quả) xem trong file Word nộp kèm, mục Phần A.
+**Mã nguồn gốc:** [PhanA_Lab03.cs](FirstTests/PhanA_Lab03.cs), [PhanB_Lab03.cs](FirstTests/PhanB_Lab03.cs), [PhanC_Lab03.cs](FirstTests/PhanC_Lab03.cs), [PhanD_Lab03.cs](FirstTests/PhanD_Lab03.cs), [SortTests.cs](FirstTests/SortTests.cs) và lớp hỗ trợ [BaseTest.cs](FirstTests/BaseTest.cs).  
+**Báo cáo:** [Word Lab 3](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx).
 
-## Phần B – Kịch bản đăng nhập thuận và nghịch (30%)
+| Phần | Nội dung đã triển khai | Minh chứng |
+|---|---|---|
+| A | `A1_RotKhongWait` tìm phần tử động ngay lập tức để minh chứng lỗi; `A2_PassCoWait` sử dụng Explicit Wait. | [Word A3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) |
+| B | Dropdown `Price (low to high)`, lấy giá và Assert danh sách tăng dần. | [Word B3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) |
+| C | Alert, Confirm, Prompt và iFrame; kiểm tra nội dung hộp thoại, kết quả và thao tác thoát iFrame. | [Word C3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) |
+| D | Trong `TearDown`, chụp màn hình khi test Failed; `D1_CoYRot` cố ý thất bại để minh chứng. | [Word D3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) |
+| E | Dùng AI chẩn đoán `NoSuchElementException` ở test không Wait và đánh giá cách sửa. | [Phần E trong báo cáo](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) |
 
-Các ca kiểm thử được triển khai trong `LoginTests.cs`, sử dụng `[SetUp]`, `[Test]`, `[TearDown]` và hàm `Login(username, password)` dùng chung. Sau mỗi ca, code gọi `driver.Quit()` và `driver.Dispose()`.
+**Lưu ý:** Hai test `A1_RotKhongWait` và `D1_CoYRot` cố ý Failed, có `[Explicit]`; chỉ chọn chạy riêng khi cần minh chứng, không sửa chúng thành PASS.
 
-| Ca kiểm thử | Dữ liệu đầu vào | Kết quả mong đợi | Câu lệnh kiểm tra chính | Kết quả chạy thực tế |
-|---|---|---|---|---|
-| `Login_Success` | `standard_user` / `secret_sauce` | Đăng nhập thành công, chuyển sang `inventory.html`. | `Assert.That(currentUrl, Does.Contain("inventory.html"))` | **[Điền sau khi chạy]** |
-| `Login_LockedOutUser` | `locked_out_user` / `secret_sauce` | Thông báo lỗi hiển thị đúng nội dung, không chuyển sang trang sản phẩm. | Kiểm tra `errorMessage.Displayed`, nội dung thông báo và URL không chứa `inventory.html`. | **[Điền sau khi chạy]** |
+---
 
-**Nội dung thông báo mong đợi cho tài khoản bị khóa:**
+## 6. Lab 4 — OOP và Page Object Model (POM)
+
+**Mục tiêu:** Refactor test Lab 2–3 sang POM mà không thay đổi hành vi; toàn bộ mã nguồn mới nằm riêng trong `FirstTests/Pages_Lab04/` và `FirstTests/Tests_Lab04/`.  
+**Báo cáo:** [Word Lab 4](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB04.docx).
+
+### Cấu trúc Lab 4
 
 ```text
-Epic sadface: Sorry, this user has been locked out.
+FirstTests/
+├── Pages_Lab04/
+│   ├── BasePage.cs
+│   ├── LoginPage.cs
+│   ├── InventoryPage.cs
+│   ├── DynamicLoadingPage.cs
+│   ├── JavaScriptAlertsPage.cs
+│   ├── IframePage.cs
+│   └── HerokuHomePage.cs
+├── Tests_Lab04/
+│   ├── TestBase.cs
+│   ├── LoginTests_Lab04.cs
+│   ├── LoginTests2_Lab04.cs
+│   ├── LoginTest_TB01915_Lab04.cs
+│   ├── PhanA_Lab03_Lab04.cs
+│   ├── PhanB_Lab03_Lab04.cs
+│   ├── PhanC_Lab03_Lab04.cs
+│   ├── PhanD_Lab03_Lab04.cs
+│   └── SortTests_Lab04.cs
+└── Các file Lab 1–3 gốc vẫn nằm ngoài hai thư mục trên
 ```
 
-### B.1. Ảnh kết quả kiểm thử
+### Phần A — Cấu trúc và BasePage (20%)
 
-**Ảnh Test Explorer của hai ca đăng nhập:** xem trong file Word nộp kèm, mục Phần B.
+[BasePage.cs](FirstTests/Pages_Lab04/BasePage.cs) là lớp `abstract`, quản lý `IWebDriver`, `WebDriverWait` và `Tim(By)` dùng chung. Các Page kế thừa BasePage, không khai báo lại `driver`/`wait`. Minh chứng: [Word A4](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx).
 
-**Ghi nhận thực tế:** [Điền tổng số Passed / Failed và kết quả hai ca sau khi chạy.]  
+### Phần B — LoginPage và InventoryPage (25%)
 
-## Phần C – Thu thập dữ liệu sản phẩm (25%)
+- [LoginPage.cs](FirstTests/Pages_Lab04/LoginPage.cs): locator `private readonly By`, các hành vi đăng nhập và lấy lỗi.
+- [InventoryPage.cs](FirstTests/Pages_Lab04/InventoryPage.cs): kiểm tra trang, sắp xếp sản phẩm và lấy danh sách giá.
 
-Ca kiểm thử `GetProductInformation()` trong `LoginTests.cs` tái sử dụng hàm `Login("standard_user", "secret_sauce")`, sau đó đọc danh sách sản phẩm bằng `FindElements`:
+Minh chứng: [Word B4](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx).
+
+### Phần C — Refactor test Lab 2–3 (30%)
+
+- Tám lớp test gốc Lab 2–3 có tổng **18 ca**. Bản POM cũng có **18 ca**, nằm riêng trong `Tests_Lab04`; không xóa hoặc thay đổi bản gốc.
+- Đã đối chiếu mã nguồn: các file test `_Lab04.cs` không chứa `By`/`FindElement` trực tiếp; không có `Assert` trong Page Object; phương thức nghiệp vụ public không trả về `IWebElement`.
+- Các test `[Explicit]` giữ nguyên mục đích. **Kết quả chạy trước/sau cần đối chiếu bằng Test Explorer**, không suy ra việc PASS từ việc code đúng cấu trúc.
+
+**Minh chứng Phần C:** [Word C4](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx). Khi đánh giá refactor, so sánh cùng 18 ca ở hai nhóm, loại riêng test Lab 1 `FirstSeleniumTest` khỏi bộ đối chiếu.
+
+### Phần D — Sắp xếp giá bằng method chaining (15%)
+
+Trong [SortTests_Lab04.cs](FirstTests/Tests_Lab04/SortTests_Lab04.cs), test sử dụng chuỗi:
 
 ```csharp
-IReadOnlyCollection<IWebElement> items =
-    driver.FindElements(By.CssSelector("[data-test='inventory-item']"));
+login.DangNhap("standard_user", "secret_sauce")
+     .SapXep("lohi")
+     .LayDanhSachGia();
 ```
 
-Trong vòng lặp `foreach`, tên và giá được lấy **bên trong từng sản phẩm** bằng `item.FindElement(...)`:
+Sau đó đối chiếu danh sách giá và sử dụng `Is.Ordered.Ascending`. Minh chứng code và kết quả: [Word D4](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx).
 
-```csharp
-string name = item.FindElement(By.CssSelector("[data-test='inventory-item-name']")).Text;
-string price = item.FindElement(By.CssSelector("[data-test='inventory-item-price']")).Text;
-```
+### Phần E — Thẩm định AI (10%)
 
-Bài kiểm thử in tên và giá của từng sản phẩm ra kết quả chạy, đồng thời có các Assert:
+Gửi mã kiểm thử để AI hỗ trợ refactor, rồi tự kiểm tra các quy ước: kế thừa `BasePage`, locator `private readonly By`, `Assert` chỉ trong test, không lộ `IWebElement` từ phương thức nghiệp vụ, giữ nguyên hành vi và tách riêng `_Lab04`. Phần ghi nhận prompt, phản hồi và nhận xét nằm trong [báo cáo Lab 4](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB04.docx) (không có thư mục ảnh Phần E riêng).
 
-| STT | Nội dung kiểm tra | Điều kiện mong đợi | Kết quả thực tế |
-|:--:|---|---|---|
-| 1 | Số lượng sản phẩm | `items.Count == 6` | **[Điền sau khi chạy]** |
-| 2 | Tên sản phẩm | Tất cả tên không rỗng (`Has.All.Not.Empty`) | **[Điền sau khi chạy]** |
-| 3 | Giá sản phẩm | Tất cả giá bắt đầu bằng `$` (`Has.All.StartsWith("$")`) | **[Điền sau khi chạy]** |
-| 4 | Sản phẩm cụ thể | Danh sách chứa `Sauce Labs Backpack` | **[Điền sau khi chạy]** |
-
-### C.1. Kết quả tên và giá sản phẩm
-
-| STT | Tên sản phẩm lấy từ Test Output | Giá lấy từ Test Output |
-|:--:|---|---|
-| 1 | [Điền theo kết quả chạy] | [Điền] |
-| 2 | [Điền theo kết quả chạy] | [Điền] |
-| 3 | [Điền theo kết quả chạy] | [Điền] |
-| 4 | [Điền theo kết quả chạy] | [Điền] |
-| 5 | [Điền theo kết quả chạy] | [Điền] |
-| 6 | [Điền theo kết quả chạy] | [Điền] |
-
-**Ảnh minh chứng (Test Output có tên và giá 6 sản phẩm, Test Explorer có ca `GetProductInformation`):** xem trong file Word nộp kèm, mục Phần C.
-
-**Trạng thái ca kiểm thử:** [Điền Passed hoặc Failed theo kết quả thực tế.]
-
-## Phần D – Lồng ghép AI (10%)
-
-### D.1. Phần tử được chọn và outerHTML
-
-**Phần tử:** Ô Username tại trang đăng nhập SauceDemo.
-
-**OuterHTML đã sao chép từ Chrome DevTools:**
-
-```html
-[DÁN NGUYÊN VĂN OUTERHTML ĐÃ SAO CHÉP TỪ DEVTOOLS VÀO ĐÂY]
-```
-
-### D.2. Prompt đã gửi AI
-
-> [DÁN NGUYÊN VĂN PROMPT ĐÃ THỰC SỰ GỬI CHO AI. Chưa có nội dung prompt nguyên văn trong README gốc.]
-
-### D.3. Câu trả lời AI đã nhận
-
-**Phân tích thuộc tính từ outerHTML (theo câu trả lời AI):**
-
-| Thuộc tính | Giá trị được AI nêu | Nhận xét của AI |
-|---|---|---|
-| `id` | `user-name` | Định danh của phần tử, theo chuẩn HTML nên duy nhất. |
-| `data-test` | `username` | Thuộc tính dành cho kiểm thử, ít đổi khi sửa giao diện. |
-| `name` | `user-name` | Tên trường của form, khá ổn định. |
-| `aria-label` | `Username` | Nhãn hỗ trợ truy cập, phụ thuộc nội dung chữ. |
-| `placeholder` | `Username` | Chữ gợi ý, dễ đổi khi sửa nội dung hoặc ngôn ngữ. |
-| `class` | `input_error form_input` | Dùng để tạo kiểu, dễ đổi hoặc trùng phần tử khác. |
-| `type` | `text` | Quá chung để nhận diện riêng. |
-| `autocorrect`, `autocapitalize`, `value` | `off`, `none`, rỗng | Cấu hình nhập liệu, không ưu tiên định vị. |
-
-**Các locator Selenium C# AI đề xuất:**
-
-```csharp
-By.Id("user-name")                                  // L1
-By.CssSelector("[data-test='username']")            // L2
-By.Name("user-name")                                // L3
-By.CssSelector("[aria-label='Username']")           // L4
-By.CssSelector("input.input_error.form_input")      // L5 (không khuyến khích)
-```
-
-| Locator AI đề xuất | Chuỗi kiểm tra tại DevTools (Ctrl+F) | Đánh giá độ ổn định của AI |
-|---|---|---|
-| L1 – ID | `#user-name` | Cao nhất; ngắn, không phụ thuộc vị trí. |
-| L2 – data-test | `[data-test="username"]` | Cao; hướng đến kiểm thử. |
-| L3 – Name | `[name="user-name"]` | Trung bình–cao; `name` không bắt buộc duy nhất. |
-| L4 – aria-label | `[aria-label="Username"]` | Trung bình; có thể đổi theo ngôn ngữ. |
-| L5 – Class | `input.input_error.form_input` | Thấp; có thể đổi hoặc trùng phần tử khác. |
-
-**Locator AI lựa chọn:** `By.Id("user-name")`.
-
-**Lý do AI đưa ra:** Ưu tiên ID vì ngắn gọn, mô tả danh tính của ô Username và không phụ thuộc đường đi trong DOM; locator theo `data-test` là phương án dự phòng. AI cũng yêu cầu tự kiểm chứng vì chưa biết có phần tử khác trùng selector hay không.
-
-### D.4. Kết quả tự kiểm chứng
-
-| Locator kiểm tra | Kết quả Ctrl+F | Phần tử được tô sáng | Đánh giá |
-|---|---|---|---|
-| `#user-name` | [Điền `1 of 1` hoặc kết quả thật] | [Điền] | [Điền] |
-| `[data-test='username']` | [Điền kết quả thật] | [Điền] | [Điền] |
-
-**Ảnh minh chứng (outerHTML của Username và kiểm chứng locator AI bằng Ctrl+F):** xem trong file Word nộp kèm, mục Phần D.
-
-### D.5. Nhận xét cá nhân (3–5 câu)
-
-Qua quá trình sử dụng AI để phân tích outerHTML của ô Username trên website SauceDemo, tôi nhận thấy AI đã đề xuất các locator phù hợp như `By.Id("user-name")` và `By.CssSelector("[data-test='username']")`. Tôi lựa chọn `By.Id("user-name")` vì cách định vị này ngắn gọn, dễ sử dụng và không phụ thuộc vào vị trí của phần tử trong cấu trúc HTML. Tuy nhiên, AI chỉ đưa ra đề xuất dựa trên các thuộc tính được cung cấp, không thể bảo đảm locator luôn chính xác khi website thay đổi. Vì vậy, tôi cần tự kiểm chứng bằng DevTools với Ctrl+F để xác nhận locator có tìm đúng một phần tử hay không. Qua đó, tôi nhận thấy AI có thể hỗ trợ lựa chọn locator nhưng kết quả vẫn cần được kiểm tra thực tế trước khi sử dụng trong Selenium.
-
-> Cập nhật thêm kết quả đúng/sai cụ thể từ DevTools vào đoạn nhận xét trên sau khi có ảnh kiểm chứng.
-
-## Phần E – Quản lý mã nguồn bằng GitHub (15%)
-
-**Repository Lab 1 được tiếp tục sử dụng:** [Lab01_Nhom7_SOF3091](https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091).
-
-Yêu cầu: Tối thiểu **3 commit mới** theo chuẩn Conventional Commits; các nội dung Lab 2 được push lên chính repository trên, không tạo repo mới.
-
-| STT | Commit message dự kiến (ví dụ) | Trạng thái thực tế |
-|:--:|---|---|
-| 1 | `test: add SauceDemo login tests` | [Điền sau khi commit] |
-| 2 | `test: add product information assertions` | [Điền sau khi commit] |
-| 3 | `docs: add Lab 2 locator and AI evidence` | [Điền sau khi commit] |
-
-**Ảnh minh chứng (lịch sử commit và repository public đã cập nhật):** xem trong file Word nộp kèm, mục Phần E.
-
-**Kết quả push:** [Ghi lại sau khi xác nhận có đủ 3 commit mới và các file Lab 2 xuất hiện trên GitHub.]
-
-## Tổng hợp tình trạng Lab 2
-
-| Phần | Tỷ trọng | Nội dung cần có | Tình trạng minh chứng |
-|---|---:|---|---|
-| A | 20% | Bảng 5 phần tử, 2 locator/phần tử, lý do chọn, ảnh DevTools | [Đối chiếu ảnh trong file Word] |
-| B | 30% | Hai ca đăng nhập thuận/nghịch, Assert, SetUp/TearDown, ảnh Passed | [Đối chiếu ảnh trong file Word] |
-| C | 25% | `FindElements`, `item.FindElement`, in 6 tên/giá, Assert | [Đối chiếu ảnh trong file Word] |
-| D | 10% | outerHTML, prompt, câu trả lời AI, Ctrl+F, nhận xét 3–5 câu | [Bổ sung prompt; đối chiếu ảnh trong file Word] |
-| E | 15% | Ít nhất 3 commit và push lên repo Lab 1 | [Đối chiếu ảnh lịch sử GitHub trong file Word] |
-
-**Link nộp bài:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
-
+**Điểm cần thẩm định:** Nếu cung cấp cho AI file `LoginTests_Lab04.cs` đã theo POM thì câu trả lời chỉ là rà soát/viết lại, **không phải** bằng chứng AI chuyển `LoginTests.cs` gốc từ script-based sang POM. Đồng thời cần giữ chức năng chụp ảnh test Failed trong `TestBase` nếu đã có từ bản hiện tại.
 
 ---
 
-# Lab 3 – Xử lý các tình huống thực tế phức tạp
+## 7. Kiểm tra trước khi nộp
 
-**Dự án:** Tiếp tục sử dụng project `FirstTests` và repository của Lab 1–2.
-**Mã nguồn Lab 3:** `FirstTests/PhanA_Lab03.cs`, `PhanB_Lab03.cs`, `PhanC_Lab03.cs`, `PhanD_Lab03.cs`.
+- [ ] `FirstTests.slnx` mở được; `dotnet build` thành công trong môi trường thực tế.
+- [ ] Đối chiếu kết quả chạy test gốc và bản POM theo đúng từng ca, lưu ảnh **trước/sau** trong Word Phần C Lab 4.
+- [ ] Test mới không có `By`; Page Object không chứa `Assert` và không trả về `IWebElement` qua phương thức nghiệp vụ public.
+- [ ] Bốn thư mục `screenshots/Phần A`, `Phần B`, `Phần C`, `Phần D` chứa đúng các file Word đã liệt kê; kiểm tra những vị trí còn ghi “VỊ TRÍ ẢNH”.
+- [ ] Đối chiếu ảnh chụp thực tế, kết quả Passed/Failed và các commit trên GitHub trước khi ghi nhận là hoàn thành.
 
-**Cách chạy:** menu **Test** → **Test Explorer**, chuột phải test hoặc class → **Run**.
-Hai test cố ý rớt (`A1_RotKhongWait`, `D1_CoYRot`) được đánh dấu `[Explicit]` nên **Run All sẽ bỏ qua**, phải chuột phải từng test rồi chọn Run.
-
-## Phần A – Chứng minh vấn đề đồng bộ (25%)
-
-Trang kiểm thử: `the-internet.herokuapp.com/dynamic_loading/2`. Sau khi bấm Start, phần tử `#finish` (chữ "Hello World!") do JavaScript tạo ra sau vài giây. Bài không dùng `Thread.Sleep` và không dùng `performance_glitch_user`.
-
-- **Bước 1 – không Wait** (`A1_RotKhongWait`): tìm `#finish` ngay sau khi bấm Start nên test RỚT với `NoSuchElementException`.
-- **Bước 2 – có Explicit Wait** (`A2_PassCoWait`): chờ tối đa 10 giây tới khi `#finish` xuất hiện nên test PASS.
-
-```csharp
-// Bước 1: tìm ngay -> RỚT
-IWebElement finish = driver.FindElement(By.Id("finish"));
-
-// Bước 2: wait khai báo trong [SetUp]: new WebDriverWait(driver, TimeSpan.FromSeconds(10))
-IWebElement finish = wait.Until(d => d.FindElement(By.Id("finish")));
-```
-
-| Ca kiểm thử | Kết quả thực tế |
-|---|---|
-| `A1_RotKhongWait` | **Failed** – `NoSuchElementException` |
-| `A2_PassCoWait` | **Passed** |
-
-**Ảnh minh chứng (test RỚT và test PASS):** xem trong file Word nộp kèm, mục Phần A.
-
-**Giải thích:** Cùng một thao tác "bấm Start rồi tìm `#finish`" nhưng kết quả khác nhau vì `#finish` do JavaScript tạo ra sau vài giây. Selenium chỉ tự chờ khi chuyển trang, không chờ phần tử JavaScript tạo ra sau đó, nên test tìm ngay sẽ báo `NoSuchElementException`. Với `WebDriverWait` + `Until(...)`, test thử lại liên tục (tối đa 10 giây) tới khi phần tử xuất hiện rồi mới đi tiếp.
-
-## Phần B – Dropdown và Assert đúng nghiệp vụ (25%)
-
-Ca kiểm thử `B1_GiaTangDan` (`PhanB_Lab03.cs`): đăng nhập `standard_user`, dùng `SelectElement` chọn **Price (low to high)**, lấy 6 giá bằng `FindElements`, bỏ ký tự `$` và chuyển sang số. Assert so sánh danh sách vừa lấy với chính nó sau khi sắp xếp, nên giá phải **thực sự tăng dần** chứ không chỉ đếm đủ 6 sản phẩm.
-
-```csharp
-var dropdown = new SelectElement(driver.FindElement(By.ClassName("product_sort_container")));
-dropdown.SelectByText("Price (low to high)");
-
-List<decimal> prices = driver.FindElements(By.ClassName("inventory_item_price"))
-    .Select(e => decimal.Parse(e.Text.Replace("$", ""), CultureInfo.InvariantCulture))
-    .ToList();
-
-Assert.That(prices.Count, Is.EqualTo(6));
-Assert.That(prices, Is.EqualTo(prices.OrderBy(p => p).ToList()));   // tăng dần thật sự
-```
-
-**Kết quả thực tế:** `B1_GiaTangDan` **Passed**.
-
-**Ảnh minh chứng:** xem trong file Word nộp kèm, mục Phần B.
-
-## Phần C – Alert và iframe (20%)
-
-Trang kiểm thử: `/javascript_alerts` và `/iframe`. Mỗi ca alert đều Assert nội dung hộp thoại **trước** khi Accept/Dismiss, rồi Assert nội dung hiển thị ở `#result`. Với iframe: vào bằng `SwitchTo().Frame("mce_0_ifr")`, gõ chữ vào trình soạn thảo, và luôn thoát bằng `DefaultContent()` trong `finally` (vào thì phải ra, như đóng ngoặc).
-
-| Ca kiểm thử | Thao tác | Kết quả mong đợi ở `#result` | Kết quả thực tế |
-|---|---|---|---|
-| `C1_Alert_Accept` | Accept | `You successfully clicked an alert` | **Passed** |
-| `C2_Confirm_Dismiss` | Dismiss | `You clicked: Cancel` | **Passed** |
-| `C3_Prompt_SendKeys_Accept` | SendKeys + Accept | `You entered: <chữ đã gõ>` | **Passed** |
-| `C4_Iframe_GoChu` | Gõ chữ vào editor trong iframe, rồi `DefaultContent()` | Chữ trong editor đúng bằng chữ đã gõ | [Điền sau khi chạy lại] |
-
-```csharp
-// Alert
-IAlert alert = driver.SwitchTo().Alert();
-Assert.That(alert.Text, Is.EqualTo("I am a JS Alert"));   // Assert TRƯỚC khi Accept
-alert.Accept();
-Assert.That(driver.FindElement(By.Id("result")).Text, Is.EqualTo("You successfully clicked an alert"));
-
-// iframe
-try
-{
-    wait.Until(d => d.SwitchTo().Frame("mce_0_ifr"));
-    IWebElement body = driver.FindElement(By.Id("tinymce"));
-    body.Click();
-    body.SendKeys(Keys.Control + "a");
-    body.SendKeys(Keys.Delete);
-    body.SendKeys(noiDung);
-    Assert.That(body.Text.Trim(), Is.EqualTo(noiDung));
-}
-finally
-{
-    driver.SwitchTo().DefaultContent();   // vào thì phải ra
-}
-```
-
-**Ảnh minh chứng:** xem trong file Word nộp kèm, mục Phần C.
-
-## Phần D – Chụp ảnh khi test thất bại (15%)
-
-Cơ chế nằm trong `[TearDown]` của `PhanB_Lab03.cs`, `PhanC_Lab03.cs` và `PhanD_Lab03.cs`: **chỉ chụp khi** `Outcome.Status == TestStatus.Failed`, đặt tên file ảnh theo tên ca test, đính kèm vào kết quả bằng `TestContext.AddTestAttachment(path)`.
-
-```csharp
-[TearDown]
-public void TearDown()
-{
-    try
-    {
-        if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-        {
-            string dir = Path.GetFullPath(Path.Combine(
-                TestContext.CurrentContext.TestDirectory, "..", "..", "..", "screenshots"));
-            Directory.CreateDirectory(dir);
-
-            string path = Path.Combine(dir, TestContext.CurrentContext.Test.Name + ".png");
-            ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(path);
-            TestContext.AddTestAttachment(path);
-        }
-    }
-    finally
-    {
-        driver?.Quit();
-        driver?.Dispose();
-    }
-}
-```
-
-Test cố ý rớt để sinh ảnh minh chứng (`PhanD_Lab03.cs`):
-
-```csharp
-[Test, Explicit("Cố ý rớt để sinh ảnh minh chứng Phần D")]
-public void D1_CoYRot()
-{
-    driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/");
-    Assert.That(driver.Title, Is.EqualTo("TIEU DE SAI CO Y"));   // cố ý sai
-}
-```
-
-**Ảnh minh chứng chụp tự động khi `D1_CoYRot` Failed:** xem trong file Word nộp kèm, mục Phần D.
-
-## Phần E – AI chẩn đoán flaky test (15%)
-
-**Test được chọn:** `A1_RotKhongWait` (tình huống ở Phần A).
-
-### E.1. Prompt đã gửi AI
-
-> Test Selenium C# (NUnit) của mình bị lỗi, hãy chẩn đoán nguyên nhân và đề xuất cách chữa.
->
-> Code:
-> ```csharp
-> [Test]
-> public void A1_RotKhongWait()
-> {
->     driver.Navigate().GoToUrl("https://the-internet.herokuapp.com/dynamic_loading/2");
->     driver.FindElement(By.CssSelector("#start button")).Click();
->     IWebElement finish = driver.FindElement(By.Id("finish"));
->     Assert.That(finish.Text, Is.EqualTo("Hello World!"));
-> }
-> ```
->
-> Lỗi nguyên văn:
-> `OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"css selector","selector":"#finish"}`
->
-> Tần suất rớt: rớt 10/10 lần chạy, lần nào cũng báo cùng một lỗi tại dòng tìm phần tử `#finish`.
->
-> Điều kiện chạy: Windows 11, Visual Studio, .NET 8.0, Chrome 142, Selenium.WebDriver 4.x, NUnit 3.x, chạy bằng Test Explorer, mạng nhà ổn định. Trong test không dùng Implicit Wait, không dùng Thread.Sleep. Quan sát bằng mắt: sau khi bấm Start thì thanh loading chạy vài giây rồi chữ "Hello World!" mới hiện ra, nhưng test báo lỗi gần như ngay sau khi bấm Start.
-
-### E.2. Nguyên nhân AI đề xuất và kết quả tự kiểm chứng
-
-| STT | Gợi ý của Claude | Kết quả | Cách kiểm chứng |
-|:--:|---|---|---|
-| 1 | Thiếu wait: `Click()` trả về ngay, còn `#finish` do JavaScript tạo sau vài giây | Đúng | F12: lúc vừa bấm Start chưa có `#finish` trong DOM |
-| 2 | Trang `/2` tạo phần tử mới, không phải phần tử có sẵn nhưng bị ẩn như trang `/1` | Đúng | F12 như trên |
-| 3 | Chữa bằng `WebDriverWait` + `Until` | Đúng | `A2_PassCoWait` Passed |
-| 4 | Không trộn Implicit Wait với Explicit Wait; `ExpectedConditions` đã tách gói | Đúng | Khớp mục 3 và 5 trong hướng dẫn của đề |
-| 5 | Thêm điều kiện kiểm tra phần tử đang hiển thị (`Displayed`) | Không cần thiết | `A2` không có điều kiện này vẫn Passed |
-| 6 | Sửa trực tiếp trong test `A1_RotKhongWait` | Không phù hợp | Sửa vậy thì `A1` không còn rớt để chụp ảnh minh chứng |
-
-### E.3. Nhận xét cá nhân
-
-Claude chỉ ra đúng nguyên nhân: sau khi bấm nút Start, chữ "Hello World!" phải đợi vài giây mới hiện ra, nhưng test lại tìm nó ngay lập tức nên báo lỗi không thấy. Cách chữa Claude đề xuất cũng đúng, đó là cho test chờ tối đa 10 giây tới khi chữ hiện ra, và khi áp dụng ở `A2_PassCoWait` thì test Passed. Hai chỗ chưa phù hợp: Claude sửa thẳng vào test bị lỗi nên làm theo thì test không còn rớt để chụp ảnh minh chứng, và điều kiện kiểm tra "đang hiển thị" Claude thêm vào là không cần, vì bản của tôi không có vẫn Passed. Test của tôi rớt 10/10 lần, tức là lỗi xảy ra mọi lần chứ không lúc rớt lúc không, nên đây chưa phải flaky test (test chập chờn) thực sự.
-
-## Quản lý mã nguồn Lab 3
-
-Lab 3 được làm tiếp trên **cùng repository** Lab 1–2, commit theo chuẩn Conventional Commits.
-
-| STT | Commit message | Trạng thái thực tế |
-|:--:|---|---|
-| 1 | `test: them test dong bo explicit wait (phan A)` | [Điền sau khi commit] |
-| 2 | `test: them test dropdown va assert gia tang dan (phan B)` | [Điền sau khi commit] |
-| 3 | `test: them test alert va iframe (phan C)` | [Điền sau khi commit] |
-| 4 | `feat: chup anh khi test failed trong TearDown (phan D)` | [Điền sau khi commit] |
-| 5 | `docs: them anh minh chung va README lab 3` | [Điền sau khi commit] |
-
-## Tổng hợp tình trạng Lab 3
-
-| Phần | Tỷ trọng | Nội dung cần có | Tình trạng minh chứng |
-|---|---:|---|---|
-| A | 25% | Test rớt và pass, 2 ảnh, giải thích, dùng `WebDriverWait` + `Until` (không `Thread.Sleep`) | [Đối chiếu ảnh trong file Word] |
-| B | 25% | `SelectElement`, Assert giá thực sự tăng dần | [Đối chiếu ảnh trong file Word] |
-| C | 20% | 3 loại alert có Assert `#result`, gõ chữ vào iframe rồi `DefaultContent()` | [Đối chiếu ảnh trong file Word, kể cả C4] |
-| D | 15% | `[TearDown]` chỉ chụp khi Failed, ảnh minh chứng | [Đối chiếu ảnh trong file Word] |
-| E | 15% | Prompt, nguyên nhân AI đề xuất, tự kiểm chứng, nhận xét | [Đối chiếu số lần rớt với prompt] |
-
-**Link nộp bài:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
+**Repository nộp:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
