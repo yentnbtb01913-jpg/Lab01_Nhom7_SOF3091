@@ -1,11 +1,9 @@
 ﻿
-using System;
-using System.Globalization;
 using System.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
+using FirstTests.Page;
 
 namespace FirstTests;
 
@@ -13,6 +11,7 @@ namespace FirstTests;
 public class ProductSortTests
 {
     private IWebDriver driver = null!;
+    private InventoryPages inventoryPage = null!;
 
     [SetUp]
     public void Setup()
@@ -20,56 +19,35 @@ public class ProductSortTests
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
 
-        // Mo trang SauceDemo
         driver.Navigate().GoToUrl("https://www.saucedemo.com/");
 
-        // Dang nhap
-        driver.FindElement(By.Id("user-name"))
-            .SendKeys("standard_user");
+        LoginPages loginPage = new LoginPages(driver);
 
-        driver.FindElement(By.Id("password"))
-            .SendKeys("secret_sauce");
+        inventoryPage = loginPage.DangNhap(
+            "standard_user",
+            "secret_sauce"
+        );
 
-        driver.FindElement(By.Id("login-button")).Click();
-
-        // Cho danh sach san pham hien ra
-        WebDriverWait wait = new WebDriverWait(
-            driver, TimeSpan.FromSeconds(10));
-
-        wait.Until(d =>
-            d.FindElements(By.ClassName("inventory_item")).Count == 6);
+        inventoryPage.LayDanhSachGia();
     }
 
     [Test]
     public void SortPriceLowToHigh()
     {
-        // Chon Price (low to high)
-        IWebElement sortDropdown =
-            driver.FindElement(By.ClassName("product_sort_container"));
+        // Chaining: SapXep trả về this
+        var prices = inventoryPage
+            .SapXep("lohi")
+            .LayDanhSachGia();
 
-        SelectElement select = new SelectElement(sortDropdown);
-
-        select.SelectByValue("lohi");
-
-        // Lay danh sach gia san pham
-        var priceElements = driver.FindElements(
-            By.ClassName("inventory_item_price"));
-
-        // Chuyen gia tu chuoi sang so
-        var prices = priceElements.Select(element =>
-            decimal.Parse(
-                element.Text.Replace("$", ""),
-                CultureInfo.InvariantCulture
-            )).ToList();
-
-        // Kiem tra co du 6 gia
+        // Kiểm tra đủ 6 sản phẩm
         Assert.That(prices.Count, Is.EqualTo(6));
 
-        // Kiem tra gia thuc su tang dan
-        var sortedPrices = prices.OrderBy(price => price).ToList();
-
-        Assert.That(prices, Is.EqualTo(sortedPrices),
-            "Gia san pham khong duoc sap xep tang dan!");
+        // Kiểm tra giá tăng dần
+        Assert.That(
+            prices,
+            Is.Ordered,
+            "Gia san pham khong duoc sap xep tang dan!"
+        );
     }
 
     [TearDown]

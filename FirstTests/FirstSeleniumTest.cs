@@ -1,7 +1,9 @@
 ﻿
+using System;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using FirstTests.Page;
 
 namespace FirstTests
 {
@@ -9,32 +11,35 @@ namespace FirstTests
     public class FirstSeleniumTest
     {
         private IWebDriver driver = null!;
+        private ExamplePages examplePage = null!;
 
-        // YÊU CẦU 1: Mở trình duyệt Chrome
+        // Mở trình duyệt Chrome
         [SetUp]
         public void Setup()
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
+
+            examplePage = new ExamplePages(driver);
         }
 
         [Test]
         public void OpenPage_ShouldHaveExpectedTitle()
         {
-            // YÊU CẦU 2: Điều hướng đến trang web
-            driver.Navigate().GoToUrl("https://example.com");
+            // Điều hướng đến trang web
+            examplePage.MoTrangExample();
 
-            // YÊU CẦU 3: Đọc và in tiêu đề trang
-            string title = driver.Title;
+            // Đọc tiêu đề trang
+            string title = examplePage.LayTieuDeTrang();
 
             Console.WriteLine("Tiêu đề trang: " + title);
             TestContext.Out.WriteLine("Tiêu đề trang: " + title);
 
-            // YÊU CẦU 5: Kiểm tra kết quả mong đợi
+            // Kiểm tra kết quả mong đợi
             Assert.That(title, Is.EqualTo("Example Domain"));
         }
 
-        // YÊU CẦU 4: Đóng trình duyệt sau khi kiểm thử
+        // Đóng trình duyệt sau khi kiểm thử
         [TearDown]
         public void TearDown()
         {

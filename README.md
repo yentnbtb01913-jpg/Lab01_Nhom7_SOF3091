@@ -130,3 +130,52 @@ Hãy giúp tôi:
 5.	Đưa ra cách kiểm chứng sau khi sửa lỗi
 # Nhận xét
 AI xác định nguyên nhân chính là JavaScript chưa tạo xong phần tử #finish khi Selenium tìm kiếm. Sau khi kiểm tra, tôi nhận thấy việc sử dụng WebDriverWait kết hợp Until() giúp chờ phần tử xuất hiện trước khi kiểm tra. Giải pháp này phù hợp hơn so với Thread.Sleep vì có thể tiếp tục ngay khi điều kiện được đáp ứng. Qua đó, tôi hiểu rõ hơn cách phát hiện và khắc phục lỗi Flaky Test.
+# Lab 4
+# PHẦN E – THẨM ĐỊNH AI (10%)
+
+## 1. Prompt sử dụng AI
+
+Sử dụng ChatGPT để refactor file SauceDemoTest.cs sang mô hình Page Object Model (POM).
+
+Yêu cầu:
+- Sử dụng BasePage làm lớp cơ sở.
+- Các Page Object phải kế thừa BasePage.
+- Locator khai báo private readonly By.
+- Không có Assert bên trong Page Object.
+- Không có Page Object trả về IWebElement.
+- File test không được chứa By.
+- Giữ nguyên hành vi kiểm thử ban đầu.
+
+## 2. Kết quả AI trả về
+
+AI đã refactor code thành các file:
+- BasePage.cs: Chứa WebDriver, WebDriverWait và phương thức Tim(By).
+- SauceDemoPage.cs: Chứa phương thức LayTieuDeTrang().
+- SauceDemoTest.cs: Sử dụng Page Object để kiểm tra tiêu đề trang.
+
+Sau khi refactor, file test sử dụng phương thức LayTieuDeTrang() thay vì truy cập trực tiếp driver.Title.
+
+## 3. Thẩm định kết quả AI
+
+| Tiêu chí | Kết quả |
+|---|---|
+| Sử dụng POM | Đạt |
+| Page Object kế thừa BasePage | Đạt |
+| File test không chứa By | Đạt |
+| Không có Assert trong Page Object | Đạt |
+| Không trả về IWebElement | Đạt |
+| Giữ nguyên hành vi kiểm thử | Đạt |
+| Chạy test thành công | Đạt |
+
+## 4. Nhận xét
+
+AI đã refactor code đúng theo yêu cầu cơ bản của mô hình Page Object Model.
+
+Tuy nhiên, phương thức LayTieuDeTrang() sử dụng trực tiếp driver.Title mà chưa tận dụng phương thức Tim(By) có Explicit Wait trong BasePage. Đây là điểm chưa tối ưu trong thiết kế.
+
+Sau khi kiểm tra và chạy thử trên Visual Studio, kết quả kiểm thử:
+- Passed: 1
+- Failed: 0
+- Skipped: 0
+
+Kết luận: Code sau refactor vẫn giữ nguyên hành vi kiểm thử ban đầu và đáp ứng các tiêu chí chính của POM.

@@ -1,10 +1,11 @@
 ﻿
 using System;
+using System.IO;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.IO;
-using NUnit.Framework.Interfaces;
+using FirstTests.Page;
 
 namespace FirstTests;
 
@@ -12,115 +13,108 @@ namespace FirstTests;
 public class AlertAndIframeTests
 {
     private IWebDriver driver = null!;
+    private AlertAndIframePages alertPage = null!;
 
     [SetUp]
     public void Setup()
     {
         driver = new ChromeDriver();
         driver.Manage().Window.Maximize();
+
+        alertPage = new AlertAndIframePages(driver);
     }
 
     // C1 - JavaScript Alert (Accept)
     [Test]
     public void TestJavaScriptAlert()
     {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/javascript_alerts");
+        alertPage.MoTrangJavaScriptAlerts();
 
-        driver.FindElement(By.XPath("//button[text()='Click for JS Alert']")).Click();
+        string alertText = alertPage.BamNutJSAlert();
 
-        IAlert alert = driver.SwitchTo().Alert();
+        Assert.That(alertText, Is.EqualTo("I am a JS Alert"));
 
-        // Kiem tra noi dung Alert truoc khi Accept
-        Assert.That(alert.Text, Is.EqualTo("I am a JS Alert"));
+        alertPage.ChapNhanAlert();
 
-        alert.Accept();
+        string result = alertPage.LayKetQua();
 
-        // Kiem tra ket qua hien thi
-        string result = driver.FindElement(By.Id("result")).Text;
-
-        Assert.That(result, Is.EqualTo("You successfully clicked an alert"));
+        Assert.That(
+            result,
+            Is.EqualTo("You successfully clicked an alert")
+        );
     }
 
     // C1 - JavaScript Confirm (Dismiss)
     [Test]
     public void TestJavaScriptConfirm()
     {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/javascript_alerts");
+        alertPage.MoTrangJavaScriptAlerts();
 
-        driver.FindElement(By.XPath("//button[text()='Click for JS Confirm']")).Click();
+        string alertText = alertPage.BamNutJSConfirm();
 
-        IAlert alert = driver.SwitchTo().Alert();
+        Assert.That(alertText, Is.EqualTo("I am a JS Confirm"));
 
-        Assert.That(alert.Text, Is.EqualTo("I am a JS Confirm"));
+        alertPage.HuyConfirm();
 
-        // Chon Cancel
-        alert.Dismiss();
+        string result = alertPage.LayKetQua();
 
-        string result = driver.FindElement(By.Id("result")).Text;
-
-        Assert.That(result, Is.EqualTo("You clicked: Cancel"));
+        Assert.That(
+            result,
+            Is.EqualTo("You clicked: Cancel")
+        );
     }
 
     // C1 - JavaScript Prompt (SendKeys + Accept)
     [Test]
     public void TestJavaScriptPrompt()
     {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/javascript_alerts");
+        alertPage.MoTrangJavaScriptAlerts();
 
-        driver.FindElement(By.XPath("//button[text()='Click for JS Prompt']")).Click();
+        string alertText = alertPage.BamNutJSPrompt();
 
-        IAlert alert = driver.SwitchTo().Alert();
+        Assert.That(alertText, Is.EqualTo("I am a JS prompt"));
 
-        Assert.That(alert.Text, Is.EqualTo("I am a JS prompt"));
+        alertPage.NhapPromptVaChapNhan("Hello from Selenium");
 
-        // Nhap noi dung vao Prompt
-        alert.SendKeys("Hello from Selenium");
+        string result = alertPage.LayKetQua();
 
-        alert.Accept();
-
-        string result = driver.FindElement(By.Id("result")).Text;
-
-        Assert.That(result, Is.EqualTo("You entered: Hello from Selenium"));
+        Assert.That(
+            result,
+            Is.EqualTo("You entered: Hello from Selenium")
+        );
     }
 
-    // C2 - Xu ly iframe
+    // C2 - Xử lý iframe
     [Test]
     public void TestIframe()
     {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/iframe");
+        alertPage.MoTrangIframe();
 
-        // Chuyen vao iframe
-        driver.SwitchTo().Frame("mce_0_ifr");
+        alertPage.NhapNoiDungIframe(
+            "Hello from Selenium iframe"
+        );
 
-        // Tim noi dung trong trinh soan thao
-        IWebElement editor = driver.FindElement(By.Id("tinymce"));
-
-        // Xoa noi dung cu va nhap noi dung moi
-        editor.Clear();
-        editor.SendKeys("Hello from Selenium iframe");
-
-        // Chuyen tro lai trang chinh
-        driver.SwitchTo().DefaultContent();
-
-        Assert.That(driver.FindElement(By.Id("page-footer")).Displayed,
-            Is.True);
+        Assert.That(
+            alertPage.FooterDaHienThi(),
+            Is.True
+        );
     }
+
+    // Kiểm tra chức năng chụp ảnh khi test thất bại
     [Test]
     public void TestScreenshotOnFailure()
     {
-        driver.Navigate().GoToUrl(
-            "https://the-internet.herokuapp.com/");
+        alertPage.MoTrangChu();
 
-        Assert.Fail("Test that bai de kiem tra chup anh");
+        Assert.Fail(
+            "Test that bai de kiem tra chup anh"
+        );
     }
+
     [TearDown]
     public void Cleanup()
     {
-        // Chi chup anh khi test that bai
+        // Chỉ chụp ảnh khi test thất bại
         if (TestContext.CurrentContext.Result.Outcome.Status
             == TestStatus.Failed)
         {
@@ -128,43 +122,42 @@ public class AlertAndIframeTests
             {
                 try
                 {
-                    // Tao thu muc screenshots
                     string folder = Path.Combine(
                         TestContext.CurrentContext.WorkDirectory,
-                        "screenshots");
+                        "screenshots"
+                    );
 
                     Directory.CreateDirectory(folder);
 
-                    // Dat ten anh theo ten ca test
                     string testName =
                         TestContext.CurrentContext.Test.Name;
 
                     string filePath = Path.Combine(
                         folder,
-                        testName + ".png");
+                        testName + ".png"
+                    );
 
-                    // Chup anh man hinh
                     Screenshot screenshot =
                         ((ITakesScreenshot)driver).GetScreenshot();
 
                     screenshot.SaveAsFile(filePath);
 
-                    // Dinh kem anh vao ket qua test
                     TestContext.AddTestAttachment(filePath);
                 }
                 catch (Exception ex)
                 {
                     TestContext.WriteLine(
-                        "Khong the chup anh: " + ex.Message);
+                        "Khong the chup anh: " + ex.Message
+                    );
                 }
             }
         }
 
-        // Dong trinh duyet
+        // Đóng trình duyệt
         if (driver != null)
         {
             driver.Quit();
             driver.Dispose();
         }
-    } 
+    }
 }
