@@ -69,7 +69,7 @@ AI giải thích khá dễ hiểu, nhất là vì sao phải đóng Chrome trong
 **Dự án:** Tiếp tục sử dụng project `FirstTests` và repository của Lab 1.  
 **Mã nguồn Lab 2:** `FirstTests/LoginTests.cs` (kiểm tra đường dẫn thực tế trong repository).  
 
-> **Tình trạng minh chứng:** Các vị trí ảnh và kết quả kiểm thử bên dưới được để sẵn để cập nhật từ Chrome DevTools và Visual Studio. Không mặc định rằng test đã Passed hay locator đã khớp `1 of 1` trước khi có ảnh thực tế.
+> **Tình trạng minh chứng:** Ảnh minh chứng (Chrome DevTools, Visual Studio, GitHub) nằm trong file Word nộp kèm. Các ô kết quả bên dưới ghi theo kết quả chạy thực tế; không mặc định rằng test đã Passed hay locator đã khớp `1 of 1` trước khi có ảnh thực tế.
 
 ## Phần A – Bảng locator (20%)
 
@@ -85,47 +85,37 @@ AI giải thích khá dễ hiểu, nhất là vì sao phải đóng Chrome trong
 
 **Ghi nhận kiểm chứng:** Các locator trên là nội dung đề xuất để kiểm tra. Chỉ ghi “`1 of 1`” sau khi DevTools thực sự cho kết quả duy nhất và tô sáng đúng phần tử. Nếu DOM hiện tại khác ví dụ, cập nhật bảng theo HTML thực tế trước khi nộp. Không dùng XPath tuyệt đối bắt đầu bằng `/html/body/...`.
 
-### A.1. Ảnh minh chứng Username
+### A.1. Locator kiểm tra – Username
 
-**Cách 1 – ID:** `#user-name`  
-![Minh chứng Username bằng ID](screenshots/A01_Username_ID.png)
+**Cách 1 – ID:** `#user-name`
 
-**Cách 2 – Name:** `[name='user-name']`  
-![Minh chứng Username bằng Name](screenshots/A02_Username_Name.png)
+**Cách 2 – Name:** `[name='user-name']`
 
-### A.2. Ảnh minh chứng Password
+### A.2. Locator kiểm tra – Password
 
-**Cách 1 – ID:** `#password`  
-![Minh chứng Password bằng ID](screenshots/A03_Password_ID.png)
+**Cách 1 – ID:** `#password`
 
-**Cách 2 – Name:** `[name='password']`  
-![Minh chứng Password bằng Name](screenshots/A04_Password_Name.png)
+**Cách 2 – Name:** `[name='password']`
 
-### A.3. Ảnh minh chứng Login
+### A.3. Locator kiểm tra – Login
 
-**Cách 1 – ID:** `#login-button`  
-![Minh chứng Login bằng ID](screenshots/A05_Login_ID.png)
+**Cách 1 – ID:** `#login-button`
 
-**Cách 2 – Name:** `[name='login-button']`  
-![Minh chứng Login bằng Name](screenshots/A06_Login_Name.png)
+**Cách 2 – Name:** `[name='login-button']`
 
-### A.4. Ảnh minh chứng tên sản phẩm
+### A.4. Locator kiểm tra – tên sản phẩm
 
-**Cách 1 – CSS Selector:** `#item_4_title_link .inventory_item_name`  
-![Minh chứng tên sản phẩm bằng CSS Selector](screenshots/A07_ProductName_CSS.png)
+**Cách 1 – CSS Selector:** `#item_4_title_link .inventory_item_name`
 
-**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']`  
-![Minh chứng tên sản phẩm bằng XPath](screenshots/A08_ProductName_XPath.png)
+**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']`
 
-### A.5. Ảnh minh chứng giá sản phẩm
+### A.5. Locator kiểm tra – giá sản phẩm
 
-**Cách 1 – CSS Selector:** `div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']`  
-![Minh chứng giá sản phẩm bằng CSS Selector](screenshots/A09_ProductPrice_CSS.png)
+**Cách 1 – CSS Selector:** `div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']`
 
-**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']`  
-![Minh chứng giá sản phẩm bằng XPath](screenshots/A10_ProductPrice_XPath.png)
+**Cách 2 – XPath tương đối:** `//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']`
 
-> **Ảnh phần A:** Mỗi ảnh cần thể hiện đúng locator đang tìm, dòng HTML được chọn và chỉ số kết quả của DevTools. Các liên kết ảnh sẽ hiển thị sau khi các tệp `.png` tương ứng được thêm vào thư mục `screenshots/`.
+> **Ảnh phần A:** Ảnh DevTools của từng locator (thể hiện locator đang tìm, dòng HTML được chọn và chỉ số kết quả) xem trong file Word nộp kèm, mục Phần A.
 
 ## Phần B – Kịch bản đăng nhập thuận và nghịch (30%)
 
@@ -144,10 +134,9 @@ Epic sadface: Sorry, this user has been locked out.
 
 ### B.1. Ảnh kết quả kiểm thử
 
-![Test Explorer - hai ca đăng nhập Passed](screenshots/B01_LoginTests_2Passed.png)
+**Ảnh Test Explorer của hai ca đăng nhập:** xem trong file Word nộp kèm, mục Phần B.
 
 **Ghi nhận thực tế:** [Điền tổng số Passed / Failed và kết quả hai ca sau khi chạy.]  
-**Ảnh riêng nếu cần:** [Chèn thêm ảnh chi tiết `Login_Success` và `Login_LockedOutUser` nếu một ảnh tổng hợp không hiển thị đủ.]
 
 ## Phần C – Thu thập dữ liệu sản phẩm (25%)
 
@@ -185,13 +174,7 @@ Bài kiểm thử in tên và giá của từng sản phẩm ra kết quả ch�
 | 5 | [Điền theo kết quả chạy] | [Điền] |
 | 6 | [Điền theo kết quả chạy] | [Điền] |
 
-**Ảnh Test Output có tên và giá 6 sản phẩm:**
-
-![Test Output - danh sách sản phẩm](screenshots/C01_ProductOutput.png)
-
-**Ảnh Test Explorer có ca `GetProductInformation`:**
-
-![Test Explorer - kết quả kiểm thử sản phẩm](screenshots/C02_ProductPassed.png)
+**Ảnh minh chứng (Test Output có tên và giá 6 sản phẩm, Test Explorer có ca `GetProductInformation`):** xem trong file Word nộp kèm, mục Phần C.
 
 **Trạng thái ca kiểm thử:** [Điền Passed hoặc Failed theo kết quả thực tế.]
 
@@ -255,13 +238,7 @@ By.CssSelector("input.input_error.form_input")      // L5 (không khuyến khíc
 | `#user-name` | [Điền `1 of 1` hoặc kết quả thật] | [Điền] | [Điền] |
 | `[data-test='username']` | [Điền kết quả thật] | [Điền] | [Điền] |
 
-**Ảnh outerHTML của Username:**
-
-![OuterHTML Username trong DevTools](screenshots/D01_Username_OuterHTML.png)
-
-**Ảnh kiểm chứng locator AI:**
-
-![Kiểm chứng locator AI bằng Ctrl+F](screenshots/D02_AI_Locator_Verification.png)
+**Ảnh minh chứng (outerHTML của Username và kiểm chứng locator AI bằng Ctrl+F):** xem trong file Word nộp kèm, mục Phần D.
 
 ### D.5. Nhận xét cá nhân (3–5 câu)
 
@@ -281,13 +258,7 @@ Yêu cầu: Tối thiểu **3 commit mới** theo chuẩn Conventional Commits; 
 | 2 | `test: add product information assertions` | [Điền sau khi commit] |
 | 3 | `docs: add Lab 2 locator and AI evidence` | [Điền sau khi commit] |
 
-**Ảnh lịch sử commit:**
-
-![Lịch sử commit GitHub](screenshots/E01_CommitHistory.png)
-
-**Ảnh repository public đã cập nhật:**
-
-![Repository GitHub có nội dung Lab 2](screenshots/E02_Repository.png)
+**Ảnh minh chứng (lịch sử commit và repository public đã cập nhật):** xem trong file Word nộp kèm, mục Phần E.
 
 **Kết quả push:** [Ghi lại sau khi xác nhận có đủ 3 commit mới và các file Lab 2 xuất hiện trên GitHub.]
 
@@ -295,11 +266,11 @@ Yêu cầu: Tối thiểu **3 commit mới** theo chuẩn Conventional Commits; 
 
 | Phần | Tỷ trọng | Nội dung cần có | Tình trạng minh chứng |
 |---|---:|---|---|
-| A | 20% | Bảng 5 phần tử, 2 locator/phần tử, lý do chọn, ảnh DevTools | [Đối chiếu ảnh thực tế] |
-| B | 30% | Hai ca đăng nhập thuận/nghịch, Assert, SetUp/TearDown, ảnh Passed | [Đối chiếu Test Explorer] |
-| C | 25% | `FindElements`, `item.FindElement`, in 6 tên/giá, Assert | [Đối chiếu Test Output] |
-| D | 10% | outerHTML, prompt, câu trả lời AI, Ctrl+F, nhận xét 3–5 câu | [Bổ sung prompt và ảnh kiểm chứng] |
-| E | 15% | Ít nhất 3 commit và push lên repo Lab 1 | [Đối chiếu lịch sử GitHub] |
+| A | 20% | Bảng 5 phần tử, 2 locator/phần tử, lý do chọn, ảnh DevTools | [Đối chiếu ảnh trong file Word] |
+| B | 30% | Hai ca đăng nhập thuận/nghịch, Assert, SetUp/TearDown, ảnh Passed | [Đối chiếu ảnh trong file Word] |
+| C | 25% | `FindElements`, `item.FindElement`, in 6 tên/giá, Assert | [Đối chiếu ảnh trong file Word] |
+| D | 10% | outerHTML, prompt, câu trả lời AI, Ctrl+F, nhận xét 3–5 câu | [Bổ sung prompt; đối chiếu ảnh trong file Word] |
+| E | 15% | Ít nhất 3 commit và push lên repo Lab 1 | [Đối chiếu ảnh lịch sử GitHub trong file Word] |
 
 **Link nộp bài:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
 
