@@ -29,8 +29,8 @@ Các tệp Word minh chứng được lưu theo **phần A–D**, không phân c
 
 ### Báo cáo Lab chính
 
-| Bài | File Word |
-|---|---|
+| Bài   | File Word                                                                  |
+| ----- | -------------------------------------------------------------------------- |
 | Lab 1 | [SOF3091_TB01913_LAB01.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB01.docx) |
 | Lab 2 | [SOF3091_TB01913_LAB02.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB02.docx) |
 | Lab 3 | [SOF3091_TB01913_LAB03.docx](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) |
@@ -38,12 +38,12 @@ Các tệp Word minh chứng được lưu theo **phần A–D**, không phân c
 
 ### Word ảnh minh chứng theo thư mục thực tế
 
-| Thư mục | Lab 1 | Lab 2 | Lab 3 | Lab 4 |
-|---|---|---|---|---|
-| Phần A | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx) |
-| Phần B | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx) |
-| Phần C | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx) |
-| Phần D | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx) |
+| Thư mục | Lab 1                                                                 | Lab 2                                                                 | Lab 3                                                                 | Lab 4                                                                 |
+| ------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Phần A  | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx) |
+| Phần B  | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx) |
+| Phần C  | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx) |
+| Phần D  | [Word Lab 1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) | [Word Lab 2](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab2.docx) | [Word Lab 3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) | [Word Lab 4](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx) |
 
 Ví dụ: ảnh **Phần C của Lab 4** được cất trong [AnhPhanC_SOF3091_Lab4.docx](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx), **không phải** `screenshots/Lab04/C01.png`. Khi xem mã nguồn hay kiểm tra ảnh, mở đúng file Word nêu trong bảng.
 
@@ -58,11 +58,11 @@ Ngoài các Word trên, project có hai ảnh PNG **được tạo riêng cho te
 **Code:** [FirstSeleniumTest.cs](FirstTests/FirstSeleniumTest.cs).  
 **Báo cáo:** [Word Lab 1](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB01.docx).
 
-| Phần | Nội dung thực hiện | Minh chứng |
-|---|---|---|
-| A (30%) | Cài đặt/kiểm tra .NET SDK, Visual Studio và môi trường. | [Word A1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) |
-| B (40%) | Dùng Selenium mở `https://example.com`, lấy tiêu đề, Assert `Example Domain`, đóng Chrome trong `TearDown`. | [Word B1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) |
-| C (20%) | Quản lý mã nguồn bằng Git và GitHub. | [Word C1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) |
+| Phần    | Nội dung thực hiện                                                                                             | Minh chứng                                                         |
+| ------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| A (30%) | Cài đặt/kiểm tra .NET SDK, Visual Studio và môi trường.                                                        | [Word A1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) |
+| B (40%) | Dùng Selenium mở `https://example.com`, lấy tiêu đề, Assert `Example Domain`, đóng Chrome trong `TearDown`.    | [Word B1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) |
+| C (20%) | Quản lý mã nguồn bằng Git và GitHub.                                                                           | [Word C1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) |
 | D (10%) | Dùng AI giải thích `[SetUp]`, `[TearDown]`, ChromeDriver, `Quit()` và `Dispose()`; có nhận xét về câu trả lời. | [Word D1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) |
 
 **Test chính:** `FirstSeleniumTest.OpenPage_ShouldHaveExpectedTitle`. Trạng thái Passed/Failed cần đối chiếu Test Explorer hoặc báo cáo Word tại thời điểm chạy, không suy ra chỉ từ mã nguồn.
@@ -79,13 +79,13 @@ Ngoài các Word trên, project có hai ảnh PNG **được tạo riêng cho te
 
 Mỗi phần tử có ít nhất hai locator được đề xuất. Các locator dưới đây xuất phát từ bài Lab 2; kết quả `1 of 1` phải đối chiếu bằng DevTools và Word minh chứng, không mặc định tất cả selector luôn khớp duy nhất.
 
-| Phần tử | Locator 1 | Locator 2 | Lựa chọn / lý do |
-|---|---|---|---|
-| Username | `By.Id("user-name")` | `By.Name("user-name")` | ID ngắn gọn, xác định rõ trường đăng nhập. |
-| Password | `By.Id("password")` | `By.Name("password")` | ID chỉ rõ ô mật khẩu. |
-| Login | `By.Id("login-button")` | `By.Name("login-button")` | ID dễ đọc, không phụ thuộc thứ tự phần tử. |
-| Tên Sauce Labs Backpack | `By.CssSelector("#item_4_title_link .inventory_item_name")` | `By.XPath("//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']")` | Giới hạn tìm đúng sản phẩm. |
-| Giá Sauce Labs Backpack | `By.CssSelector("div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']")` | `By.XPath("//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']")` | Tìm giá trong cùng vùng sản phẩm. |
+| Phần tử                 | Locator 1                                                                                         | Locator 2                                                                                                                                       | Lựa chọn / lý do                           |
+| ----------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Username                | `By.Id("user-name")`                                                                              | `By.Name("user-name")`                                                                                                                          | ID ngắn gọn, xác định rõ trường đăng nhập. |
+| Password                | `By.Id("password")`                                                                               | `By.Name("password")`                                                                                                                           | ID chỉ rõ ô mật khẩu.                      |
+| Login                   | `By.Id("login-button")`                                                                           | `By.Name("login-button")`                                                                                                                       | ID dễ đọc, không phụ thuộc thứ tự phần tử. |
+| Tên Sauce Labs Backpack | `By.CssSelector("#item_4_title_link .inventory_item_name")`                                       | `By.XPath("//a[@id='item_4_title_link']//div[@data-test='inventory-item-name']")`                                                               | Giới hạn tìm đúng sản phẩm.                |
+| Giá Sauce Labs Backpack | `By.CssSelector("div.inventory_item:has(#item_4_title_link) [data-test='inventory-item-price']")` | `By.XPath("//a[@id='item_4_title_link']/ancestor::div[contains(@class,'inventory_item_description')]//div[@data-test='inventory-item-price']")` | Tìm giá trong cùng vùng sản phẩm.          |
 
 Minh chứng DevTools: [Word A2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx).
 
@@ -115,13 +115,13 @@ Lưu các thay đổi trên **repository nhóm hiện tại**, quản lý commit
 **Mã nguồn gốc:** [PhanA_Lab03.cs](FirstTests/PhanA_Lab03.cs), [PhanB_Lab03.cs](FirstTests/PhanB_Lab03.cs), [PhanC_Lab03.cs](FirstTests/PhanC_Lab03.cs), [PhanD_Lab03.cs](FirstTests/PhanD_Lab03.cs), [SortTests.cs](FirstTests/SortTests.cs) và lớp hỗ trợ [BaseTest.cs](FirstTests/BaseTest.cs).  
 **Báo cáo:** [Word Lab 3](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx).
 
-| Phần | Nội dung đã triển khai | Minh chứng |
-|---|---|---|
-| A | `A1_RotKhongWait` tìm phần tử động ngay lập tức để minh chứng lỗi; `A2_PassCoWait` sử dụng Explicit Wait. | [Word A3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) |
-| B | Dropdown `Price (low to high)`, lấy giá và Assert danh sách tăng dần. | [Word B3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) |
-| C | Alert, Confirm, Prompt và iFrame; kiểm tra nội dung hộp thoại, kết quả và thao tác thoát iFrame. | [Word C3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) |
-| D | Trong `TearDown`, chụp màn hình khi test Failed; `D1_CoYRot` cố ý thất bại để minh chứng. | [Word D3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) |
-| E | Dùng AI chẩn đoán `NoSuchElementException` ở test không Wait và đánh giá cách sửa. | [Phần E trong báo cáo](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) |
+| Phần | Nội dung đã triển khai                                                                                    | Minh chứng                                                           |
+| ---- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| A    | `A1_RotKhongWait` tìm phần tử động ngay lập tức để minh chứng lỗi; `A2_PassCoWait` sử dụng Explicit Wait. | [Word A3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx)   |
+| B    | Dropdown `Price (low to high)`, lấy giá và Assert danh sách tăng dần.                                     | [Word B3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx)   |
+| C    | Alert, Confirm, Prompt và iFrame; kiểm tra nội dung hộp thoại, kết quả và thao tác thoát iFrame.          | [Word C3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx)   |
+| D    | Trong `TearDown`, chụp màn hình khi test Failed; `D1_CoYRot` cố ý thất bại để minh chứng.                 | [Word D3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx)   |
+| E    | Dùng AI chẩn đoán `NoSuchElementException` ở test không Wait và đánh giá cách sửa.                        | [Phần E trong báo cáo](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) |
 
 **Lưu ý:** Hai test `A1_RotKhongWait` và `D1_CoYRot` cố ý Failed, có `[Explicit]`; chỉ chọn chạy riêng khi cần minh chứng, không sửa chúng thành PASS.
 
@@ -195,13 +195,5 @@ Gửi mã kiểm thử để AI hỗ trợ refactor, rồi tự kiểm tra các 
 **Điểm cần thẩm định:** Nếu cung cấp cho AI file `LoginTests_Lab04.cs` đã theo POM thì câu trả lời chỉ là rà soát/viết lại, **không phải** bằng chứng AI chuyển `LoginTests.cs` gốc từ script-based sang POM. Đồng thời cần giữ chức năng chụp ảnh test Failed trong `TestBase` nếu đã có từ bản hiện tại.
 
 ---
-
-## 7. Kiểm tra trước khi nộp
-
-- [ ] `FirstTests.slnx` mở được; `dotnet build` thành công trong môi trường thực tế.
-- [ ] Đối chiếu kết quả chạy test gốc và bản POM theo đúng từng ca, lưu ảnh **trước/sau** trong Word Phần C Lab 4.
-- [ ] Test mới không có `By`; Page Object không chứa `Assert` và không trả về `IWebElement` qua phương thức nghiệp vụ public.
-- [ ] Bốn thư mục `screenshots/Phần A`, `Phần B`, `Phần C`, `Phần D` chứa đúng các file Word đã liệt kê; kiểm tra những vị trí còn ghi “VỊ TRÍ ẢNH”.
-- [ ] Đối chiếu ảnh chụp thực tế, kết quả Passed/Failed và các commit trên GitHub trước khi ghi nhận là hoàn thành.
 
 **Repository nộp:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
