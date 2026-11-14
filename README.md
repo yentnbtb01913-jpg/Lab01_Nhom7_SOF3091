@@ -197,3 +197,204 @@ Gửi mã kiểm thử để AI hỗ trợ refactor, rồi tự kiểm tra các 
 ---
 
 **Repository nộp:** https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091
+
+---
+
+# ASM1 — Kiểm thử nâng cao cùng AI (.NET) | Y1–Y4
+
+**Sinh viên:** Trần Nguyễn Bình Yên · **MSSV:** TB01913 · **Nhóm:** 07  
+**Môn:** SOF3091 · **Project:** `FirstTests` · **Ngôn ngữ:** C#  
+**Repository nhóm:** [Lab01_Nhom7_SOF3091](https://github.com/yentnbtb01913-jpg/Lab01_Nhom7_SOF3091)  
+**Website kiểm thử:** [SauceDemo](https://www.saucedemo.com/) và [The Internet](https://the-internet.herokuapp.com/)
+
+README này mô tả **riêng Y1–Y4 của ASM1**, dựa trên `ASM1.pdf` và mã nguồn trong `FirstTests/ASM1_TB01913/`. Các mã nguồn Lab 1–3 và thư mục `Pages_Lab04`, `Tests_Lab04` được giữ riêng; phần ASM không thay thế các bài Lab gốc.
+
+## 1. Công nghệ và cách chạy
+
+| Thành phần | Công nghệ / phiên bản từ project |
+|---|---|
+| Nền tảng | .NET 10 (`net10.0`), C# |
+| Kiểm thử | NUnit 4.3.2, NUnit3TestAdapter 5.0.0, Microsoft.NET.Test.Sdk 17.14.0 |
+| Tự động hóa | Selenium.WebDriver 4.52.0, Selenium.Support 4.52.0 |
+| Trình duyệt | Google Chrome; ChromeDriver do Selenium Manager quản lý |
+| Thiết kế | `WebDriverWait`, Page Object Model (POM), Test Explorer |
+
+Mở [`FirstTests/FirstTests.slnx`](FirstTests/FirstTests.slnx) bằng Visual Studio, chọn **Build → Build Solution**, sau đó mở **Test → Test Explorer** để chạy đúng nhóm ASM. Có thể chạy bằng Terminal tại **thư mục gốc repository**:
+
+```powershell
+dotnet restore FirstTests/FirstTests.csproj
+dotnet build FirstTests/FirstTests.csproj
+dotnet test FirstTests/FirstTests.csproj --filter "FullyQualifiedName~FirstTests.ASM1_TB01913" --logger "console;verbosity=normal"
+```
+
+> **Lưu ý:** Đây là lệnh chạy các test thuộc namespace ASM; kết quả thực tế chỉ xác định sau khi chạy trên máy. Các test Lab 3 được đánh dấu `[Explicit]` để minh chứng thất bại có chủ đích, không nên chạy toàn bộ Solution rồi lấy kết quả đó thay cho kết quả ASM.
+
+## 2. Cấu trúc mã nguồn liên quan đến Y1–Y4
+
+```text
+FirstTests/
+├── FirstTests.slnx
+├── FirstTests.csproj
+├── ASM1_TB01913/
+│   ├── ASM1_TestBase.cs
+│   ├── ASM1_Y1_TieuDeTests.cs
+│   ├── ASM1_Y2_GioHangTests.cs
+│   ├── ASM1_Y3_ExplicitWaitTests.cs
+│   ├── ASM1_Y4_POMTests.cs
+│   └── Pages/
+│       ├── ASM1_InventoryCartPage.cs
+│       └── ASM1_CartPage.cs
+├── Pages_Lab04/
+│   ├── BasePage.cs
+│   ├── LoginPage.cs
+│   ├── InventoryPage.cs
+│   └── DynamicLoadingPage.cs
+├── Tests_Lab04/              # Giữ riêng test đã refactor của Lab 4
+└── *.cs                      # Giữ nguyên các bài Lab 1–3
+```
+
+Các test ASM dùng lớp `ASM1_TestBase` để khởi tạo và đóng Chrome. Đối với Y4, test gọi phương thức từ Page Object, không đặt locator trực tiếp trong file test.
+
+## 3. Y1 — Thiết lập môi trường & test đầu tiên
+
+**Yêu cầu:** Có project NUnit/Selenium build được; mở SauceDemo, kiểm tra tiêu đề trang và có ít nhất một test Passed; sử dụng Git với Conventional Commits.
+
+**File:** [`ASM1_Y1_TieuDeTests.cs`](FirstTests/ASM1_TB01913/ASM1_Y1_TieuDeTests.cs)
+
+```csharp
+[Test]
+public void Y1_OpenSauceDemo_CheckPageTitle()
+{
+    string title = driver.Title;
+    TestContext.WriteLine("Page title: " + title);
+    Assert.That(title, Is.EqualTo("Swag Labs"));
+}
+```
+
+`ASM1_TestBase` mở SauceDemo trong `[SetUp]`, vì vậy test đọc `driver.Title` và xác nhận bằng NUnit. **Đây là test ASM riêng**; bài Lab 1 gốc kiểm tra tiêu đề `example.com` và không được dùng thay ảnh SauceDemo.
+
+**Minh chứng cần có:** ảnh `Build succeeded`, test `Y1_OpenSauceDemo_CheckPageTitle` Passed, Output có tiêu đề trang; ảnh commit Git theo Conventional Commits. **Chưa xác nhận kết quả chạy/commit từ mã nguồn ZIP.**
+
+**Tài liệu liên quan:** [Lab 1 — Phần A](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx), [Phần B](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx), [Phần C](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx).
+
+## 4. Y2 — Tự động hóa luồng với Selenium
+
+**Yêu cầu:** Đăng nhập bằng Username/Password, xác nhận trang sản phẩm, dùng locator ổn định; bổ sung luồng thêm sản phẩm vào giỏ và mở giỏ hàng.
+
+**File:** [`ASM1_Y2_GioHangTests.cs`](FirstTests/ASM1_TB01913/ASM1_Y2_GioHangTests.cs)  
+**Page Object:** [`LoginPage.cs`](FirstTests/Pages_Lab04/LoginPage.cs), [`ASM1_InventoryCartPage.cs`](FirstTests/ASM1_TB01913/Pages/ASM1_InventoryCartPage.cs), [`ASM1_CartPage.cs`](FirstTests/ASM1_TB01913/Pages/ASM1_CartPage.cs).
+
+**Luồng chính:**
+
+1. Đăng nhập với tài khoản demo `standard_user` / `secret_sauce`.
+2. Xác nhận trang danh sách sản phẩm hiển thị.
+3. Thêm **Sauce Labs Backpack** vào giỏ.
+4. Kiểm tra badge giỏ hàng bằng `"1"`; mở giỏ và kiểm tra đúng tên, số lượng sản phẩm.
+
+```csharp
+InventoryPage inventory = new LoginPage(driver)
+    .DangNhap("standard_user", "secret_sauce");
+Assert.That(inventory.DaHienThi(), Is.True);
+
+ASM1_InventoryCartPage page = new ASM1_InventoryCartPage(driver)
+    .ThemBaloVaoGio();
+Assert.That(page.LaySoLuongGio(), Is.EqualTo("1"));
+
+ASM1_CartPage cart = page.MoGioHang();
+Assert.That(cart.LayTenSanPham(), Is.EqualTo("Sauce Labs Backpack"));
+```
+
+Các locator được đóng gói trong Page Object. Test Y2 không gọi trực tiếp `FindElement(By...)`.
+
+**Minh chứng cần có:** test `Y2_AddProductToCart_Backpack` Passed, màn hình giỏ hàng có sản phẩm và Test Explorer. **Kết quả chạy chưa được xác nhận.**
+
+**Tài liệu liên quan:** [Lab 2 — Phần A (locator)](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx), [Phần B (đăng nhập)](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx), [Phần C (sản phẩm)](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx).
+
+## 5. Y3 — Tình huống thực tế & Explicit Wait
+
+**Yêu cầu:** Không có `Thread.Sleep` trong mã nguồn; xử lý phần tử tải chậm bằng `WebDriverWait`; chứng minh **3 lần kiểm thử liên tiếp đều Passed**.
+
+**File:** [`ASM1_Y3_ExplicitWaitTests.cs`](FirstTests/ASM1_TB01913/ASM1_Y3_ExplicitWaitTests.cs)  
+**Page Object:** [`DynamicLoadingPage.cs`](FirstTests/Pages_Lab04/DynamicLoadingPage.cs).
+
+```csharp
+[TestCase(1)]
+[TestCase(2)]
+[TestCase(3)]
+public void Y3_DynamicLoading_CoWait_LapBaLan(int lan)
+{
+    string actual = new DynamicLoadingPage(driver)
+        .MoTrang().BatDau().LayKetQuaCoWait();
+    Assert.That(actual, Is.EqualTo("Hello World!"));
+}
+```
+
+Trang Dynamic Loading tạo kết quả sau khi nhấn **Start**. `LayKetQuaCoWait()` chờ phần tử xuất hiện, thay cho việc tìm ngay như test `A1_RotKhongWait` của Lab 3. Ba `[TestCase]` tạo ba lần thực thi; **phải chạy thực tế và chụp kết quả cả ba đều xanh**, không suy ra PASS chỉ từ khai báo.
+
+**Minh chứng cần có:** ảnh Test Explorer với ba ca `Y3_DynamicLoading_CoWait_LapBaLan` Passed; ảnh hoặc kết quả tìm kiếm `Thread.Sleep` trong mã C# không có kết quả. Có thể tham khảo [Lab 3 — Phần A](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) để minh họa tình huống không Wait/có Wait.
+
+## 6. Y4 — OOP & Page Object Model (POM)
+
+**Yêu cầu:** Dùng `BasePage` chung với hàm tìm phần tử kết hợp chờ; tách Login/Inventory/Cart thành Page Object; locator nằm trong `private readonly By`, test không thao tác trực tiếp locator; chứng minh thay locator tại **một nơi** không cần sửa test.
+
+**File test:** [`ASM1_Y4_POMTests.cs`](FirstTests/ASM1_TB01913/ASM1_Y4_POMTests.cs)  
+**Lớp Page:** [`BasePage.cs`](FirstTests/Pages_Lab04/BasePage.cs), [`LoginPage.cs`](FirstTests/Pages_Lab04/LoginPage.cs), [`InventoryPage.cs`](FirstTests/Pages_Lab04/InventoryPage.cs), [`ASM1_CartPage.cs`](FirstTests/ASM1_TB01913/Pages/ASM1_CartPage.cs).
+
+Các test Y4 kiểm tra đăng nhập, danh sách 6 sản phẩm, tên sản phẩm, sắp xếp giá tăng dần và giỏ hàng. Đoạn **method chaining** trong bài sắp xếp giá:
+
+```csharp
+var prices = new LoginPage(driver)
+    .DangNhap("standard_user", "secret_sauce")
+    .SapXep("lohi")
+    .LayDanhSachGia();
+Assert.That(prices, Is.Ordered.Ascending);
+```
+
+### Minh chứng ASM-Y4-DOI-LOCATOR
+
+Chỉ sửa locator Username trong **`Pages_Lab04/LoginPage.cs`**:
+
+**Trước khi thay:**
+
+```csharp
+private readonly By oTaiKhoan = By.Id("user-name");
+```
+
+**Sau khi thay:**
+
+```csharp
+private readonly By oTaiKhoan = By.CssSelector("[data-test='username']");
+```
+
+Sau khi lưu, Build và chạy lại nhóm `ASM1_Y4_POMTests`. **Không sửa file test.** Chụp đoạn locator trước/sau và hai lượt Test Explorer trước/sau. Chỉ kết luận lợi ích POM được chứng minh khi test vẫn Passed thực tế.
+
+**Minh chứng cần có:** ảnh cấu trúc Page Object, test Y4 Passed, kiểm tra test không chứa `By`, và ảnh thay locator. Xem [Lab 4 — Phần A](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx), [Phần B](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx), [Phần C](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx), [Phần D](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx).
+
+## 7. Nơi lưu báo cáo và ảnh minh chứng
+
+**Báo cáo ASM:** [ASM1_TB01913_NHOM7.docx](ASM1_TB01913_NHOM7.docx).  
+**Báo cáo Lab:** [Lab 1](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB01.docx) · [Lab 2](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB02.docx) · [Lab 3](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB03.docx) · [Lab 4](LAB_TB01913_NHOM7/SOF3091_TB01913_LAB04.docx).
+
+**Quan trọng:** Ảnh minh chứng Lab 1–4 được lưu **bên trong file Word** thuộc bốn thư mục `screenshots/Phần A`, `Phần B`, `Phần C`, `Phần D`. Không mặc định có ảnh PNG rời hoặc thư mục `screenshots/Lab04` cho tất cả minh chứng.
+
+| Thư mục | Lab 1 | Lab 2 | Lab 3 | Lab 4 |
+|---|---|---|---|---|
+| Phần A | [Word A1](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab1.docx) | [Word A2](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab2.docx) | [Word A3](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab3.docx) | [Word A4](screenshots/Ph%E1%BA%A7n%20A/AnhPhanA_SOF3091_Lab4.docx) |
+| Phần B | [Word B1](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab1.docx) | [Word B2](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab2.docx) | [Word B3](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab3.docx) | [Word B4](screenshots/Ph%E1%BA%A7n%20B/AnhPhanB_SOF3091_Lab4.docx) |
+| Phần C | [Word C1](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab1.docx) | [Word C2](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab2.docx) | [Word C3](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab3.docx) | [Word C4](screenshots/Ph%E1%BA%A7n%20C/AnhPhanC_SOF3091_Lab4.docx) |
+| Phần D | [Word D1](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab1.docx) | [Word D2](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab2.docx) | [Word D3](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab3.docx) | [Word D4](screenshots/Ph%E1%BA%A7n%20D/AnhPhanD_SOF3091_Lab4.docx) |
+
+Những kết quả **riêng ASM1** như tiêu đề SauceDemo, giỏ hàng, ba lần PASS và đổi locator chưa thể thay bằng ảnh Lab nếu ảnh Lab không chứng minh đúng test. Hãy chèn ảnh chạy thực tế vào vị trí tương ứng trong báo cáo ASM.
+
+## 8. Danh sách ảnh cần bổ sung cho ASM Y1–Y4
+
+| Mã minh chứng | Thao tác / nội dung phải chụp | Tình trạng |
+|---|---|---|
+| `ASM-Y1` | Build Solution và test tiêu đề SauceDemo Passed | Chờ ảnh thực tế |
+| `ASM-GIT` | Lịch sử commit phù hợp Conventional Commits | Chờ ảnh thực tế |
+| `ASM-Y2-CART` | Test giỏ hàng Passed, tên và số lượng sản phẩm | Chờ ảnh thực tế |
+| `ASM-Y3-3LAN` | Ba test Dynamic Loading chạy đều Passed | Chờ ảnh thực tế |
+| `ASM-Y4` | Các test POM Passed, kiểm tra không có locator trong test | Chờ ảnh thực tế |
+| `ASM-Y4-DOI-LOCATOR` | Locator trước/sau và kết quả test trước/sau | Chờ ảnh thực tế |
+
+> **Trạng thái xác minh:** README mô tả mã nguồn và cách chạy đã có trong ZIP; chưa có kết quả xác nhận `dotnet test` hoặc ảnh Test Explorer cho các bài ASM mới. Không ghi kết quả PASS/FAIL cho đến khi chạy thực tế.
