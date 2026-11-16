@@ -1,114 +1,59 @@
-﻿
-using NUnit.Framework;
+using FirstTests.Core;
 using FirstTests.Pages;
+using NUnit.Framework;
 
 namespace FirstTests.Tests
 {
     public class AlertIframeTests : BaseTest
     {
-        // CA 1: JavaScript Alert - Accept
         [Test]
         public void C1_JsAlert_Accept()
         {
-            AlertIframePage page = new AlertIframePage(driver);
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsAlert();
 
-            page.MoTrangAlert()
-                .BamJsAlert();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS Alert"));   // Assert TRƯỚC
+            trang.ChapNhanCanhBao();
 
-            string alertText = page.LayNoiDungAlert();
-
-            Assert.That(
-                alertText,
-                Is.EqualTo("I am a JS Alert")
-            );
-
-            page.ChapNhanAlert();
-
-            Assert.That(
-                page.LayKetQua(),
-                Is.EqualTo("You successfully clicked an alert")
-            );
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You successfully clicked an alert"));
         }
 
-        // CA 2: JavaScript Confirm - Dismiss
         [Test]
         public void C2_JsConfirm_Dismiss()
         {
-            AlertIframePage page = new AlertIframePage(driver);
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsConfirm();
 
-            page.MoTrangAlert()
-                .BamJsConfirm();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS Confirm"));
+            trang.HuyCanhBao();
 
-            string alertText = page.LayNoiDungAlert();
-
-            Assert.That(
-                alertText,
-                Is.EqualTo("I am a JS Confirm")
-            );
-
-            page.HuyAlert();
-
-            Assert.That(
-                page.LayKetQua(),
-                Is.EqualTo("You clicked: Cancel")
-            );
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You clicked: Cancel"));
         }
 
-        // CA 3: JavaScript Prompt - SendKeys và Accept
         [Test]
         public void C3_JsPrompt_SendKeysAndAccept()
         {
-            AlertIframePage page = new AlertIframePage(driver);
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsPrompt();
 
-            page.MoTrangAlert()
-                .BamJsPrompt();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS prompt"));
+            trang.NhapVaChapNhan("Xin chao Selenium");
 
-            string alertText = page.LayNoiDungAlert();
-
-            Assert.That(
-                alertText,
-                Is.EqualTo("I am a JS prompt")
-            );
-
-            page.NhapNoiDungPrompt("Xin chao Selenium")
-                .ChapNhanAlert();
-
-            Assert.That(
-                page.LayKetQua(),
-                Is.EqualTo("You entered: Xin chao Selenium")
-            );
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You entered: Xin chao Selenium"));
         }
 
-        // CA 4: Nhập chữ vào trình soạn thảo iFrame
         [Test]
         public void C4_Iframe_GoChuVaoTrinhSoanThao()
         {
-            AlertIframePage page = new AlertIframePage(driver);
+            string noiDung = "Xin chao iframe tu Selenium";
 
-            page.MoTrangIframe();
+            IframePage trang = new IframePage(driver)
+                .MoTrang()
+                .GoVanBan(noiDung);
 
-            string text = "Xin chao iframe tu Selenium";
+            Assert.That(trang.LayNoiDungTrinhSoanThao(), Is.EqualTo(noiDung));
 
-            // Vào iframe và nhập nội dung
-            page.VaoIframe();
+            trang.RaKhoiFrame();   // RA khỏi frame (như đóng ngoặc)
 
-            string actualText =
-                page.NhapVanBanTrongIframe(text);
-
-            // Kiểm tra nội dung bên trong iframe
-            Assert.That(
-                actualText,
-                Is.EqualTo(text)
-            );
-
-            // Trở về trang chính
-            page.RaKhoiIframe();
-
-            // Kiểm tra tiêu đề trang chính
-            Assert.That(
-                page.LayTieuDeTrangChinh(),
-                Does.Contain("iFrame")
-            );
+            // chứng minh đã ra ngoài: tìm được tiêu đề của trang chính
+            Assert.That(trang.LayTieuDeTrang(), Does.Contain("iFrame"));
         }
     }
 }

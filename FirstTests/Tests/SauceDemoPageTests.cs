@@ -1,17 +1,16 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+using FirstTests.Core;
+using FirstTests.Pages;
 
 namespace FirstTests.Tests;
 
-public class SauceDemoPageTests
+public class SauceDemoPageTests : BaseTest
 {
+    // BaseTest đã mở sẵn trang chủ (BaseUrl trong appsettings.json)
     [Test]
     public void OpenSauceDemo_CheckPageTitle()
     {
-        using IWebDriver driver = new ChromeDriver();
-        driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-        string title = driver.Title;
+        string title = new LoginPage(driver).LayTieuDeTrinhDuyet();
+
         TestContext.WriteLine("Page title: " + title);
         Assert.That(title, Is.EqualTo("Swag Labs"));
     }

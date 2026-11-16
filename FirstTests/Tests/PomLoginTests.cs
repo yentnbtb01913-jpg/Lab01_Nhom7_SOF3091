@@ -1,5 +1,6 @@
-﻿
+
 using NUnit.Framework;
+using FirstTests.Core;
 using FirstTests.Pages;
 using System.Collections.Generic;
 
@@ -7,21 +8,14 @@ namespace FirstTests.Tests
 {
     public class PomLoginTests : BaseTest
     {
-        private LoginPage loginPage;
-
-        // Khởi tạo Page Object sau khi BaseTest tạo driver
-        [SetUp]
-        public void KhoiTaoPage()
-        {
-            loginPage = new LoginPage(driver);
-        }
+        // BaseTest đã mở sẵn trang đăng nhập (BaseUrl trong appsettings.json)
+        private LoginPage loginPage => new LoginPage(driver);
 
         // CA 1: Đăng nhập thành công bằng POM
         [Test]
         public void POM_Login_Success()
         {
             InventoryPage inventoryPage = loginPage
-                .MoTrang()
                 .DangNhap("standard_user", "secret_sauce");
 
             Assert.That(
@@ -38,7 +32,6 @@ namespace FirstTests.Tests
         public void POM_CheckProductCount()
         {
             InventoryPage inventoryPage = loginPage
-                .MoTrang()
                 .DangNhap("standard_user", "secret_sauce");
 
             int soLuong = inventoryPage.SoSanPham();
@@ -57,7 +50,6 @@ namespace FirstTests.Tests
         public void POM_GetProductNames()
         {
             InventoryPage inventoryPage = loginPage
-                .MoTrang()
                 .DangNhap("standard_user", "secret_sauce");
 
             List<string> danhSachTen =

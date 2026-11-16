@@ -1,48 +1,41 @@
-﻿
-using NUnit.Framework;
+using FirstTests.Core;
 using FirstTests.Pages;
+using NUnit.Framework;
 
 namespace FirstTests.Tests
 {
     public class DynamicLoadingTests : BaseTest
     {
-        // BƯỚC 1: Không chờ - cố ý thất bại
-        [Test, Explicit("Cố ý thất bại để minh chứng NoSuchElementException")]
+        // BƯỚC 1: KHÔNG chờ -> cố ý RỚT với NoSuchElementException
+        [Test, Explicit("Bước 1: cố ý rớt để chụp ảnh minh chứng Phần A")]
         public void A1_KhongWait_RotNoSuchElement()
         {
-            DynamicLoadingPage page = new DynamicLoadingPage(driver);
-
-            page.MoTrang()
+            DynamicLoadingPage trang = new DynamicLoadingPage(driver)
+                .MoTrang()
                 .BamStart();
 
-            // Tìm ngay khi JavaScript chưa tạo phần tử
-            string result = page.LayNoiDungNgayLapTuc();
+            // Lấy kết quả NGAY sau khi bấm Start -> #finish chưa được JS tạo ra
+            string noiDung = trang.LayKetQuaKhongCho();
 
-            Assert.That(result, Is.EqualTo("Hello World!"));
+            Assert.That(noiDung, Is.EqualTo("Hello World!"));
         }
 
-        // BƯỚC 2: Có Explicit Wait - thành công
+        // BƯỚC 2: Có Explicit Wait -> PASS
         [Test]
         public void A2_CoExplicitWait_Pass()
         {
-            DynamicLoadingPage page = new DynamicLoadingPage(driver);
-
-            page.MoTrang()
+            DynamicLoadingPage trang = new DynamicLoadingPage(driver)
+                .MoTrang()
                 .BamStart();
 
-            // Chờ phần tử xuất hiện và lấy nội dung
-            string result = page.LayNoiDungSauKhiCho();
+            // Chờ kết quả xuất hiện, hiển thị và có nội dung chính xác
+            string noiDung = trang.ChoVaLayKetQua();
 
-            Assert.That(
-                result,
-                Is.EqualTo("Hello World!"),
-                "Nội dung sau khi tải không chính xác."
-            );
+            // Kiểm tra nội dung
+            Assert.That(noiDung, Is.EqualTo("Hello World!"));
 
-            TestContext.Out.WriteLine("Nội dung: " + result);
-            TestContext.Out.WriteLine(
-                "Explicit Wait hoạt động thành công!"
-            );
+            TestContext.WriteLine("Nội dung: " + noiDung);
+            TestContext.WriteLine("Explicit Wait hoạt động thành công!");
         }
     }
 }
