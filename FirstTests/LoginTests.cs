@@ -1,32 +1,13 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace FirstTests;
 
 [TestFixture]
-public class LoginTests
+public class LoginTests : FirstTests.Core.BaseTest
 {
-    private const string BaseUrl = "https://www.saucedemo.com";
-
-    private IWebDriver driver = null!;
-
-    [SetUp]
-    public void Setup()
-    {
-        driver = new ChromeDriver();
-        driver.Manage().Window.Maximize();
-        driver.Navigate().GoToUrl(BaseUrl);
-        Console.WriteLine($"[SetUp] Đã mở Chrome và truy cập {BaseUrl}");
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        driver.Quit();
-        driver.Dispose();
-        Console.WriteLine("[TearDown] Đã đóng trình duyệt (Quit + Dispose)");
-    }
+    private static string BaseUrl => FirstTests.Config.ConfigReader.Load().BaseUrl;
 
     // Hàm dùng chung: các bước đăng nhập (Phần C sẽ tái sử dụng)
     private void Login(string username, string password)

@@ -4,7 +4,7 @@ namespace FirstTests.Pages_Lab04;
 
 public class LoginPage : BasePage
 {
-    private readonly By oTaiKhoan = By.Id("user-name");
+    private readonly By oTaiKhoan = By.CssSelector("[data-test='username']");
     private readonly By oMatKhau = By.Id("password");
     private readonly By nutDangNhap = By.Id("login-button");
     private readonly By thongBaoLoi = By.CssSelector("[data-test='error']");
@@ -14,7 +14,7 @@ public class LoginPage : BasePage
     // Mo trang dang nhap SauceDemo.
     public LoginPage MoTrang()
     {
-        driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+        driver.Navigate().GoToUrl(FirstTests.Config.ConfigReader.Load().Site("SauceDemo"));
         return this;
     }
 

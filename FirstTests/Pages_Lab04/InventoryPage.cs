@@ -20,7 +20,13 @@ public class InventoryPage : BasePage
 
     public bool DaHienThi()
     {
-        return driver.Url.Contains("inventory.html") && Tim(tieuDe).Displayed;
+        if (!driver.Url.Contains("inventory.html", StringComparison.OrdinalIgnoreCase)) return false;
+        try
+        {
+            return wait.Until(d => d.FindElements(tieuDe).Any(x => x.Displayed));
+        }
+        catch (WebDriverTimeoutException) { return false; }
+        catch (NoSuchElementException) { return false; }
     }
 
     public string LayDuongDan()

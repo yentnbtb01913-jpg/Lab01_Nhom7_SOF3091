@@ -13,7 +13,7 @@ public abstract class BasePage
     protected BasePage(IWebDriver driver)
     {
         this.driver = driver;
-        wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+        wait = new WebDriverWait(driver, TimeSpan.FromSeconds(FirstTests.Config.ConfigReader.Load().TimeoutSeconds));
     }
 
     // Chi cac Page Object ke thua moi dung Tim().

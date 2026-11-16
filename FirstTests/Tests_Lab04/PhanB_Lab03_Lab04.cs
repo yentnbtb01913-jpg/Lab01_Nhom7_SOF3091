@@ -9,15 +9,8 @@ namespace FirstTests.Tests_Lab04;
 [TestFixture]
 public class PhanB_Lab03_Lab04 : TestBase
 {
-    // Giu cau hinh incognito cua PhanB_Lab03.cs.
-    protected override ChromeOptions TaoChromeOptions()
-    {
-        ChromeOptions options = base.TaoChromeOptions();
-        options.AddArgument("--incognito");
-        options.AddUserProfilePreference("credentials_enable_service", false);
-        options.AddUserProfilePreference("profile.password_manager_enabled", false);
-        return options;
-    }
+    // Che do an danh da duoc cau hinh tai DriverFactory.
+
 
     [Test]
     public void B1_GiaTangDan()

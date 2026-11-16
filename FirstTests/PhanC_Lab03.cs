@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -9,46 +9,13 @@ using OpenQA.Selenium.Support.UI;
 namespace FirstTests
 {
     [TestFixture]
-    public class PhanC_Lab03
+    public class PhanC_Lab03 : FirstTests.Core.BaseTest
     {
-        private IWebDriver driver = null!;
-        private WebDriverWait wait = null!;
-        private const string AlertUrl = "https://the-internet.herokuapp.com/javascript_alerts";
-        private const string IframeUrl = "https://the-internet.herokuapp.com/iframe";
 
-        [SetUp]
-        public void SetUp()
-        {
-            var options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-            driver = new ChromeDriver(options);
+        private static string AlertUrl => FirstTests.Config.ConfigReader.Load().Site("JavaScriptAlerts");
+        private static string IframeUrl => FirstTests.Config.ConfigReader.Load().Site("Iframe");
 
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
 
-        [TearDown]
-        public void TearDown()
-        {
-            try
-            {
-                // Chỉ chụp ảnh khi test Failed
-                if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-                {
-                    string dir = Path.GetFullPath(Path.Combine(
-                        TestContext.CurrentContext.TestDirectory, "..", "..", "..", "screenshots"));
-                    Directory.CreateDirectory(dir);
-
-                    string path = Path.Combine(dir, TestContext.CurrentContext.Test.Name + ".png");
-                    ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(path);
-                    TestContext.AddTestAttachment(path);
-                }
-            }
-            finally
-            {
-                driver?.Quit();
-                driver?.Dispose();
-            }
-        }
 
         [Test]
         public void C1_Alert_Accept()

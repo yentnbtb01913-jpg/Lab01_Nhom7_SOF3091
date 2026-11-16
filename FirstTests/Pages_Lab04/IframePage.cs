@@ -4,7 +4,7 @@ namespace FirstTests.Pages_Lab04;
 
 public class IframePage : BasePage
 {
-    private const string Url = "https://the-internet.herokuapp.com/iframe";
+    private static string Url => FirstTests.Config.ConfigReader.Load().Site("Iframe");
     private readonly By noiDung = By.Id("tinymce");
     private readonly By tieuDe = By.TagName("h3");
 

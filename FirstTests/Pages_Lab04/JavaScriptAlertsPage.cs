@@ -4,7 +4,7 @@ namespace FirstTests.Pages_Lab04;
 
 public class JavaScriptAlertsPage : BasePage
 {
-    private const string Url = "https://the-internet.herokuapp.com/javascript_alerts";
+    private static string Url => FirstTests.Config.ConfigReader.Load().Site("JavaScriptAlerts");
     private readonly By nutAlert = By.CssSelector("button[onclick='jsAlert()']");
     private readonly By nutConfirm = By.CssSelector("button[onclick='jsConfirm()']");
     private readonly By nutPrompt = By.CssSelector("button[onclick='jsPrompt()']");

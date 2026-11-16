@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -8,28 +8,13 @@ using OpenQA.Selenium.Support.UI;
 namespace FirstTests;
 
 [TestFixture]
-public class LoginTest_TB01915
+public class LoginTest_TB01915 : FirstTests.Core.BaseTest
 
 {
-    private IWebDriver driver = null!;
-    private WebDriverWait wait = null!;
 
     // Khoi tao trinh duyet truoc moi test
-    [SetUp]
-    public void SetUp()
-    {
-        driver = new ChromeDriver();
-        driver.Manage().Window.Maximize();
 
-        wait = new WebDriverWait(
-            driver,
-            TimeSpan.FromSeconds(10)
-        );
 
-        driver.Navigate().GoToUrl(
-            "https://www.saucedemo.com/"
-        );
-    }
 
     // Ham dang nhap dung chung
     private void Login(string username, string password)
@@ -213,19 +198,5 @@ public class LoginTest_TB01915
     // DONG TRINH DUYET SAU MOI TEST
     // ==========================================
 
-    [TearDown]
-    public void TearDown()
-    {
-        if (driver != null)
-        {
-            try
-            {
-                driver.Quit();
-            }
-            finally
-            {
-                driver.Dispose();
-            }
-        }
-    }
+
 }

@@ -4,7 +4,7 @@ namespace FirstTests.Pages_Lab04;
 
 public class DynamicLoadingPage : BasePage
 {
-    private const string Url = "https://the-internet.herokuapp.com/dynamic_loading/2";
+    private static string Url => FirstTests.Config.ConfigReader.Load().Site("DynamicLoading");
     private readonly By nutStart = By.CssSelector("#start button");
     private readonly By ketQua = By.Id("finish");
 

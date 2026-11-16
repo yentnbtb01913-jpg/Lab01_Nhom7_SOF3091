@@ -398,3 +398,116 @@ Những kết quả **riêng ASM1** như tiêu đề SauceDemo, giỏ hàng, ba 
 | `ASM-Y4-DOI-LOCATOR` | Locator trước/sau và kết quả test trước/sau | Chờ ảnh thực tế |
 
 > **Trạng thái xác minh:** README mô tả mã nguồn và cách chạy đã có trong ZIP; chưa có kết quả xác nhận `dotnet test` hoặc ảnh Test Explorer cho các bài ASM mới. Không ghi kết quả PASS/FAIL cho đến khi chạy thực tế.
+
+---
+
+# LAB 05 — Framework: cấu trúc, cấu hình & Data-Driven Testing
+
+**Bài thực hành:** Lab 5, môn SOF3091 | **MSSV:** TB01913 | **Nhóm:** 07.
+
+**Nguyên tắc:** kế thừa mã nguồn các Lab 1–4 và ASM1 trong cùng project; tập trung thiết lập một cơ chế tạo driver và vòng đời test thống nhất. Hai thao tác **đổi trình duyệt** hoặc **thêm ca dữ liệu** đều không cần chỉnh file `.cs`.
+
+## 1. Thành phần mới của Lab 5
+
+| Phần | File | Nhiệm vụ |
+|---|---|---|
+| A | `FirstTests/Config/appsettings.json`, `TestConfig.cs`, `ConfigReader.cs` | Lưu và đọc BaseUrl, Browser, TimeoutSeconds, Headless và kích thước |
+| B | `FirstTests/Core/DriverFactory.cs` | Tạo `IWebDriver` cho Chrome hoặc Firefox; thông báo tên browser không hợp lệ |
+| C | `FirstTests/Core/BaseTest.cs`, `Utilities/ScreenshotHelper.cs` | Dùng chung SetUp/TearDown; lưu screenshot khi test Failed |
+| D | `FirstTests/Data/users.json`, `Tests/LAB05_PhanD.cs` | Một test nhận dữ liệu ngoài và tạo nhiều ca bằng TestCaseSource |
+| A–D | `FirstTests/Tests/LAB05_PhanA.cs` … `LAB05_PhanD.cs` | Các test kiểm chứng từng phần |
+| E | Mục này của README và báo cáo Word Lab 5 | Prompt AI, 10 bộ đề xuất, bảng Giữ/Bỏ/Sửa |
+
+**Đường dẫn chính:** `FirstTests/FirstTests.slnx` (solution); `FirstTests/FirstTests.csproj` (.NET 10).
+
+## 2. Chạy Lab 5 trong Visual Studio
+
+1. Mở `FirstTests/FirstTests.slnx`, khôi phục NuGet nếu Visual Studio hỏi.
+2. Chọn **Build → Build Solution**, sau đó **Test → Test Explorer**.
+3. Tìm tên `LAB05_PhanA`, `LAB05_PhanB`, `LAB05_PhanC`, `LAB05_PhanD` rồi chạy đúng lớp cần chụp.
+4. Nếu chỉ muốn chạy Lab 5 qua terminal, đứng tại thư mục gốc repository và dùng:
+
+```powershell
+dotnet restore FirstTests/FirstTests.csproj
+dotnet build FirstTests/FirstTests.csproj
+dotnet test FirstTests/FirstTests.csproj --filter "FullyQualifiedName~FirstTests.Tests.LAB05_" --logger "console;verbosity=normal"
+```
+
+**Chú ý:** `C02_CoYFail_DeChupAnh` có `[Explicit]`, chỉ chạy riêng khi cần ảnh Failed. Hai ca cố ý Failed của Lab cũ cũng được giữ. Không dùng trạng thái Run All của toàn solution để thay ảnh riêng Lab 5.
+
+## 3. Hướng dẫn minh chứng các phần
+
+### A — Cấu hình
+
+- Mở `Config/appsettings.json`, chụp 6 tham số chính và các URL trong `Sites`.
+- Chạy `A01_DocCauHinhTuJson`: kết quả kỳ vọng là đọc được JSON ở `bin/Debug/net10.0/Config/appsettings.json`.
+- Chạy `A02_CauHinhKhongHopLeCoThongBao`: lớp ConfigReader phải nhận diện timeout không hợp lệ.
+
+### B — Đổi Chrome sang Firefox chỉ bằng JSON
+
+1. Đặt `Browser` = `Chrome`, `Headless` = `false` trong `Config/appsettings.json`. Build và chạy **`B01_CungCode_ChayTheoBrowserTrongJson`**, chụp Chrome và Test Explorer (mã `LAB05-B-01`).
+2. Đổi **chỉ giá trị** `Browser` thành `Firefox`, không sửa `.cs`. Build lại để chép JSON vào output; chạy lại chính test trên. Chụp Firefox và Test Explorer (mã `LAB05-B-02`).
+3. Trả `Browser` về `Chrome` sau khi chụp. Nếu máy chưa có Firefox, cài Firefox; Selenium Manager xử lý driver theo điều kiện hệ thống.
+4. Chạy `B02_TenBrowserSai_ThongBaoRoRang` để kiểm tra thông báo khi cấu hình sai tên `Firefix` (test dùng bản cấu hình riêng, không thay đổi file JSON).
+
+### C — BaseTest và screenshot
+
+- Chạy `C01_BaseTest_DaMoDuongDanCauHinh` để kiểm tra Setup đọc URL và driver.
+- Chạy **riêng** `C02_CoYFail_DeChupAnh` (test này cố tình Failed). Kiểm tra kết quả Failed trong Test Explorer và file PNG tại thư mục `TestContext.CurrentContext.WorkDirectory/screenshots/Lab05`. Chụp cả kết quả và đường dẫn file. Driver được đóng trong `finally`.
+
+### D — Data-Driven
+
+- Ban đầu `Data/users.json` có **7** bộ dữ liệu (gồm nhiều ca biên). Build, mở Test Explorer, chụp `LAB05_PhanD` có 7 test case được đặt tên `DangNhap_01_...` đến `DangNhap_07_...`.
+- Thêm bản ghi thứ **8** vào cuối mảng JSON trước dấu `]` (nhớ dấu phẩy ở cuối bản ghi số 7):
+
+```json
+{
+  "Username": "  ",
+  "Password": "secret_sauce",
+  "ThanhCong": false,
+  "GhiChu": "Bien: Username chi gom khoang trang"
+}
+```
+
+- Lưu file, **Build Solution** để cập nhật bản JSON trong output; chạy lại việc khám phá test nếu Test Explorer chưa cập nhật; chụp 8 test case. **Không sửa file `.cs` nào**.
+- Có thể kiểm tra qua `dotnet test FirstTests/FirstTests.csproj --list-tests` trước và sau khi thêm dữ liệu.
+
+## 4. PHẦN E — THẨM ĐỊNH DỮ LIỆU DO AI ĐỀ XUẤT
+
+### Prompt dùng để tạo dữ liệu
+
+> Hãy đề xuất 10 bộ dữ liệu cho việc kiểm thử form đăng nhập SauceDemo bằng NUnit, Selenium C#. Trả về danh sách JSON với đúng bốn trường `Username`, `Password`, `ThanhCong`, `GhiChu`. Bao gồm ca đăng nhập đúng, ca thất bại và các giá trị biên. Không mặc định tất cả dữ liệu AI đề xuất đều đúng; người kiểm thử sẽ tự thẩm định trước khi dùng.
+
+### 10 bộ dữ liệu AI đề xuất (đầu vào để thẩm định; không tự động đưa tất cả vào users.json)
+
+```json
+[
+  {"Username":"standard_user","Password":"secret_sauce","ThanhCong":true,"GhiChu":"Tai khoan hop le"},
+  {"Username":"locked_out_user","Password":"secret_sauce","ThanhCong":false,"GhiChu":"Tai khoan bi khoa"},
+  {"Username":"","Password":"secret_sauce","ThanhCong":false,"GhiChu":"Bo trong Username"},
+  {"Username":"standard_user","Password":"","ThanhCong":false,"GhiChu":"Bo trong Password"},
+  {"Username":"bad_user","Password":"bad_pass","ThanhCong":false,"GhiChu":"Tai khoan khong ton tai"},
+  {"Username":"!@#$%^&*","Password":"secret_sauce","ThanhCong":false,"GhiChu":"Username co ky tu dac biet"},
+  {"Username":"standard_user  ","Password":"secret_sauce","ThanhCong":false,"GhiChu":"Username co khoang trang du"},
+  {"Username":"admin","Password":"admin","ThanhCong":true,"GhiChu":"Dang nhap bang tai khoan admin"},
+  {"Username":"locked_out_user","Password":"secret_sauce","ThanhCong":true,"GhiChu":"Dang nhap tai khoan bi khoa"},
+  {"Username":"","Password":"","ThanhCong":true,"GhiChu":"Khong nhap gi van dang nhap"}
+]
+```
+
+### Bảng duyệt dữ liệu AI
+
+| STT | Xử lý | Lý do |
+|---|---|---|
+| 01 | GIỮ | `standard_user` là tài khoản demo hợp lệ; kiểm tra luồng thuận. |
+| 02 | GIỮ | `locked_out_user` bị từ chối đăng nhập; kiểm tra luồng nghịch. |
+| 03 | GIỮ | Username trống là ca biên quan trọng. |
+| 04 | GIỮ | Password trống là ca biên quan trọng. |
+| 05 | GIỮ | Tài khoản không hợp lệ, kỳ vọng thất bại. |
+| 06 | GIỮ | Dữ liệu ký tự đặc biệt, kỳ vọng thất bại. |
+| 07 | SỬA/KIỂM TRA | Cần kiểm chứng trang web có tự cắt khoảng trắng không trước khi cố định kỳ vọng. |
+| **08** | **BỎ** | Không có cơ sở xác nhận `admin/admin` là tài khoản được SauceDemo cho phép và kỳ vọng `true` không có chứng cứ. |
+| **09** | **BỎ** | Sai nghiệp vụ: `locked_out_user` không được đăng nhập thành công. |
+| **10** | **BỎ** | Hai trường trống không thể là trường hợp đăng nhập thành công. |
+
+**Kết luận:** dữ liệu AI chỉ là đề xuất. Tối thiểu ba dòng bị loại vì kỳ vọng không phù hợp; dòng 07 cần thẩm định hành vi thực tế. Bảng này là sản phẩm phân tích, không phải ảnh chứng minh 10 test đã Passed.

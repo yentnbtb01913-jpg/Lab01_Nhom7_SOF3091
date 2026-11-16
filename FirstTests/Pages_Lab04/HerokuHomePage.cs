@@ -4,7 +4,7 @@ namespace FirstTests.Pages_Lab04;
 
 public class HerokuHomePage : BasePage
 {
-    private const string Url = "https://the-internet.herokuapp.com/";
+    private static string Url => FirstTests.Config.ConfigReader.Load().Site("TheInternet");
 
     public HerokuHomePage(IWebDriver driver) : base(driver) { }
 

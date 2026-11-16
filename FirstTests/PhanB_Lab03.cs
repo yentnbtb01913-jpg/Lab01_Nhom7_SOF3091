@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -12,53 +12,14 @@ using OpenQA.Selenium.Support.UI;
 namespace FirstTests
 {
     [TestFixture]
-    public class PhanB_Lab03
+    public class PhanB_Lab03 : FirstTests.Core.BaseTest
     {
-        private IWebDriver driver = null!;
-        private WebDriverWait wait = null!;
-
-        [SetUp]
-        public void SetUp()
-        {
-            var options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-            options.AddArgument("--incognito"); // tránh popup đổi mật khẩu của Chrome
-            options.AddUserProfilePreference("credentials_enable_service", false);
-            options.AddUserProfilePreference("profile.password_manager_enabled", false);
-            driver = new ChromeDriver(options);
-
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            try
-            {
-                // Chỉ chụp ảnh khi test Failed
-                if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-                {
-                    string dir = Path.GetFullPath(Path.Combine(
-                        TestContext.CurrentContext.TestDirectory, "..", "..", "..", "screenshots"));
-                    Directory.CreateDirectory(dir);
-
-                    string path = Path.Combine(dir, TestContext.CurrentContext.Test.Name + ".png");
-                    ((ITakesScreenshot)driver).GetScreenshot().SaveAsFile(path);
-                    TestContext.AddTestAttachment(path);
-                }
-            }
-            finally
-            {
-                driver?.Quit();
-                driver?.Dispose();
-            }
-        }
 
         [Test]
         public void B1_GiaTangDan()
         {
             // Đăng nhập bằng standard_user (KHÔNG dùng performance_glitch_user)
-            driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+            driver.Navigate().GoToUrl(FirstTests.Config.ConfigReader.Load().Site("SauceDemo"));
             driver.FindElement(By.Id("user-name")).SendKeys("standard_user");
             driver.FindElement(By.Id("password")).SendKeys("secret_sauce");
             driver.FindElement(By.Id("login-button")).Click();
