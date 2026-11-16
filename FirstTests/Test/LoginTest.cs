@@ -1,35 +1,15 @@
 ﻿
 using FirstTests.Page;
+using FirstTests.Core;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 
 namespace FirstTests
 {
-    public class LoginTest
+    [TestFixture]
+    public class LoginTest : BaseTest
     {
-        private IWebDriver driver;
-
-        // Khởi tạo trình duyệt trước mỗi test
-        [SetUp]
-        public void SetUp()
-        {
-            driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-        }
-
-        // Đóng trình duyệt sau mỗi test
-        [TearDown]
-        public void TearDown()
-        {
-            if (driver != null)
-            {
-                driver.Quit();
-                driver.Dispose();
-            }
-        }
-
         // CA 1: Đăng nhập thành công
         [Test]
         public void Login_Success()
@@ -66,7 +46,9 @@ namespace FirstTests
 
             Assert.That(
                 errorMessage,
-                Is.EqualTo("Epic sadface: Sorry, this user has been locked out."),
+                Is.EqualTo(
+                    "Epic sadface: Sorry, this user has been locked out."
+                ),
                 "Thông báo lỗi không đúng."
             );
 
@@ -115,6 +97,10 @@ namespace FirstTests
                 productNames,
                 Does.Contain("Sauce Labs Backpack")
             );
+
+            TestContext.WriteLine(
+                "Thu thập thông tin sản phẩm thành công!"
+            );
         }
 
         // CA 4: Thêm sản phẩm vào giỏ hàng
@@ -150,8 +136,9 @@ namespace FirstTests
 
             TestContext.WriteLine("Sản phẩm: " + productName);
             TestContext.WriteLine("Số lượng trong giỏ: " + cartCount);
-            TestContext.WriteLine("Kiểm tra giỏ hàng thành công!");
+            TestContext.WriteLine(
+                "Kiểm tra giỏ hàng thành công!"
+            );
         }
     }
 }
-

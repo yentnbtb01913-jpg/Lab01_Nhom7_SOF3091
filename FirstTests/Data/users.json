@@ -1,0 +1,32 @@
+[
+    {
+        "Username": "standard_user",
+        "Password": "secret_sauce",
+        "ThanhCong": true,
+        "GhiChu": "Đăng nhập hợp lệ"
+    },
+    {
+        "Username": "locked_out_user",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Tài khoản bị khóa"
+    },
+    {
+        "Username": "",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: username để trống"
+    },
+    {
+        "Username": "standard_user ",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: username có khoảng trắng thừa"
+    },
+    {
+        "Username": "user@#$%^&*",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: username chứa ký tự đặc biệt"
+    }
+]

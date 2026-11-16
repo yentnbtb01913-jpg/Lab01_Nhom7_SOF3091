@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System.Collections.Generic;
 using System.Linq;
-using OpenQA.Selenium;
 namespace FirstTests.Pages
 {
     public class InventoryPage : BasePage
@@ -21,9 +22,28 @@ namespace FirstTests.Pages
         }
 
         // Kiểm tra trang sản phẩm đã hiển thị
+
         public bool DaHienThi()
         {
-            return Tim(tieuDe).Text == "Products";
+            try
+            {
+                WebDriverWait waitTrang = new WebDriverWait(
+                    driver,
+                    System.TimeSpan.FromSeconds(3)
+                );
+
+                return waitTrang.Until(d =>
+                {
+                    var elements = d.FindElements(tieuDe);
+
+                    return elements.Count > 0 &&
+                           elements[0].Text == "Products";
+                });
+            }
+            catch (WebDriverTimeoutException)
+            {
+                return false;
+            }
         }
 
         // Đếm số lượng sản phẩm
