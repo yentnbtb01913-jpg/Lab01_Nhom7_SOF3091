@@ -1,0 +1,24 @@
+<Solution>
+  <Folder Name="/TaiLieu/">
+    <File Path="README.md"/>
+    <File Path="DeBai.pdf"/>
+    <File Path="DeBai.md"/>
+    <File Path="Lab6.runsettings"/>
+    </Folder>
+  <Folder Name="/TieuChiTest/PhanA/">
+    <File Path="TieuChiTest/PhanA/TieuChi_A_Lab6.md"/>
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanB/">
+    <File Path="TieuChiTest/PhanB/TieuChi_B_Lab6.md"/>
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanC/">
+    <File Path="TieuChiTest/PhanC/TieuChi_C_Lab6.md"/>
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanD/">
+    <File Path="TieuChiTest/PhanD/TieuChi_D_Lab6.md"/>
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanE/">
+    <File Path="TieuChiTest/PhanE/TieuChi_E_Lab6.md"/>
+  </Folder>
+  <Project Path="FirstTests/FirstTests.csproj"/>
+</Solution>
