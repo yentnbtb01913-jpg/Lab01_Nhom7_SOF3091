@@ -1,92 +1,60 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-namespace FirstTests
+using FirstTests.Core;
+using FirstTests.Pages;
+using NUnit.Framework;
+
+namespace FirstTests.Tests
 {
+    [Category("AlertIframe")]
     public class AlertIframeTests : BaseTest
     {
-        private const string AlertUrl = "https://the-internet.herokuapp.com/javascript_alerts";
-        private const string IframeUrl = "https://the-internet.herokuapp.com/iframe";
-
-        // chờ alert xuất hiện bằng Explicit Wait
-        private IAlert WaitForAlert() =>
-            wait.Until(d =>
-            {
-                try { return d.SwitchTo().Alert(); }
-                catch (NoAlertPresentException) { return null; }
-            });
-
-        private string Result() => driver.FindElement(By.Id("result")).Text;
-
         [Test]
         public void C1_JsAlert_Accept()
         {
-            driver.Navigate().GoToUrl(AlertUrl);
-            driver.FindElement(By.CssSelector("button[onclick='jsAlert()']")).Click();
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsAlert();
 
-            IAlert alert = WaitForAlert();
-            Assert.That(alert.Text, Is.EqualTo("I am a JS Alert"));   // Assert TRƯỚC
-            alert.Accept();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS Alert"));   // Assert TRƯỚC
+            trang.ChapNhanCanhBao();
 
-            Assert.That(Result(), Is.EqualTo("You successfully clicked an alert"));
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You successfully clicked an alert"));
         }
 
         [Test]
         public void C2_JsConfirm_Dismiss()
         {
-            driver.Navigate().GoToUrl(AlertUrl);
-            driver.FindElement(By.CssSelector("button[onclick='jsConfirm()']")).Click();
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsConfirm();
 
-            IAlert alert = WaitForAlert();
-            Assert.That(alert.Text, Is.EqualTo("I am a JS Confirm"));
-            alert.Dismiss();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS Confirm"));
+            trang.HuyCanhBao();
 
-            Assert.That(Result(), Is.EqualTo("You clicked: Cancel"));
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You clicked: Cancel"));
         }
 
         [Test]
         public void C3_JsPrompt_SendKeysAndAccept()
         {
-            driver.Navigate().GoToUrl(AlertUrl);
-            driver.FindElement(By.CssSelector("button[onclick='jsPrompt()']")).Click();
+            AlertPage trang = new AlertPage(driver).MoTrang().BamJsPrompt();
 
-            IAlert alert = WaitForAlert();
-            Assert.That(alert.Text, Is.EqualTo("I am a JS prompt"));
-            alert.SendKeys("Xin chao Selenium");
-            alert.Accept();
+            Assert.That(trang.LayNoiDungCanhBao(), Is.EqualTo("I am a JS prompt"));
+            trang.NhapVaChapNhan("Xin chao Selenium");
 
-            Assert.That(Result(), Is.EqualTo("You entered: Xin chao Selenium"));
+            Assert.That(trang.LayKetQua(), Is.EqualTo("You entered: Xin chao Selenium"));
         }
 
         [Test]
         public void C4_Iframe_GoChuVaoTrinhSoanThao()
         {
-            driver.Navigate().GoToUrl(IframeUrl);
-            string text = "Xin chao iframe tu Selenium";
+            string noiDung = "Xin chao iframe tu Selenium";
 
-            // VÀO frame: chờ đến khi chuyển được thì thôi
-            wait.Until(d =>
-            {
-                try { d.SwitchTo().Frame("mce_0_ifr"); return true; }
-                catch (NoSuchFrameException) { return false; }
-            });
+            IframePage trang = new IframePage(driver)
+                .MoTrang()
+                .GoVanBan(noiDung);
 
-            // chờ body của editor xuất hiện rồi mới thao tác
-            IWebElement body = wait.Until(d => d.FindElement(By.Id("tinymce")));
+            Assert.That(trang.LayNoiDungTrinhSoanThao(), Is.EqualTo(noiDung));
 
-            // click để editor nhận focus, rồi chọn tất cả + xóa (thay cho Clear())
-            body.Click();
-            body.SendKeys(Keys.Control + "a");
-            body.SendKeys(Keys.Delete);
-            body.SendKeys(text);
-
-            // chờ chữ hiện ra rồi mới assert, tránh đọc quá sớm
-            wait.Until(d => body.Text == text);
-            Assert.That(body.Text, Is.EqualTo(text));
-
-            driver.SwitchTo().DefaultContent();                 // RA khỏi frame
+            trang.RaKhoiFrame();   // RA khỏi frame (như đóng ngoặc)
 
             // chứng minh đã ra ngoài: tìm được tiêu đề của trang chính
-            Assert.That(driver.FindElement(By.TagName("h3")).Text, Does.Contain("iFrame"));
+            Assert.That(trang.LayTieuDeTrang(), Does.Contain("iFrame"));
         }
     }
 }

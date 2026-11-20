@@ -1,7 +1,7 @@
 ﻿# LAB 02 – SELENIUM WEBDRIVER CƠ BẢN
 
-**Họ và tên:** Ngô Nguyễn Ngọc Minh  
-**Mã sinh viên:** TB01963
+**Họ và tên:** Phùng Xuân Linh  
+**Mã sinh viên:** TB01945  
 **Nhóm:** 07
 
 ## A. LOCATOR ANALYSIS

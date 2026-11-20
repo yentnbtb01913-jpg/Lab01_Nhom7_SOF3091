@@ -1,9 +1,13 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using FirstTests.Core;
 using FirstTests.Data;
 using FirstTests.Pages;
+
 namespace FirstTests.Tests;
 
+[Category("Login")]
+[Category("DataDriven")]
+[Category("Slow")]
 public class DataDrivenLoginTests : BaseTest
 {
     // BẮT BUỘC static: NUnit gọi hàm này lúc DÒ test, trước khi tạo đối tượng của class.

@@ -1,8 +1,9 @@
-﻿using FirstTests.Config;
+using FirstTests.Config;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
+
 namespace FirstTests.Core;
 
 public static class DriverFactory
@@ -14,9 +15,9 @@ public static class DriverFactory
 
         return ten switch
         {
-            "chrome" => new ChromeDriver(TaoOptionsChrome(cfg)),
+            "chrome"  => new ChromeDriver(TaoOptionsChrome(cfg)),
             "firefox" => new FirefoxDriver(TaoOptionsFirefox(cfg)),
-            "edge" => new EdgeDriver(TaoOptionsEdge(cfg)),
+            "edge"    => new EdgeDriver(TaoOptionsEdge(cfg)),
             _ => throw new ArgumentException(
                      $"Trình duyệt không được hỗ trợ: '{cfg.Browser}'. Hợp lệ: chrome | firefox | edge.")
         };

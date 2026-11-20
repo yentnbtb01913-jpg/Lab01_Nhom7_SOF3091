@@ -1,7 +1,9 @@
-﻿using FirstTests.Core;
+using FirstTests.Core;
 using FirstTests.Pages;
+
 namespace FirstTests.Tests;
 
+[Category("Smoke")]
 public class SauceDemoPageTests : BaseTest
 {
     // BaseTest đã mở sẵn trang chủ (BaseUrl trong appsettings.json)

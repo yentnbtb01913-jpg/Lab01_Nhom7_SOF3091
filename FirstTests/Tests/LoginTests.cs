@@ -1,143 +1,119 @@
-﻿
-using NUnit.Framework;
-using OpenQA.Selenium;
+using FirstTests.Core;
 using FirstTests.Pages;
-using System.Collections.Generic;
+using NUnit.Framework;
 
 namespace FirstTests.Tests
 {
+    [Category("Login")]
     public class LoginTests : BaseTest
     {
+        // BaseTest đã mở sẵn trang đăng nhập (BaseUrl trong appsettings.json)
+        private LoginPage loginPage => new LoginPage(driver);
+
         // CA 1: Đăng nhập thành công
         [Test]
+        [Category("Smoke")]
         public void Login_Success()
         {
-            LoginPage loginPage = new LoginPage(driver);
+            InventoryPage inventoryPage =
+                loginPage.DangNhap("standard_user", "secret_sauce");
 
-            InventoryPage inventoryPage = loginPage
-                .MoTrang()
-                .DangNhap("standard_user", "secret_sauce");
-
+            // Kiểm tra URL sau khi đăng nhập
             Assert.That(
-                inventoryPage.DaHienThi(),
-                Is.True,
-                "Đăng nhập thành công phải chuyển đến trang sản phẩm."
+                inventoryPage.LayUrlHienTai(),
+                Does.Contain("inventory.html"),
+                "Đăng nhập thành công phải chuyển đến trang inventory."
             );
 
-            TestContext.Out.WriteLine("Đăng nhập thành công!");
+            TestContext.WriteLine("Đăng nhập thành công!");
         }
 
         // CA 2: Đăng nhập thất bại
         [Test]
         public void Login_LockedOutUser()
         {
-            LoginPage loginPage = new LoginPage(driver);
+            loginPage.DangNhapThatBai("locked_out_user", "secret_sauce");
 
-            loginPage.MoTrang()
-                .DangNhap("locked_out_user", "secret_sauce");
+            // Kiểm tra thông báo lỗi hiện ra
+            Assert.That(loginPage.ThongBaoLoiDangHienThi(), Is.True,
+                "Thông báo lỗi phải hiển thị.");
 
-            string errorMessage = loginPage.LayThongBaoLoi();
-
+            // Kiểm tra nội dung thông báo lỗi
             Assert.That(
-                errorMessage,
+                loginPage.LayThongBaoLoi(),
                 Is.EqualTo("Epic sadface: Sorry, this user has been locked out."),
                 "Thông báo lỗi không đúng."
             );
 
-            Assert.That(
-                driver.Url,
-                Does.Not.Contain("inventory.html"),
-                "Người dùng bị khóa không được vào trang sản phẩm."
-            );
+            // Kiểm tra vẫn ở trang đăng nhập
+            Assert.That(loginPage.LayUrlHienTai(), Does.Not.Contain("inventory.html"),
+                "Người dùng bị khóa không được vào trang inventory.");
 
-            TestContext.Out.WriteLine(
-                "Đăng nhập thất bại đúng như mong đợi!"
-            );
+            TestContext.WriteLine("Đăng nhập thất bại đúng như mong đợi!");
         }
 
         // CA 3: Thu thập thông tin 6 sản phẩm
         [Test]
         public void GetProductInformation()
         {
-            LoginPage loginPage = new LoginPage(driver);
+            InventoryPage inventoryPage =
+                loginPage.DangNhap("standard_user", "secret_sauce");
 
-            InventoryPage inventoryPage = loginPage
-                .MoTrang()
-                .DangNhap("standard_user", "secret_sauce");
+            // Chờ danh sách sản phẩm tải xong rồi lấy tên và giá
+            List<SanPham> sanPhams = inventoryPage.LayDanhSachSanPham(6);
 
-            // Lấy danh sách tên và giá sản phẩm thông qua Page Object
-            List<string> productNames = inventoryPage.LayDanhSachTen();
-            List<decimal> productPrices = inventoryPage.LayDanhSachGia();
+            // Kiểm tra có đúng 6 sản phẩm
+            Assert.That(sanPhams.Count, Is.EqualTo(6));
 
-            // Kiểm tra số lượng sản phẩm
-            Assert.That(productNames.Count, Is.EqualTo(6));
-            Assert.That(productPrices.Count, Is.EqualTo(6));
-
-            // In thông tin sản phẩm
-            for (int i = 0; i < productNames.Count; i++)
+            foreach (SanPham sanPham in sanPhams)
             {
-                TestContext.Out.WriteLine(
-                    "Tên: " + productNames[i]
-                );
+                TestContext.WriteLine("Tên: " + sanPham.Ten);
+                TestContext.WriteLine("Giá: " + sanPham.Gia);
 
-                TestContext.Out.WriteLine(
-                    "Giá: $" + productPrices[i]
-                );
+                // Kiểm tra tên không được rỗng
+                Assert.That(sanPham.Ten, Is.Not.Empty);
 
-                Assert.That(productNames[i], Is.Not.Empty);
-                Assert.That(productPrices[i], Is.GreaterThan(0));
+                // Kiểm tra giá phải bắt đầu bằng $
+                Assert.That(sanPham.Gia, Does.StartWith("$"));
             }
 
-            // Kiểm tra có sản phẩm Sauce Labs Backpack
+            // Kiểm tra danh sách có sản phẩm Sauce Labs Backpack
             Assert.That(
-                productNames,
+                sanPhams.Select(sanPham => sanPham.Ten),
                 Does.Contain("Sauce Labs Backpack")
             );
         }
 
-
-        // CA 4: Thêm sản phẩm vào giỏ hàng bằng POM
+        // CA 4: Thêm sản phẩm vào giỏ hàng
         [Test]
         public void AddProductToCart()
         {
-            LoginPage loginPage = new LoginPage(driver);
-                
-            InventoryPage inventoryPage = loginPage
-                .MoTrang()
-                .DangNhap("standard_user", "secret_sauce");
+            // Bước 1: Đăng nhập
+            InventoryPage inventoryPage =
+                loginPage.DangNhap("standard_user", "secret_sauce");
 
-            // Thêm sản phẩm vào giỏ hàng
-            inventoryPage.ThemVaoGioHang(
-                "add-to-cart-sauce-labs-backpack"
-            );
+            // Bước 2: Thêm Sauce Labs Backpack vào giỏ
+            inventoryPage.ThemBaloVaoGio();
 
-            // Kiểm tra số lượng trong giỏ
-            string cartCount = inventoryPage.LaySoLuongTrongGio();
+            // Bước 3: Kiểm tra số lượng sản phẩm trong giỏ
+            string soLuong = inventoryPage.LaySoLuongTrongGio();
 
-            Assert.That(cartCount, Is.EqualTo("1"));
+            Assert.That(soLuong, Is.EqualTo("1"),
+                "Giỏ hàng phải có 1 sản phẩm.");
 
-            // Mở giỏ hàng
+            // Bước 4: Mở giỏ hàng và kiểm tra tên sản phẩm trong giỏ
             CartPage cartPage = inventoryPage.MoGioHang();
-
-            // Kiểm tra trang giỏ hàng
-            Assert.That(cartPage.DaHienThi(), Is.True);
-
-            // Kiểm tra tên sản phẩm
-            string productName = cartPage.LayTenSanPham();
+            string tenSanPham = cartPage.LayTenSanPhamDauTien();
 
             Assert.That(
-                productName,
-                Is.EqualTo("Sauce Labs Backpack")
+                tenSanPham,
+                Is.EqualTo("Sauce Labs Backpack"),
+                "Sản phẩm trong giỏ hàng không đúng."
             );
 
-            TestContext.Out.WriteLine(
-                "Sản phẩm: " + productName
-            );
-
-            TestContext.Out.WriteLine(
-                "Số lượng trong giỏ: " + cartCount
-            );
+            TestContext.WriteLine("Sản phẩm: " + tenSanPham);
+            TestContext.WriteLine("Số lượng trong giỏ: " + soLuong);
+            TestContext.WriteLine("Kiểm tra giỏ hàng thành công!");
         }
-
     }
 }

@@ -1,59 +1,48 @@
-﻿
 using OpenQA.Selenium;
 
 namespace FirstTests.Pages
 {
     public class DynamicLoadingPage : BasePage
     {
-        private const string Url =
-            "https://the-internet.herokuapp.com/dynamic_loading/2";
-
-        // Locator của trang Dynamic Loading
-        private readonly By nutStart =
-            By.CssSelector("#start button");
-
-        private readonly By ketQua =
-            By.Id("finish");
+        private readonly By nutStart = By.CssSelector("#start button");
+        private readonly By ketQua = By.Id("finish");
 
         public DynamicLoadingPage(IWebDriver driver) : base(driver)
         {
         }
 
-        // Mở trang Dynamic Loading
         public DynamicLoadingPage MoTrang()
         {
-            driver.Navigate().GoToUrl(Url);
+            MoTrangTheInternet("dynamic_loading/2");
             return this;
         }
 
-        // Nhấn nút Start
         public DynamicLoadingPage BamStart()
         {
             Tim(nutStart).Click();
             return this;
         }
 
-        // Cố ý tìm phần tử ngay, không sử dụng Explicit Wait
-        // Dùng để minh chứng lỗi NoSuchElementException
-        public string LayNoiDungNgayLapTuc()
+        // CỐ Ý KHÔNG chờ: dùng cho ca A1 để chứng minh lỗi NoSuchElementException
+        public string LayKetQuaKhongCho()
         {
             return driver.FindElement(ketQua).Text;
         }
 
-        // Chờ phần tử xuất hiện và hiển thị rồi lấy nội dung
-        public string LayNoiDungSauKhiCho()
+        // Có Explicit Wait: chờ kết quả hiển thị và có đúng nội dung
+        public string ChoVaLayKetQua()
         {
-            IWebElement element = wait.Until(d =>
+            IWebElement phanTu = wait.Until(d =>
             {
-                var result = d.FindElement(ketQua);
+                var element = d.FindElement(ketQua);
 
-                return result.Displayed &&
-                       result.Text == "Hello World!"
-                    ? result
+                return element.Displayed &&
+                       element.Text == "Hello World!"
+                    ? element
                     : null;
             });
 
-            return element.Text;
+            return phanTu.Text;
         }
     }
 }
