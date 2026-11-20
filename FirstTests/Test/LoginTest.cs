@@ -8,10 +8,12 @@ using System.Collections.Generic;
 namespace FirstTests
 {
     [TestFixture]
+    [Category("Login")]
     public class LoginTest : BaseTest
     {
         // CA 1: Đăng nhập thành công
         [Test]
+        [Category("Smoke")]
         public void Login_Success()
         {
             LoginPages loginPage = new LoginPages(driver);
@@ -30,8 +32,6 @@ namespace FirstTests
                 Is.True,
                 "Danh sách sản phẩm phải hiển thị."
             );
-
-            TestContext.WriteLine("Đăng nhập thành công!");
         }
 
         // CA 2: Đăng nhập thất bại
@@ -56,10 +56,6 @@ namespace FirstTests
                 driver.Url,
                 Does.Not.Contain("inventory.html"),
                 "Người dùng bị khóa không được vào trang inventory."
-            );
-
-            TestContext.WriteLine(
-                "Đăng nhập thất bại đúng như mong đợi!"
             );
         }
 
@@ -86,9 +82,6 @@ namespace FirstTests
                 string name = productNames[i];
                 string price = productPrices[i];
 
-                TestContext.WriteLine("Tên: " + name);
-                TestContext.WriteLine("Giá: " + price);
-
                 Assert.That(name, Is.Not.Empty);
                 Assert.That(price, Does.StartWith("$"));
             }
@@ -97,14 +90,11 @@ namespace FirstTests
                 productNames,
                 Does.Contain("Sauce Labs Backpack")
             );
-
-            TestContext.WriteLine(
-                "Thu thập thông tin sản phẩm thành công!"
-            );
         }
 
         // CA 4: Thêm sản phẩm vào giỏ hàng
         [Test]
+        [Category("Smoke")]
         public void AddProductToCart()
         {
             LoginPages loginPage = new LoginPages(driver);
@@ -132,12 +122,6 @@ namespace FirstTests
                 productName,
                 Is.EqualTo("Sauce Labs Backpack"),
                 "Sản phẩm trong giỏ hàng không đúng."
-            );
-
-            TestContext.WriteLine("Sản phẩm: " + productName);
-            TestContext.WriteLine("Số lượng trong giỏ: " + cartCount);
-            TestContext.WriteLine(
-                "Kiểm tra giỏ hàng thành công!"
             );
         }
     }

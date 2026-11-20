@@ -1,0 +1,50 @@
+[
+    {
+        "Username": "standard_user",
+        "Password": "secret_sauce",
+        "ThanhCong": true,
+        "GhiChu": "Đăng nhập hợp lệ – tài khoản chuẩn"
+    },
+    {
+        "Username": "locked_out_user",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Tài khoản bị khóa – không được đăng nhập"
+    },
+    {
+        "Username": "",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: bỏ trống username"
+    },
+    {
+        "Username": "standard_user",
+        "Password": "",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: bỏ trống password"
+    },
+    {
+        "Username": "standard_user",
+        "Password": "wrong_password",
+        "ThanhCong": false,
+        "GhiChu": "Sai mật khẩu"
+    },
+    {
+        "Username": "unknown_user_123",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Username không tồn tại"
+    },
+    {
+        "Username": "standard_user ",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Ca biên: username có khoảng trắng cuối"
+    },
+    {
+        "Username": "problem_user",
+        "Password": "secret_sauce",
+        "ThanhCong": true,
+        "GhiChu": "Tài khoản hợp lệ khác của SauceDemo"
+    }
+]

@@ -1,4 +1,4 @@
-﻿
+﻿using FirstTests.Utilities;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace FirstTests
 {
@@ -14,69 +15,81 @@ namespace FirstTests
         protected IWebDriver driver = null!;
         protected WebDriverWait wait = null!;
 
-        // Khoi tao trinh duyet truoc moi test
+        // Đổi thành false nếu muốn xem trình duyệt khi chạy 1 test để debug
+        private const bool Headless = true;
+
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            // Ghi log bắt đầu NGAY ĐẦU, trước khi mở Chrome
+            Log.Info($"[START] Test: {TestContext.CurrentContext.Test.Name}");
 
-            driver.Manage().Window.Maximize();
+            var options = new ChromeOptions();
+            if (Headless)
+            {
+                options.AddArgument("--headless=new");
+                options.AddArgument("--window-size=1920,1080");
+            }
 
-            wait = new WebDriverWait(
-                driver,
-                TimeSpan.FromSeconds(10)
-            );
+            driver = new ChromeDriver(options);
+
+            if (!Headless)
+                driver.Manage().Window.Maximize();
+
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
-        // Chup anh neu test that bai va dong trinh duyet
         [TearDown]
         public void TearDown()
         {
+            var result = TestContext.CurrentContext.Result;
+            string testName = TestContext.CurrentContext.Test.Name;
+
             try
             {
-                if (driver != null &&
-                    TestContext.CurrentContext.Result.Outcome.Status
-                    == TestStatus.Failed)
+                // 1. Ghi log kết quả
+                if (result.Outcome.Status == TestStatus.Passed)
                 {
-                    // Chup anh man hinh
-                    var screenshot =
-                        ((ITakesScreenshot)driver).GetScreenshot();
+                    Log.Info($"[OK] Test: {testName}");
+                }
+                else if (result.Outcome.Status == TestStatus.Failed)
+                {
+                    Log.Error($"[RỚT] Test: {testName} - {result.Message}");
+                }
+                else
+                {
+                    Log.Info($"[{result.Outcome.Status}] Test: {testName}");
+                }
 
-                    // Tao thu muc screenshots
+                // 2. Chụp ảnh nếu rớt
+                if (driver != null && result.Outcome.Status == TestStatus.Failed)
+                {
+                    var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+
                     string folder = Path.GetFullPath(
-                        Path.Combine(
-                            AppContext.BaseDirectory,
-                            "..", "..", "..", "screenshots"
-                        )
+                        Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "screenshots")
                     );
-
                     Directory.CreateDirectory(folder);
 
-                    // Dat ten anh theo ten test
-                    string fileName =
-                        TestContext.CurrentContext.Test.Name + ".png";
-
+                    // Bỏ ký tự không hợp lệ trong tên file + thêm giờ để tránh ghi đè khi chạy song song
+                    string safeName = string.Concat(
+                        testName.Select(c => Path.GetInvalidFileNameChars().Contains(c) ? '_' : c)
+                    );
+                    string fileName = $"{safeName}_{DateTime.Now:HHmmssfff}.png";
                     string path = Path.Combine(folder, fileName);
 
-                    // Luu anh
                     screenshot.SaveAsFile(path);
-
-                    // Dinh kem anh vao Test Explorer
                     TestContext.AddTestAttachment(path);
-
-                    TestContext.Out.WriteLine(
-                        "Da chup anh: " + path
-                    );
+                    Log.Info("Da chup anh: " + path);
                 }
             }
             catch (Exception ex)
             {
-                TestContext.Out.WriteLine(
-                    "Loi chup anh: " + ex.Message
-                );
+                Log.Error("Loi trong TearDown: " + ex.Message);
             }
             finally
             {
+                // 3. Đóng trình duyệt
                 if (driver != null)
                 {
                     try

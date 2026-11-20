@@ -17,6 +17,8 @@ namespace FirstTests
         }
 
         [Test]
+        [Category("Smoke")]
+        [Category("Login")]
         public void LoginThanhCong()
         {
             loginPage.DangNhap(
