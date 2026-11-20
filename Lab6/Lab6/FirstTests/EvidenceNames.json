@@ -1,0 +1,79 @@
+[
+  {
+    "Match": "LAB06_Smoke.A01_TrangDangNhapHienThi",
+    "FileName": "A1_LAB6_Smoke_TrangDangNhap",
+    "Part": "PhanA",
+    "Steps": "Chạy ca Smoke, kiểm tra tiêu đề trang đăng nhập.",
+    "Expected": "Trang hiển thị Swag Labs."
+  },
+  {
+    "Match": "LAB06_Login.A02_DangNhapThanhCong",
+    "FileName": "A2_LAB6_Login_DangNhapThanhCong",
+    "Part": "PhanA",
+    "Steps": "Chạy ca Login, nhập tài khoản hợp lệ qua Page Object.",
+    "Expected": "Đăng nhập thành công, trang inventory hiển thị."
+  },
+  {
+    "Match": "LAB06_Login.B01_CoYFail_DeChungMinhErrorLog",
+    "FileName": "B1_LAB6_CoYFailed_LogError",
+    "Part": "PhanB",
+    "Steps": "Chạy riêng test Assert.Fail để kiểm tra logging lỗi.",
+    "Expected": "Test Failed có chủ ý, log [ERROR] và screenshot."
+  },
+  {
+    "Match": "A01_DocCauHinhTuJson",
+    "FileName": "NEN_LAB6_A1_LAB5_DocCauHinhJSON",
+    "Part": "Lab5KeThua",
+    "Steps": "Đọc thông số BaseUrl, Browser, TimeoutSeconds, Headless từ JSON.",
+    "Expected": "Đọc cấu hình thành công và giá trị hợp lệ."
+  },
+  {
+    "Match": "A02_CauHinhKhongHopLe",
+    "FileName": "NEN_LAB6_A2_LAB5_KiemTraConfigKhongHopLe",
+    "Part": "Lab5KeThua",
+    "Steps": "Kiểm tra dữ liệu cấu hình không hợp lệ.",
+    "Expected": "Hệ thống thông báo rõ lỗi cấu hình."
+  },
+  {
+    "Match": "B01_CungCode_ChayTheoBrowser",
+    "FileName": "NEN_LAB6_B1_LAB5_DriverFactory_<Browser>",
+    "Part": "Lab5KeThua",
+    "Steps": "Chạy cùng code với Browser từ appsettings.json.",
+    "Expected": "Driver tương ứng trình duyệt cấu hình."
+  },
+  {
+    "Match": "B02_TenBrowserSai",
+    "FileName": "NEN_LAB6_B3_LAB5_XuLyBrowserKhongHopLe",
+    "Part": "Lab5KeThua",
+    "Steps": "Yêu cầu DriverFactory tạo browser Firefix.",
+    "Expected": "Ném NotSupportedException và nêu tên Firefix."
+  },
+  {
+    "Match": "C01_BaseTest",
+    "FileName": "NEN_LAB6_C1_LAB5_BaseTestSetUpTearDown",
+    "Part": "Lab5KeThua",
+    "Steps": "Chạy test kế thừa Core.BaseTest.",
+    "Expected": "BaseTest tạo driver và mở URL đúng cấu hình."
+  },
+  {
+    "Match": "C02_CoYFail",
+    "FileName": "NEN_LAB6_C2_LAB5_TuChupAnhKhiFailed",
+    "Part": "Lab5KeThua",
+    "Steps": "Chạy riêng test Assert.Fail cố ý.",
+    "Expected": "NUnit ghi Failed; hệ thống lưu screenshot."
+  },
+  {
+    "Match": "D01_DangNhapTheoDuLieuJson",
+    "FileName": "NEN_LAB6_D1_LAB5_DangNhapTheoJSON",
+    "Part": "Lab5KeThua",
+    "Steps": "Đọc từng dòng users.json; đăng nhập bằng Page Objects.",
+    "Expected": "Actual đăng nhập khớp ThanhCong; ca âm có thông báo lỗi."
+  },
+  {
+    "Match": "DangNhap_",
+    "FileName": "NEN_LAB6_D1_LAB5_DangNhapTheoJSON",
+    "Part": "Lab5KeThua",
+    "Steps": "Đăng nhập từ bộ dữ liệu users.json.",
+    "Expected": "Kết quả thực tế khớp ThanhCong của bộ dữ liệu."
+  }
+]

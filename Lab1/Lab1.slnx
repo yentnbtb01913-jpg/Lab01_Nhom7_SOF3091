@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/TaiLieu/">
+    <File Path="README.md" />
+    <File Path="DeBai.pdf" />
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanA/">
+    <File Path="TieuChiTest/PhanA/TieuChi_A_Lab1.md" />
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanB/">
+    <File Path="TieuChiTest/PhanB/TieuChi_B_Lab1.md" />
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanC/">
+    <File Path="TieuChiTest/PhanC/TieuChi_C_Lab1.md" />
+  </Folder>
+  <Folder Name="/TieuChiTest/PhanD/">
+    <File Path="TieuChiTest/PhanD/TieuChi_D_Lab1.md" />
+  </Folder>
+  <Project Path="FirstTests/FirstTests.csproj" />
+</Solution>

@@ -1,0 +1,50 @@
+[
+    {
+        "Username": "standard_user",
+        "Password": "secret_sauce",
+        "ThanhCong": true,
+        "GhiChu": "Tai khoan hop le - luong thuan"
+    },
+    {
+        "Username": "locked_out_user",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Tai khoan bi khoa - luong nghich"
+    },
+    {
+        "Username": "",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Bien: Username rong"
+    },
+    {
+        "Username": "standard_user",
+        "Password": "",
+        "ThanhCong": false,
+        "GhiChu": "Bien: Password rong"
+    },
+    {
+        "Username": "sai_tai_khoan",
+        "Password": "sai_mat_khau",
+        "ThanhCong": false,
+        "GhiChu": "Tai khoan va mat khau sai"
+    },
+    {
+        "Username": "!@#$%^&*",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Bien: Username chua ky tu dac biet"
+    },
+    {
+        "Username": "standard_user  ",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Bien: Username co khoang trang du"
+    },
+    {
+        "Username": "khong_ton_tai_08",
+        "Password": "secret_sauce",
+        "ThanhCong": false,
+        "GhiChu": "Tai khoan khong ton tai - bo du lieu thu 8"
+    }
+]

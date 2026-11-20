@@ -1,0 +1,58 @@
+[
+  {
+    "Match": "A01_DocCauHinhTuJson",
+    "FileName": "A1_LAB5_DocCauHinhJSON",
+    "Part": "PhanA",
+    "Steps": "Đọc thông số BaseUrl, Browser, TimeoutSeconds, Headless từ JSON.",
+    "Expected": "Đọc cấu hình thành công và giá trị hợp lệ."
+  },
+  {
+    "Match": "A02_CauHinhKhongHopLe",
+    "FileName": "A2_LAB5_KiemTraConfigKhongHopLe",
+    "Part": "PhanA",
+    "Steps": "Kiểm tra dữ liệu cấu hình không hợp lệ.",
+    "Expected": "Hệ thống thông báo rõ lỗi cấu hình."
+  },
+  {
+    "Match": "B01_CungCode_ChayTheoBrowser",
+    "FileName": "B1_LAB5_DriverFactory_<Browser>",
+    "Part": "PhanB",
+    "Steps": "Chạy cùng code với Browser từ appsettings.json.",
+    "Expected": "Driver tương ứng trình duyệt cấu hình."
+  },
+  {
+    "Match": "B02_TenBrowserSai",
+    "FileName": "B3_LAB5_XuLyBrowserKhongHopLe",
+    "Part": "PhanB",
+    "Steps": "Yêu cầu DriverFactory tạo browser Firefix.",
+    "Expected": "Ném NotSupportedException và nêu tên Firefix."
+  },
+  {
+    "Match": "C01_BaseTest",
+    "FileName": "C1_LAB5_BaseTestSetUpTearDown",
+    "Part": "PhanC",
+    "Steps": "Chạy test kế thừa Core.BaseTest.",
+    "Expected": "BaseTest tạo driver và mở URL đúng cấu hình."
+  },
+  {
+    "Match": "C02_CoYFail",
+    "FileName": "C2_LAB5_TuChupAnhKhiFailed",
+    "Part": "PhanC",
+    "Steps": "Chạy riêng test Assert.Fail cố ý.",
+    "Expected": "NUnit ghi Failed; hệ thống lưu screenshot."
+  },
+  {
+    "Match": "D01_DangNhapTheoDuLieuJson",
+    "FileName": "D1_LAB5_DangNhapTheoJSON",
+    "Part": "PhanD",
+    "Steps": "Đọc từng dòng users.json; đăng nhập bằng Page Objects.",
+    "Expected": "Actual đăng nhập khớp ThanhCong; ca âm có thông báo lỗi."
+  },
+  {
+    "Match": "DangNhap_",
+    "FileName": "D1_LAB5_DangNhapTheoJSON",
+    "Part": "PhanD",
+    "Steps": "Đăng nhập từ bộ dữ liệu users.json.",
+    "Expected": "Kết quả thực tế khớp ThanhCong của bộ dữ liệu."
+  }
+]
