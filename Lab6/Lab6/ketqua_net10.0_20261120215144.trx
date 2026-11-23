@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e58ad120-70b9-4942-add7-d49bdd69e6f6" name="Admin@YAAI 2026-11-20 21:51:04" runUser="YAAI\Admin" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-20T21:51:04.3362373+07:00" queuing="2026-11-20T21:51:04.3362373+07:00" start="2026-11-20T21:50:58.5710261+07:00" finish="2026-11-20T21:51:44.8655584+07:00" />
+  <TestSettings name="default" id="674c5895-11d9-4db8-a36c-b42393cac229">
+    <Deployment runDeploymentRoot="Admin_YAAI_2026-11-20_21_51_04" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="87c610c2-3655-4f8a-acb6-fded818bbf96" testId="22d48c73-f344-bc2c-be55-15ce108cbf03" testName="A01_DocCauHinhTuJson" computerName="YAAI" duration="00:00:05.5885060" startTime="2026-11-20T21:50:59.1098447+07:00" endTime="2026-11-20T21:51:04.6983497+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="87c610c2-3655-4f8a-acb6-fded818bbf96">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+BaseUrl=https://www.saucedemo.com/, Browser=Chrome, Headless=True, Timeout=8&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_A1_LAB5_DocCauHinhJSON_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215103_750_f3e48f.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_A1_LAB5_DocCauHinhJSON_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215103_750_f3e48f.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="580e047e-5417-43bd-b5f0-c92b7137a8f1" testId="ba4650df-2908-1696-40a7-75d404f30546" testName="DangNhap_05_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:03.5157660" startTime="2026-11-20T21:51:15.9955614+07:00" endTime="2026-11-20T21:51:19.5113271+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="580e047e-5417-43bd-b5f0-c92b7137a8f1">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[sai_tai_khoan]; Expected=False; Actual=False; GhiChu=Tai khoan va mat khau sai&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_05_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215118_895_7a9cda.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_05_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215118_895_7a9cda.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="2967fc39-126e-4fc0-84d9-9f5b599cced9" testId="236b7f66-d812-1246-be19-cab301d80240" testName="DangNhap_01_CoDuLieu_ThanhCong" computerName="YAAI" duration="00:00:05.3553780" startTime="2026-11-20T21:50:59.1100754+07:00" endTime="2026-11-20T21:51:04.4654530+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2967fc39-126e-4fc0-84d9-9f5b599cced9">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user]; Expected=True; Actual=True; GhiChu=Tai khoan hop le - luong thuan&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_01_CoDuLieu_ThanhCong_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215103_388_db9ef2.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_01_CoDuLieu_ThanhCong_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215103_388_db9ef2.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="b4420f71-c4fe-4e2e-be82-32ae1b30ddd2" testId="0447c98a-163f-420c-f630-e2baa6a18bc7" testName="DangNhap_03_Trong_ThatBai" computerName="YAAI" duration="00:00:04.0215700" startTime="2026-11-20T21:51:09.1266376+07:00" endTime="2026-11-20T21:51:13.1482074+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4420f71-c4fe-4e2e-be82-32ae1b30ddd2">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[]; Expected=False; Actual=False; GhiChu=Bien: Username rong&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_03_Trong_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215111_994_d9a154.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_03_Trong_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215111_994_d9a154.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="120655e0-8d04-4011-b88d-7e3c4b179f98" testId="c0952fc0-f5b5-1e66-3081-e4c25ffc24d3" testName="B02_TenBrowserSai_ThongBaoRoRang" computerName="YAAI" duration="00:00:03.4234010" startTime="2026-11-20T21:51:09.8706196+07:00" endTime="2026-11-20T21:51:13.2940192+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="120655e0-8d04-4011-b88d-7e3c4b179f98">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_B3_LAB5_XuLyBrowserKhongHopLe_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215112_402_3d17c0.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_B3_LAB5_XuLyBrowserKhongHopLe_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215112_402_3d17c0.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="1ddbd67f-2b36-4c7b-8187-9f48afaef7d4" testId="689b22ab-a36a-7bf8-4488-e853c57d69db" testName="DangNhap_06_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:02.8384670" startTime="2026-11-20T21:51:19.5113693+07:00" endTime="2026-11-20T21:51:22.3498347+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ddbd67f-2b36-4c7b-8187-9f48afaef7d4">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[!@#$%^&amp;*]; Expected=False; Actual=False; GhiChu=Bien: Username chua ky tu dac biet&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_06_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215121_752_723323.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_06_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215121_752_723323.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="ad493640-1a3f-4882-870b-6cd32cade766" testId="62a9a029-1a77-12b5-5ccb-9dc05fc56938" testName="DangNhap_08_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:03.9574220" startTime="2026-11-20T21:51:38.0459220+07:00" endTime="2026-11-20T21:51:42.0033447+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad493640-1a3f-4882-870b-6cd32cade766">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[khong_ton_tai_08]; Expected=False; Actual=False; GhiChu=Tai khoan khong ton tai - bo du lieu thu 8&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_08_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215141_219_b2946d.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_08_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215141_219_b2946d.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="d34ff905-1bad-4b50-961a-e9b74048a0a9" testId="e5764f82-c3cb-58a9-090e-21166dd091d6" testName="DangNhap_04_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:02.8471650" startTime="2026-11-20T21:51:13.1482638+07:00" endTime="2026-11-20T21:51:15.9954277+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d34ff905-1bad-4b50-961a-e9b74048a0a9">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user]; Expected=False; Actual=False; GhiChu=Bien: Password rong&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_04_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215115_374_e6b827.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_04_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215115_374_e6b827.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="e8ea246e-c015-43aa-8c2b-2f6d945e2929" testId="d36c833f-e8f8-b944-4146-7464e3d6de50" testName="B01_CungCode_ChayTheoBrowserTrongJson" computerName="YAAI" duration="00:00:10.7606000" startTime="2026-11-20T21:50:59.1099609+07:00" endTime="2026-11-20T21:51:09.8705600+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8ea246e-c015-43aa-8c2b-2f6d945e2929">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Cung test: Browser=Chrome, Driver=ChromeDriver, Headless=True&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_B1_LAB5_DriverFactory_Chrome_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215108_319_4ee73d.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_B1_LAB5_DriverFactory_Chrome_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215108_319_4ee73d.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="e79fbda3-5e36-49ed-a968-e1951b860df8" testId="86070512-6305-f010-cca9-f2e5b44c4be1" testName="C01_BaseTest_DaMoDuongDanCauHinh" computerName="YAAI" duration="00:00:05.1991370" startTime="2026-11-20T21:50:59.1099354+07:00" endTime="2026-11-20T21:51:04.3090237+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e79fbda3-5e36-49ed-a968-e1951b860df8">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+BaseTest tu khoi tao, mo URL, va se tu dong don dep webdriver.&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_C1_LAB5_BaseTestSetUpTearDown_FirstTests_Tests_LAB05_PhanC_Passed_20261120_215103_166_646d08.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_C1_LAB5_BaseTestSetUpTearDown_FirstTests_Tests_LAB05_PhanC_Passed_20261120_215103_166_646d08.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="30ee06de-4d96-4189-95ca-998626bf2524" testId="0a909ed4-da94-4466-12e3-eca69a4f46dc" testName="DangNhap_07_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:15.6956150" startTime="2026-11-20T21:51:22.3499060+07:00" endTime="2026-11-20T21:51:38.0455406+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="30ee06de-4d96-4189-95ca-998626bf2524">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user  ]; Expected=False; Actual=False; GhiChu=Bien: Username co khoang trang du&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_07_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215137_315_c29334.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_07_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215137_315_c29334.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="1c91c7eb-d8be-406e-9a39-37c0c52f6406" testId="331eb71a-4bca-ea24-b4a2-0c2cf8402b6d" testName="DangNhap_02_CoDuLieu_ThatBai" computerName="YAAI" duration="00:00:04.6608690" startTime="2026-11-20T21:51:04.4655474+07:00" endTime="2026-11-20T21:51:09.1264157+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c91c7eb-d8be-406e-9a39-37c0c52f6406">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[locked_out_user]; Expected=False; Actual=False; GhiChu=Tai khoan bi khoa - luong nghich&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_02_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215107_418_01a1bb.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_02_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215107_418_01a1bb.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="f42fca03-9b88-479c-9cd0-95c9d153662c" testId="c015ed94-cf25-5e25-7d83-c7ecdb4c34ee" testName="A02_CauHinhKhongHopLeCoThongBao" computerName="YAAI" duration="00:00:05.0137290" startTime="2026-11-20T21:51:04.6984477+07:00" endTime="2026-11-20T21:51:09.7121759+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f42fca03-9b88-479c-9cd0-95c9d153662c">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_A2_LAB5_KiemTraConfigKhongHopLe_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215108_326_5984f6.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\NEN_LAB6_A2_LAB5_KiemTraConfigKhongHopLe_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215108_326_5984f6.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="cf050da4-e3c3-47a4-82ea-357fd917749c" testId="a0bc3e06-4401-9c08-6f66-f5555ba45676" testName="A02_DangNhapThanhCong" computerName="YAAI" duration="00:00:04.4229880" startTime="2026-11-20T21:51:04.3121471+07:00" endTime="2026-11-20T21:51:08.7351332+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf050da4-e3c3-47a4-82ea-357fd917749c">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\A2_LAB6_Login_DangNhapThanhCong_FirstTests_Tests_LAB06_Login_Passed_20261120_215107_353_2220dd.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\A2_LAB6_Login_DangNhapThanhCong_FirstTests_Tests_LAB06_Login_Passed_20261120_215107_353_2220dd.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="2e2a424d-a00a-4719-ad84-2453b3a0098a" testId="d4e3fc4f-7956-851f-9aec-5fdc158a20fc" testName="A01_TrangDangNhapHienThi" computerName="YAAI" duration="00:00:04.3157140" startTime="2026-11-20T21:51:08.7357673+07:00" endTime="2026-11-20T21:51:13.0514802+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2e2a424d-a00a-4719-ad84-2453b3a0098a">
+      <Output>
+        <StdOut>Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\A1_LAB6_Smoke_TrangDangNhap_FirstTests_Tests_LAB06_Smoke_Passed_20261120_215111_919_6132ca.png</StdOut>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="YAAI\A1_LAB6_Smoke_TrangDangNhap_FirstTests_Tests_LAB06_Smoke_Passed_20261120_215111_919_6132ca.png" />
+      </ResultFiles>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="DangNhap_01_CoDuLieu_ThanhCong" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="236b7f66-d812-1246-be19-cab301d80240">
+      <Execution id="2967fc39-126e-4fc0-84d9-9f5b599cced9" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_01_CoDuLieu_ThanhCong" />
+    </UnitTest>
+    <UnitTest name="DangNhap_04_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="e5764f82-c3cb-58a9-090e-21166dd091d6">
+      <Execution id="d34ff905-1bad-4b50-961a-e9b74048a0a9" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_04_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="DangNhap_06_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="689b22ab-a36a-7bf8-4488-e853c57d69db">
+      <Execution id="1ddbd67f-2b36-4c7b-8187-9f48afaef7d4" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_06_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="DangNhap_03_Trong_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="0447c98a-163f-420c-f630-e2baa6a18bc7">
+      <Execution id="b4420f71-c4fe-4e2e-be82-32ae1b30ddd2" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_03_Trong_ThatBai" />
+    </UnitTest>
+    <UnitTest name="DangNhap_02_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="331eb71a-4bca-ea24-b4a2-0c2cf8402b6d">
+      <Execution id="1c91c7eb-d8be-406e-9a39-37c0c52f6406" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_02_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="A01_DocCauHinhTuJson" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="22d48c73-f344-bc2c-be55-15ce108cbf03">
+      <Execution id="87c610c2-3655-4f8a-acb6-fded818bbf96" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanA" name="A01_DocCauHinhTuJson" />
+    </UnitTest>
+    <UnitTest name="A02_DangNhapThanhCong" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="a0bc3e06-4401-9c08-6f66-f5555ba45676">
+      <Execution id="cf050da4-e3c3-47a4-82ea-357fd917749c" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB06_Login" name="A02_DangNhapThanhCong" />
+    </UnitTest>
+    <UnitTest name="A02_CauHinhKhongHopLeCoThongBao" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="c015ed94-cf25-5e25-7d83-c7ecdb4c34ee">
+      <Execution id="f42fca03-9b88-479c-9cd0-95c9d153662c" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanA" name="A02_CauHinhKhongHopLeCoThongBao" />
+    </UnitTest>
+    <UnitTest name="C01_BaseTest_DaMoDuongDanCauHinh" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="86070512-6305-f010-cca9-f2e5b44c4be1">
+      <Execution id="e79fbda3-5e36-49ed-a968-e1951b860df8" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanC" name="C01_BaseTest_DaMoDuongDanCauHinh" />
+    </UnitTest>
+    <UnitTest name="DangNhap_05_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="ba4650df-2908-1696-40a7-75d404f30546">
+      <Execution id="580e047e-5417-43bd-b5f0-c92b7137a8f1" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_05_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="B02_TenBrowserSai_ThongBaoRoRang" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="c0952fc0-f5b5-1e66-3081-e4c25ffc24d3">
+      <Execution id="120655e0-8d04-4011-b88d-7e3c4b179f98" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanB" name="B02_TenBrowserSai_ThongBaoRoRang" />
+    </UnitTest>
+    <UnitTest name="DangNhap_07_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="0a909ed4-da94-4466-12e3-eca69a4f46dc">
+      <Execution id="30ee06de-4d96-4189-95ca-998626bf2524" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_07_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="A01_TrangDangNhapHienThi" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="d4e3fc4f-7956-851f-9aec-5fdc158a20fc">
+      <Execution id="2e2a424d-a00a-4719-ad84-2453b3a0098a" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB06_Smoke" name="A01_TrangDangNhapHienThi" />
+    </UnitTest>
+    <UnitTest name="DangNhap_08_CoDuLieu_ThatBai" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="62a9a029-1a77-12b5-5ccb-9dc05fc56938">
+      <Execution id="ad493640-1a3f-4882-870b-6cd32cade766" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanD" name="DangNhap_08_CoDuLieu_ThatBai" />
+    </UnitTest>
+    <UnitTest name="B01_CungCode_ChayTheoBrowserTrongJson" storage="c:\users\admin\music\sd22301\sof3091\git2\lab01_nhom7_sof3091\lab6\lab6\firsttests\bin\debug\net10.0\firsttests.dll" id="d36c833f-e8f8-b944-4146-7464e3d6de50">
+      <Execution id="e8ea246e-c015-43aa-8c2b-2f6d945e2929" />
+      <TestMethod codeBase="C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LAB05_PhanB" name="B01_CungCode_ChayTheoBrowserTrongJson" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="22d48c73-f344-bc2c-be55-15ce108cbf03" executionId="87c610c2-3655-4f8a-acb6-fded818bbf96" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ba4650df-2908-1696-40a7-75d404f30546" executionId="580e047e-5417-43bd-b5f0-c92b7137a8f1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="236b7f66-d812-1246-be19-cab301d80240" executionId="2967fc39-126e-4fc0-84d9-9f5b599cced9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0447c98a-163f-420c-f630-e2baa6a18bc7" executionId="b4420f71-c4fe-4e2e-be82-32ae1b30ddd2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c0952fc0-f5b5-1e66-3081-e4c25ffc24d3" executionId="120655e0-8d04-4011-b88d-7e3c4b179f98" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="689b22ab-a36a-7bf8-4488-e853c57d69db" executionId="1ddbd67f-2b36-4c7b-8187-9f48afaef7d4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="62a9a029-1a77-12b5-5ccb-9dc05fc56938" executionId="ad493640-1a3f-4882-870b-6cd32cade766" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e5764f82-c3cb-58a9-090e-21166dd091d6" executionId="d34ff905-1bad-4b50-961a-e9b74048a0a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d36c833f-e8f8-b944-4146-7464e3d6de50" executionId="e8ea246e-c015-43aa-8c2b-2f6d945e2929" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="86070512-6305-f010-cca9-f2e5b44c4be1" executionId="e79fbda3-5e36-49ed-a968-e1951b860df8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a909ed4-da94-4466-12e3-eca69a4f46dc" executionId="30ee06de-4d96-4189-95ca-998626bf2524" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="331eb71a-4bca-ea24-b4a2-0c2cf8402b6d" executionId="1c91c7eb-d8be-406e-9a39-37c0c52f6406" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c015ed94-cf25-5e25-7d83-c7ecdb4c34ee" executionId="f42fca03-9b88-479c-9cd0-95c9d153662c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0bc3e06-4401-9c08-6f66-f5555ba45676" executionId="cf050da4-e3c3-47a4-82ea-357fd917749c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4e3fc4f-7956-851f-9aec-5fdc158a20fc" executionId="2e2a424d-a00a-4719-ad84-2453b3a0098a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="15" executed="15" passed="15" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 5.0.0.0: Test execution started&#xD;
+Running selected tests in C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\FirstTests\bin\Debug\net10.0\FirstTests.dll&#xD;
+   NUnit3TestExecutor discovered 15 of 17 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+[2026-11-20 21:50:59.112 +07:00] [INFO] BẮT ĐẦU: A01_DocCauHinhTuJson&#xD;
+[2026-11-20 21:50:59.112 +07:00] [INFO] BẮT ĐẦU: DangNhap_01_CoDuLieu_ThanhCong&#xD;
+[2026-11-20 21:50:59.112 +07:00] [INFO] BẮT ĐẦU: C01_BaseTest_DaMoDuongDanCauHinh&#xD;
+[2026-11-20 21:50:59.112 +07:00] [INFO] BẮT ĐẦU: B01_CungCode_ChayTheoBrowserTrongJson&#xD;
+[2026-11-20 21:51:04.307 +07:00] [INFO] KẾT QUẢ PASSED: C01_BaseTest_DaMoDuongDanCauHinh&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+BaseTest tu khoi tao, mo URL, va se tu dong don dep webdriver.&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_C1_LAB5_BaseTestSetUpTearDown_FirstTests_Tests_LAB05_PhanC_Passed_20261120_215103_166_646d08.png&#xD;
+&#xD;
+[2026-11-20 21:51:04.312 +07:00] [INFO] BẮT ĐẦU: A02_DangNhapThanhCong&#xD;
+[2026-11-20 21:51:04.464 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_01_CoDuLieu_ThanhCong&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user]; Expected=True; Actual=True; GhiChu=Tai khoan hop le - luong thuan&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_01_CoDuLieu_ThanhCong_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215103_388_db9ef2.png&#xD;
+&#xD;
+[2026-11-20 21:51:04.466 +07:00] [INFO] BẮT ĐẦU: DangNhap_02_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:04.697 +07:00] [INFO] KẾT QUẢ PASSED: A01_DocCauHinhTuJson&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+BaseUrl=https://www.saucedemo.com/, Browser=Chrome, Headless=True, Timeout=8&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_A1_LAB5_DocCauHinhJSON_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215103_750_f3e48f.png&#xD;
+&#xD;
+[2026-11-20 21:51:04.698 +07:00] [INFO] BẮT ĐẦU: A02_CauHinhKhongHopLeCoThongBao&#xD;
+[2026-11-20 21:51:08.725 +07:00] [INFO] KẾT QUẢ PASSED: A02_DangNhapThanhCong&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\A2_LAB6_Login_DangNhapThanhCong_FirstTests_Tests_LAB06_Login_Passed_20261120_215107_353_2220dd.png&#xD;
+&#xD;
+[2026-11-20 21:51:08.735 +07:00] [INFO] BẮT ĐẦU: A01_TrangDangNhapHienThi&#xD;
+[2026-11-20 21:51:09.103 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_02_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[locked_out_user]; Expected=False; Actual=False; GhiChu=Tai khoan bi khoa - luong nghich&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_02_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215107_418_01a1bb.png&#xD;
+&#xD;
+[2026-11-20 21:51:09.126 +07:00] [INFO] BẮT ĐẦU: DangNhap_03_Trong_ThatBai&#xD;
+[2026-11-20 21:51:09.710 +07:00] [INFO] KẾT QUẢ PASSED: A02_CauHinhKhongHopLeCoThongBao&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_A2_LAB5_KiemTraConfigKhongHopLe_FirstTests_Tests_LAB05_PhanA_Passed_20261120_215108_326_5984f6.png&#xD;
+&#xD;
+[2026-11-20 21:51:09.849 +07:00] [INFO] KẾT QUẢ PASSED: B01_CungCode_ChayTheoBrowserTrongJson&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Cung test: Browser=Chrome, Driver=ChromeDriver, Headless=True&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_B1_LAB5_DriverFactory_Chrome_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215108_319_4ee73d.png&#xD;
+&#xD;
+[2026-11-20 21:51:09.870 +07:00] [INFO] BẮT ĐẦU: B02_TenBrowserSai_ThongBaoRoRang&#xD;
+[2026-11-20 21:51:13.050 +07:00] [INFO] KẾT QUẢ PASSED: A01_TrangDangNhapHienThi&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\A1_LAB6_Smoke_TrangDangNhap_FirstTests_Tests_LAB06_Smoke_Passed_20261120_215111_919_6132ca.png&#xD;
+&#xD;
+[2026-11-20 21:51:13.147 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_03_Trong_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[]; Expected=False; Actual=False; GhiChu=Bien: Username rong&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_03_Trong_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215111_994_d9a154.png&#xD;
+&#xD;
+[2026-11-20 21:51:13.148 +07:00] [INFO] BẮT ĐẦU: DangNhap_04_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:13.292 +07:00] [INFO] KẾT QUẢ PASSED: B02_TenBrowserSai_ThongBaoRoRang&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_B3_LAB5_XuLyBrowserKhongHopLe_FirstTests_Tests_LAB05_PhanB_Passed_20261120_215112_402_3d17c0.png&#xD;
+&#xD;
+[2026-11-20 21:51:15.994 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_04_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user]; Expected=False; Actual=False; GhiChu=Bien: Password rong&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_04_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215115_374_e6b827.png&#xD;
+&#xD;
+[2026-11-20 21:51:15.995 +07:00] [INFO] BẮT ĐẦU: DangNhap_05_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:19.510 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_05_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[sai_tai_khoan]; Expected=False; Actual=False; GhiChu=Tai khoan va mat khau sai&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_05_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215118_895_7a9cda.png&#xD;
+&#xD;
+[2026-11-20 21:51:19.511 +07:00] [INFO] BẮT ĐẦU: DangNhap_06_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:22.348 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_06_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[!@#$%^&amp;*]; Expected=False; Actual=False; GhiChu=Bien: Username chua ky tu dac biet&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_06_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215121_752_723323.png&#xD;
+&#xD;
+[2026-11-20 21:51:22.350 +07:00] [INFO] BẮT ĐẦU: DangNhap_07_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:38.044 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_07_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[standard_user  ]; Expected=False; Actual=False; GhiChu=Bien: Username co khoang trang du&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_07_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215137_315_c29334.png&#xD;
+&#xD;
+[2026-11-20 21:51:38.046 +07:00] [INFO] BẮT ĐẦU: DangNhap_08_CoDuLieu_ThatBai&#xD;
+[2026-11-20 21:51:41.999 +07:00] [INFO] KẾT QUẢ PASSED: DangNhap_08_CoDuLieu_ThatBai&#xD;
+Browser=Chrome; Headless=True; URL=https://www.saucedemo.com/&#xD;
+Username=[khong_ton_tai_08]; Expected=False; Actual=False; GhiChu=Tai khoan khong ton tai - bo du lieu thu 8&#xD;
+[SCREENSHOT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\screenshots\NEN_LAB6_D1_LAB5_DangNhapTheoJSON_DangNhap_08_CoDuLieu_ThatBai_FirstTests_Tests_LAB05_PhanD_Passed_20261120_215141_219_b2946d.png&#xD;
+&#xD;
+[TESTREPORT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\TestReport\TestReport5.pdf&#xD;
+[TESTREPORT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\TestReport\TestReport5.xlsx&#xD;
+[TESTREPORT] C:\Users\Admin\Music\SD22301\SOF3091\Git2\Lab01_Nhom7_SOF3091\Lab6\Lab6\TestReport\TestReport5.html&#xD;
+NUnit Adapter 5.0.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

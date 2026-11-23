@@ -1,0 +1,9 @@
+[
+  {
+    "Match": "OpenPage_ShouldHaveExpectedTitle",
+    "FileName": "B1_LAB1_MoTrangKiemTraTieuDe",
+    "Part": "PhanB",
+    "Steps": "Mở website từ Config; đọc Title và URL; chạy Assert.",
+    "Expected": "Title bằng Example Domain và URL trỏ đúng trang cấu hình."
+  }
+]

@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuestPDF" Version="2025.7.1" />
+    <PackageReference Include="ClosedXML" Version="0.104.2" />
+    <PackageReference Include="coverlet.collector" Version="6.0.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.7.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="Selenium.Support" Version="4.52.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.52.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Config\appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Data\users.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="EvidenceNames.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <!-- Cac thu muc ket qua dat o goc Lab, hien thi duoc trong Solution Explorer.
+       Anh va bao cao duoc sinh sau khi Run Test: MSBuild Include su dung wildcard,
+       khong tao file mau hoac du lieu Passed/Failed gia. -->
+  <ItemGroup Label="TaiLieuKetQuaTrongSolutionExplorer">
+    <Folder Include="screenshots\" />
+    <Folder Include="TestReport\" />
+    <None Include="..\screenshots\*.png" Link="screenshots\%(Filename)%(Extension)" />
+    <None Include="..\TestReport\*.pdf" Link="TestReport\%(Filename)%(Extension)" />
+    <None Include="..\TestReport\*.xlsx" Link="TestReport\%(Filename)%(Extension)" />
+  </ItemGroup>
+
+</Project>

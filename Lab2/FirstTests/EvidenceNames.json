@@ -1,0 +1,58 @@
+[
+  {
+    "Match": "A01_LocatorUsername",
+    "FileName": "A1_LAB2_LocatorUsername",
+    "Part": "PhanA",
+    "Steps": "Mở SauceDemo; xác định ô Username bằng hai locator.",
+    "Expected": "Hai cách định vị cùng tìm đúng ô Username."
+  },
+  {
+    "Match": "A02_LocatorPassword",
+    "FileName": "A2_LAB2_LocatorPassword",
+    "Part": "PhanA",
+    "Steps": "Mở SauceDemo; xác định ô Password bằng hai locator.",
+    "Expected": "Hai cách định vị cùng tìm đúng ô Password."
+  },
+  {
+    "Match": "A03_LocatorLoginButton",
+    "FileName": "A3_LAB2_LocatorNutLogin",
+    "Part": "PhanA",
+    "Steps": "Mở SauceDemo; xác định nút Login bằng hai locator.",
+    "Expected": "Hai cách định vị cùng tìm đúng nút Login."
+  },
+  {
+    "Match": "A04_LocatorProductName",
+    "FileName": "A4_LAB2_LocatorTenSanPham",
+    "Part": "PhanA",
+    "Steps": "Đăng nhập; xác định phần tử tên sản phẩm bằng locator.",
+    "Expected": "Locator tìm đúng phần tử tên sản phẩm."
+  },
+  {
+    "Match": "A05_LocatorProductPrice",
+    "FileName": "A5_LAB2_LocatorGiaSanPham",
+    "Part": "PhanA",
+    "Steps": "Đăng nhập; xác định giá sản phẩm bằng locator.",
+    "Expected": "Locator tìm đúng phần tử giá sản phẩm."
+  },
+  {
+    "Match": "Login_Success",
+    "FileName": "B1_LAB2_DangNhapThanhCong",
+    "Part": "PhanB",
+    "Steps": "Đăng nhập standard_user / secret_sauce.",
+    "Expected": "URL có inventory.html."
+  },
+  {
+    "Match": "Login_LockedOutUser",
+    "FileName": "B2_LAB2_DangNhapTaiKhoanBiKhoa",
+    "Part": "PhanB",
+    "Steps": "Đăng nhập locked_out_user / secret_sauce.",
+    "Expected": "Thông báo lỗi locked out xuất hiện, URL không có inventory.html."
+  },
+  {
+    "Match": "GetProductInformation",
+    "FileName": "C1_LAB2_DocSauSanPham",
+    "Part": "PhanC",
+    "Steps": "Đăng nhập, đọc sáu sản phẩm bằng FindElements/item.FindElement.",
+    "Expected": "Có 6 sản phẩm; tên không rỗng; giá bắt đầu $; có Sauce Labs Backpack."
+  }
+]

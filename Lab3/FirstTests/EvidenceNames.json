@@ -1,0 +1,68 @@
+[
+  {
+    "Match": "C1_Alert_Accept",
+    "FileName": "C1_LAB3_C1_Alert_Accept",
+    "Part": "PhanC",
+    "Steps": "Mở javascript_alerts; kích hoạt Alert và Accept.",
+    "Expected": "#result hiển thị kết quả đúng."
+  },
+  {
+    "Match": "C2_Confirm_Dismiss",
+    "FileName": "C2_LAB3_C2_Confirm_Dismiss",
+    "Part": "PhanC",
+    "Steps": "Mở javascript_alerts; kích hoạt Confirm và Dismiss.",
+    "Expected": "#result hiển thị kết quả đúng."
+  },
+  {
+    "Match": "C3_Prompt_SendKeys_Accept",
+    "FileName": "C3_LAB3_C3_Prompt_SendKeys_Accept",
+    "Part": "PhanC",
+    "Steps": "Mở javascript_alerts; gửi chữ vào Prompt rồi Accept.",
+    "Expected": "#result hiển thị kết quả đúng."
+  },
+  {
+    "Match": "C4_Iframe_GoChu",
+    "FileName": "C4_LAB3_C4_Iframe_GoChu",
+    "Part": "PhanC",
+    "Steps": "Mở /iframe; chuyển frame; nhập nội dung; DefaultContent.",
+    "Expected": "Nội dung được nhập trong iframe."
+  },
+  {
+    "Match": "A1_RotKhongWait",
+    "FileName": "A1_LAB3_KhongCho_NoSuchElement",
+    "Part": "PhanA",
+    "Steps": "Bấm Start tại dynamic_loading/2; tìm #finish ngay lập tức.",
+    "Expected": "Test cố ý thất bại vì NoSuchElementException (chạy riêng)."
+  },
+  {
+    "Match": "A2_PassCoWait",
+    "FileName": "A2_LAB3_CoExplicitWait",
+    "Part": "PhanA",
+    "Steps": "Bấm Start; dùng WebDriverWait.Until() chờ #finish.",
+    "Expected": "Lấy được nội dung Hello World!."
+  },
+  {
+    "Match": "B1_SapXepPriceLowToHigh",
+    "FileName": "B1_LAB3_SapXepGiaTangDan",
+    "Part": "PhanB",
+    "Steps": "Đăng nhập; chọn Price low to high; đọc và sắp xếp các giá.",
+    "Expected": "Giá thực tế tăng dần."
+  },
+  {
+    "Match": "D1_CoYRot",
+    "FileName": "D1_LAB3_ChupAnhTestCoYThatBai",
+    "Part": "PhanD",
+    "Steps": "Chạy riêng test có Assert cố ý sai.",
+    "Expected": "NUnit báo Failed; screenshot ghi nhận lỗi thật."
+  },
+  {
+    "Match": "PhanC_Lab03",
+    "FileName": "C1_LAB3_XuLyAlertIframe",
+    "Part": "PhanC"
+  },
+  {
+    "Match": "PhanB_Lab03",
+    "FileName": "B1_LAB3_SapXepGia",
+    "Part": "PhanB"
+  }
+]

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <RunConfiguration>
+    <MaxCpuCount>1</MaxCpuCount>
+    <ResultsDirectory>TestResults</ResultsDirectory>
+  </RunConfiguration>
+  <NUnit>
+    <NumberOfTestWorkers>0</NumberOfTestWorkers>
+    <Verbosity>3</Verbosity>
+  </NUnit>
+</RunSettings>
