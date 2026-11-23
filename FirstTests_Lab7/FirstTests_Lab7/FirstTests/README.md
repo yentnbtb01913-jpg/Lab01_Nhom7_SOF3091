@@ -140,3 +140,12 @@ Lưu ảnh thật vào `screenshots/`:
 - `D_Parallel.png` – thời gian chạy song song.
 
 **Lưu ý:** Cần chạy trên máy có .NET SDK và Chrome để tạo TRX, log, báo cáo và số đo thực tế. Không dùng số liệu hoặc ảnh minh chứng tạo sẵn.
+
+
+## LAB 7 – Khai thác AI chuyên sâu
+
+- Báo cáo đầy đủ Phần A–E: `Lab7_Report.md`.
+- Test Page Object mới: `Test/CartFeatureTests.cs`.
+- Test mới kế thừa `BaseTest`, tái sử dụng `LoginPages`, `InventoryPages`, `CartPages`.
+- Chạy riêng: `dotnet test --filter "FullyQualifiedName~CartFeatureTests"`.
+- Chụp ảnh kết quả chạy thật và lưu trong `screenshots/`.
