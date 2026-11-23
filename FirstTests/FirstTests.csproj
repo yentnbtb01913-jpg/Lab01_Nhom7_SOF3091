@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Lab06\" />
+    <Folder Include="Lab07\" />
   </ItemGroup>
 
 </Project>
