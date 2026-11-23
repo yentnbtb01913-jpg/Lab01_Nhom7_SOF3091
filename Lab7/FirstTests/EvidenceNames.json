@@ -1,0 +1,50 @@
+[
+  {
+    "Match": "ThanhToan_",
+    "FileName": "C1_LAB7_CheckoutTheoJSON",
+    "Part": "PhanC",
+    "Steps": "Đăng nhập, thêm Backpack, vào giỏ, nhập dữ liệu từ checkout_cases.json",
+    "Expected": "Ca hợp lệ: Thank you for your order!; ca thiếu trường: thông báo lỗi đúng dữ liệu.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  },
+  {
+    "Match": "DangNhap_",
+    "FileName": "NEN_LAB7_DangNhapTheoJSON",
+    "Part": "Bai6KeThua",
+    "Steps": "Đăng nhập từ users.json bằng POM",
+    "Expected": "Trạng thái theo giá trị ThanhCong trong JSON.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  },
+  {
+    "Match": "D01_TruocSua_",
+    "FileName": "D1_LAB7_TruocSua_LocatorSai",
+    "Part": "PhanD",
+    "Steps": "Cố ý chạy locator sai trong Page Object debug",
+    "Expected": "Failed có chủ ý, xuất thông báo timeout và ảnh thật.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  },
+  {
+    "Match": "D02_SauSua_",
+    "FileName": "D2_LAB7_SauSua_LocatorDung",
+    "Part": "PhanD",
+    "Steps": "Kiểm tra Products bằng InventoryPage.DaHienThi",
+    "Expected": "Passed khi giao diện thực tế hoạt động như mong đợi.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  },
+  {
+    "Match": "DangNhap_DungTaiKhoan",
+    "FileName": "NEN_LAB7_LoginThanhCong",
+    "Part": "Bai6KeThua",
+    "Steps": "Đăng nhập standard_user",
+    "Expected": "Trang Products xuất hiện.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  },
+  {
+    "Match": "DangNhap_TaiKhoanBiKhoa",
+    "FileName": "NEN_LAB7_LoginBiKhoa",
+    "Part": "Bai6KeThua",
+    "Steps": "Đăng nhập tài khoản bị khóa",
+    "Expected": "Xuất hiện lỗi locked out.",
+    "Precondition": "Browser từ Config/appsettings.json; chạy test trong NUnit."
+  }
+]
