@@ -1,8 +1,6 @@
-﻿
 using NUnit.Framework;
 
-// Cho phép các class test chạy song song.
+// Cho các CLASS test chạy song song với nhau
 [assembly: Parallelizable(ParallelScope.Fixtures)]
-
-// Giới hạn tối đa 4 luồng chạy đồng thời.
+// Số luồng tối đa chạy cùng lúc (thường = số nhân CPU)
 [assembly: LevelOfParallelism(4)]

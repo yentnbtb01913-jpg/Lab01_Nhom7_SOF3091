@@ -1,58 +1,26 @@
-using System.Linq;
 using OpenQA.Selenium;
 
-namespace FirstTests.Pages
+namespace FirstTests.Pages;
+
+public class LoginPage : BasePage
 {
-    public class LoginPage : BasePage
+    // Locator private — file test KHÔNG thấy, KHÔNG cần biết
+    private readonly By oTaiKhoan = By.Id("user-name");
+    private readonly By oMatKhau  = By.Id("password");
+    private readonly By nutLogin  = By.Id("login-button");
+    private readonly By loi       = By.CssSelector("h3[data-test='error']");
+
+    public LoginPage(IWebDriver d) : base(d) { }
+
+    // Bài 4 có "public const string Url" — Bài 5 BỎ, vì URL đã về appsettings.json
+
+    public InventoryPage DangNhap(string tk, string mk)
     {
-        // Locator được đóng gói ở dạng private
-        private readonly By oTaiKhoan = By.Id("user-name");
-        private readonly By oMatKhau = By.Id("password");
-        private readonly By nutLogin = By.Id("login-button");
-        private readonly By thongBaoLoi =
-            By.CssSelector("[data-test='error']");
-
-        public LoginPage(IWebDriver driver) : base(driver)
-        {
-        }
-
-        // Đăng nhập thành công và chuyển sang trang sản phẩm
-        public InventoryPage DangNhap(string taiKhoan, string matKhau)
-        {
-            NhapThongTinVaBamDangNhap(taiKhoan, matKhau);
-
-            return new InventoryPage(driver);
-        }
-
-        // Đăng nhập thất bại: vẫn ở lại trang đăng nhập
-        public LoginPage DangNhapThatBai(string taiKhoan, string matKhau)
-        {
-            NhapThongTinVaBamDangNhap(taiKhoan, matKhau);
-
-            return this;
-        }
-
-        // Thông báo lỗi có đang hiển thị hay không
-        public bool ThongBaoLoiDangHienThi()
-        {
-            var phanTu = wait.Until(
-                d => d.FindElements(thongBaoLoi).FirstOrDefault()
-            );
-
-            return phanTu.Displayed;
-        }
-
-        // Lấy thông báo khi đăng nhập thất bại
-        public string LayThongBaoLoi()
-        {
-            return Tim(thongBaoLoi).Text;
-        }
-
-        private void NhapThongTinVaBamDangNhap(string taiKhoan, string matKhau)
-        {
-            Tim(oTaiKhoan).SendKeys(taiKhoan);
-            Tim(oMatKhau).SendKeys(matKhau);
-            TimCoTheBam(nutLogin).Click();
-        }
+        var o1 = Tim(oTaiKhoan); o1.Clear(); o1.SendKeys(tk);
+        var o2 = Tim(oMatKhau);  o2.Clear(); o2.SendKeys(mk);
+        Tim(nutLogin).Click();
+        return new InventoryPage(driver);   // trả về TRANG TIẾP THEO
     }
+
+    public string LayThongBaoLoi() => Tim(loi).Text;
 }

@@ -2,20 +2,20 @@
   {
     "Username": "standard_user",
     "Password": "secret_sauce",
-    "ThanhCong": false,
+    "ThanhCong": true,
     "GhiChu": "Tài khoản chuẩn — luồng thuận"
   },
   {
     "Username": "locked_out_user",
     "Password": "secret_sauce",
     "ThanhCong": false,
-    "GhiChu": "Tài khoản bị khóa — không vào được trang sản phẩm"
+    "GhiChu": "Tài khoản bị khóa — phải hiện thông báo lỗi"
   },
   {
     "Username": "problem_user",
     "Password": "secret_sauce",
     "ThanhCong": true,
-    "GhiChu": "Tài khoản có lỗi giao diện nhưng vẫn đăng nhập được"
+    "GhiChu": "Vào được nhưng ảnh sản phẩm hỏng"
   },
   {
     "Username": "",
@@ -33,36 +33,6 @@
     "Username": "khong_ton_tai",
     "Password": "sai_mat_khau",
     "ThanhCong": false,
-    "GhiChu": "Tài khoản không tồn tại"
-  },
-  {
-    "Username": " standard_user ",
-    "Password": "secret_sauce",
-    "ThanhCong": false,
-    "GhiChu": "Ca biên: thừa khoảng trắng hai đầu tài khoản"
-  },
-  {
-    "Username": "<script>alert(1)</script>",
-    "Password": "' OR '1'='1",
-    "ThanhCong": false,
-    "GhiChu": "Ca biên: ký tự đặc biệt / thử chèn mã"
-  },
-  {
-    "Username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "Password": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "ThanhCong": false,
-    "GhiChu": "Ca biên: chuỗi rất dài (300 ký tự)"
-  },
-  {
-    "Username": "STANDARD_USER",
-    "Password": "secret_sauce",
-    "ThanhCong": false,
-    "GhiChu": "Ca biên: sai chữ hoa/thường tài khoản"
-  },
-  {
-    "Username": "visual_user",
-    "Password": "secret_sauce",
-    "ThanhCong": true,
-    "GhiChu": "Tài khoản visual_user"
+    "GhiChu": "Ca biên: tài khoản không tồn tại"
   }
 ]

@@ -1,10 +1,9 @@
 namespace FirstTests.Config;
 
-// Lớp ánh xạ với appsettings.json. Tên thuộc tính PHẢI khớp tên khóa trong JSON.
+/// <summary>Lớp ánh xạ với appsettings.json. Tên thuộc tính PHẢI khớp tên khóa.</summary>
 public class TestConfig
 {
     public string BaseUrl        { get; set; } = "";
-    public string TheInternetUrl { get; set; } = "";
     public string Browser        { get; set; } = "chrome";
     public int    TimeoutSeconds { get; set; } = 10;
     public bool   Headless       { get; set; }

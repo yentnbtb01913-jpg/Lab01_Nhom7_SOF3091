@@ -1,6 +1,6 @@
 namespace FirstTests.Data;
 
-// Ánh xạ với users.json. Tên thuộc tính PHẢI khớp khóa JSON.
+/// <summary>Ánh xạ với users.json. Tên thuộc tính PHẢI khớp khóa JSON (phân biệt hoa/thường!).</summary>
 public class UserData
 {
     public string Username  { get; set; } = "";

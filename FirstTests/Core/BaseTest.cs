@@ -1,66 +1,94 @@
+using System;
+using System.Diagnostics;
+using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using FirstTests.Config;
 using FirstTests.Utilities;
-using NUnit.Framework.Interfaces;
-using OpenQA.Selenium;
+using FirstTests.Reporting;
 
 namespace FirstTests.Core;
 
+// Giu nguyen vai tro BaseTest: SetUp tao driver, TearDown chup anh + dong driver.
 public abstract class BaseTest
 {
-    // Field thường (KHÔNG static): mỗi class test có đối tượng riêng nên có driver riêng
     protected IWebDriver driver = null!;
-    protected TestConfig cfg    = null!;
+    protected WebDriverWait wait = null!;
+    protected TestConfig config = null!;
+    private Stopwatch watch = new();
 
-    // Ghi mốc bắt đầu -> đọc config -> tạo driver -> mở URL
     [SetUp]
-    public void BaseSetup()
+    public void BaseSetUp()
     {
-        Log.Info($"===== BẮT ĐẦU: {TestContext.CurrentContext.Test.Name} =====");
-
-        cfg    = ConfigReader.Load();
-        driver = DriverFactory.Create(cfg);
-        Log.Info($"Mở {cfg.Browser} (headless={cfg.Headless}), tới {cfg.BaseUrl}");
-
-        // KHÔNG gọi Maximize(): ở chế độ headless nó vô nghĩa.
-        // Kích thước đã đặt trong DriverFactory nên headed và headless giống nhau.
-        driver.Navigate().GoToUrl(cfg.BaseUrl);
+        watch = Stopwatch.StartNew();
+        try
+        {
+            FirstTests.Utilities.Log.Info("BẮT ĐẦU: " + TestContext.CurrentContext.Test.Name);
+            config = ConfigReader.Load();
+            driver = DriverFactory.Create(config);
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(config.TimeoutSeconds));
+            driver.Navigate().GoToUrl(config.BaseUrl);
+            TestContext.WriteLine($"Browser={config.Browser}; Headless={config.Headless}; URL={config.BaseUrl}");
+        }
+        catch (Exception ex)
+        {
+            watch.Stop();
+            FirstTests.Utilities.Log.Error("SETUP FAILED: " + TestContext.CurrentContext.Test.Name + ": " + ex.Message);
+            // Neu SetUp loi, NUnit co the khong goi TearDown: van luu ket qua that.
+            ReportRun.Record(watch.Elapsed.TotalSeconds, null, "Failed", "SetUp: " + ex);
+            if (driver != null)
+            {
+                try { driver.Quit(); } catch { }
+                try { driver.Dispose(); } catch { }
+            }
+            throw;
+        }
     }
 
-    // Ghi kết quả (OK/RỚT) -> chụp ảnh khi rớt -> luôn đóng trình duyệt
     [TearDown]
     public void BaseTearDown()
     {
-        string ten = TestContext.CurrentContext.Test.Name;
-
+        string? screenshot = null;
         try
         {
-            var ketQua = TestContext.CurrentContext.Result;
-
-            if (ketQua.Outcome.Status == TestStatus.Failed)
+            if (driver != null)
             {
-                Log.Error($"RỚT: {ten} | {DongDau(ketQua.Message)}");
-                ScreenshotHelper.Chup(driver);
-            }
-            else if (ketQua.Outcome.Status == TestStatus.Passed)
-            {
-                Log.Info($"XONG: OK - {ten}");
-            }
-            else
-            {
-                Log.Warn($"XONG: {ketQua.Outcome.Status} - {ten}");
+                try { screenshot = ScreenshotHelper.Capture(driver); }
+                catch (Exception ex)
+                {
+                    TestContext.WriteLine("Khong chup duoc anh: " + ex.Message);
+                }
             }
         }
         finally
         {
-            // finally: ghi log hay chụp ảnh lỗi KHÔNG được ngăn việc đóng trình duyệt
-            driver?.Quit();
-            driver?.Dispose();
+            try
+            {
+                if (driver != null)
+                {
+                    try { driver.Quit(); }
+                    catch (Exception ex) { TestContext.WriteLine("Quit: " + ex.Message); }
+                    try { driver.Dispose(); }
+                    catch (Exception ex) { TestContext.WriteLine("Dispose: " + ex.Message); }
+                }
+            }
+            finally
+            {
+                watch.Stop();
+                var ketQua = TestContext.CurrentContext.Result.Outcome.Status.ToString();
+                try
+                {
+                    if (ketQua.Equals("Failed", StringComparison.OrdinalIgnoreCase))
+                        FirstTests.Utilities.Log.Error("RỚT: " + TestContext.CurrentContext.Test.Name + ": " + TestContext.CurrentContext.Result.Message);
+                    else
+                        FirstTests.Utilities.Log.Info("KẾT QUẢ " + ketQua.ToUpperInvariant() + ": " + TestContext.CurrentContext.Test.Name);
+                }
+                catch (Exception ex)
+                {
+                    TestContext.Progress.WriteLine("LOI GHI NHAT KY: " + ex.Message);
+                }
+                ReportRun.Record(watch.Elapsed.TotalSeconds, screenshot);
+            }
         }
-    }
-
-    // Chỉ lấy dòng đầu của thông báo lỗi cho nhật ký gọn
-    private static string DongDau(string? thongBao)
-    {
-        return (thongBao ?? "").Split('\n')[0].Trim();
     }
 }

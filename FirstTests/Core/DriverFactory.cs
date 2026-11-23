@@ -8,44 +8,39 @@ namespace FirstTests.Core;
 
 public static class DriverFactory
 {
-    // Trả về IWebDriver (KHÔNG phải ChromeDriver): đây là chỗ tính đa hình phát huy tác dụng.
-    public static IWebDriver Create(TestConfig cfg)
+    /// <summary>Trả về IWebDriver (KHÔNG phải ChromeDriver) — đây là chỗ đa hình phát huy.</summary>
+    public static IWebDriver Create(TestConfig cfg) => cfg.Browser.Trim().ToLower() switch
     {
-        string ten = cfg.Browser.Trim().ToLowerInvariant();
+        "chrome"  => new ChromeDriver(ChromeOpts(cfg)),
+        "firefox" => new FirefoxDriver(FirefoxOpts(cfg)),
+        "edge"    => new EdgeDriver(EdgeOpts(cfg)),
+        _ => throw new ArgumentException(
+                 $"Trình duyệt không hỗ trợ: '{cfg.Browser}'. Hợp lệ: chrome | firefox | edge")
+    };
 
-        return ten switch
-        {
-            "chrome"  => new ChromeDriver(TaoOptionsChrome(cfg)),
-            "firefox" => new FirefoxDriver(TaoOptionsFirefox(cfg)),
-            "edge"    => new EdgeDriver(TaoOptionsEdge(cfg)),
-            _ => throw new ArgumentException(
-                     $"Trình duyệt không được hỗ trợ: '{cfg.Browser}'. Hợp lệ: chrome | firefox | edge.")
-        };
+    private static ChromeOptions ChromeOpts(TestConfig cfg)
+    {
+        var o = new ChromeOptions();
+        if (cfg.Headless) o.AddArgument("--headless=new");   // Chrome: có "=new"
+        o.AddArgument($"--window-size={cfg.WindowWidth},{cfg.WindowHeight}");
+        o.AddArgument("--disable-notifications");
+        return o;
     }
 
-    private static ChromeOptions TaoOptionsChrome(TestConfig cfg)
+    private static FirefoxOptions FirefoxOpts(TestConfig cfg)
     {
-        var options = new ChromeOptions();
-        if (cfg.Headless) options.AddArgument("--headless=new");   // Chrome: có "=new"
-        options.AddArgument($"--window-size={cfg.WindowWidth},{cfg.WindowHeight}");
-        options.AddArgument("--disable-notifications");
-        return options;
+        var o = new FirefoxOptions();
+        if (cfg.Headless) o.AddArgument("--headless");       // Firefox: KHÔNG có "=new"
+        o.AddArgument($"--width={cfg.WindowWidth}");
+        o.AddArgument($"--height={cfg.WindowHeight}");
+        return o;
     }
 
-    private static FirefoxOptions TaoOptionsFirefox(TestConfig cfg)
+    private static EdgeOptions EdgeOpts(TestConfig cfg)
     {
-        var options = new FirefoxOptions();
-        if (cfg.Headless) options.AddArgument("--headless");       // Firefox: KHÔNG có "=new"
-        options.AddArgument($"--width={cfg.WindowWidth}");
-        options.AddArgument($"--height={cfg.WindowHeight}");
-        return options;
-    }
-
-    private static EdgeOptions TaoOptionsEdge(TestConfig cfg)
-    {
-        var options = new EdgeOptions();
-        if (cfg.Headless) options.AddArgument("--headless=new");   // Edge giống Chrome
-        options.AddArgument($"--window-size={cfg.WindowWidth},{cfg.WindowHeight}");
-        return options;
+        var o = new EdgeOptions();
+        if (cfg.Headless) o.AddArgument("--headless=new");
+        o.AddArgument($"--window-size={cfg.WindowWidth},{cfg.WindowHeight}");
+        return o;
     }
 }
